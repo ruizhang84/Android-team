@@ -1,3 +1,22 @@
 Questions to Lauren:
-1.
-2.
+1.What is the format of input files? .txt files?
+2.Do we need to handle one file at a time or need to handle multiple files?
+3.What is the definition of a sentence end? What delimiters? How to handle Mr., Mrs., Prof., and V.S.
+4.Does the quoted sentence within a sentence counted as one sentence or more ones?
+5.Are we allowing the user to supply a sentence delimiter explicitly? Using a flag?
+6.Does the minimum character count digit as character?
+7.How to present the output? Stdout or to a file?
+8.What to do if the provide txt is non-text file? Can we assume that?
+9.What is the maximum file size?
+10.Do input files contain information that we need to skip, such as headings, footnotes?
+11.Does the user-provided delimiter replace the default delimiter or add to the defaults?
+12.How to handle line break and bullet list? Does it count as a sentence finish?
+13.Does a word with a hyphen count as 1 or 2 words? How about slash, pipe sign or hashtags?
+14.Do we need to provide a man/help page?
+15.What systems do we need to comply with, Mac, Windows, Linux?
+16.What encoding is the input files, ascii, unicode or UTF-8?
+17.Do you need the software to store each student's running outputs somewhere?
+18.What languages are the essays written in?
+19.Do you need information other than the average word counts? How about std?
+20.How to deal with garbage input, such as @#$%@#%$@#$^#$%^#, do we need to validate sentences?
+21.How to count a long word such as a URL? As one word or multiple?
