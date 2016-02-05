@@ -34,12 +34,12 @@ Hardware and Software requirements of the system are specified for each of the s
 ##### *Activities Performed:*
 The System being developed should have the following standards:
 
-1) System is to be built with Vanilla java 1.7/1.8  – must not make use of non-standard java libraries
-2) Program should be an application ie., it should have a main method and should be executable from the command line using the java command
-3) User should specify a file path they wish to be analyzed as a command line argument
-4) User should be able to specify which delimiters count as sentence separators, using the flag –d, defaulting to period, question mark or exclamation mark may be even the comma or semi-colon
-5) User should be able to specify a lower limit for word length using the flag –l defaulting to Lauren’s guess at what might be good. (words more than 3 letters)
-6) Program’s output should be the average sentence length rounded to the nearest integer
+- System is to be built with Vanilla java 1.7/1.8  – must not make use of non-standard java libraries
+- Program should be an application ie., it should have a main method and should be executable from the command line using the java command
+- User should specify a file path they wish to be analyzed as a command line argument
+- User should be able to specify which delimiters count as sentence separators, using the flag –d, defaulting to period, question mark or exclamation mark may be even the comma or semi-colon
+- User should be able to specify a lower limit for word length using the flag –l defaulting to Lauren’s guess at what might be good. (words more than 3 letters)
+- Program’s output should be the average sentence length rounded to the nearest integer
 
 ##### *Entry Criteria:*
 - Requirements Specification Document
@@ -90,32 +90,32 @@ Make sure that the application is up and running in the respective environment. 
 - List of new features implemented.
 
 ##3 Team
-#####*Team Members:*
-- Paul Cassell
-- Rui Zhang
-- Roopa Haribabu
-- Fujia Wu
+### 3.1 Team member names
+- **Paul Cassell** pcassell3, paulcassell@gmail.com
+- **Roopa Haribabu** rharibabu3, roopasandeep.49@gmail.com
+- **Fujia Wu** fwu35, wufujia@gmail.com
+- **Rui Zhang** rzhang360, ruizhang84.mail@gmail.com
 
-#####*Roles:*
-1) Document lead – Responsible for all the documentation works that need to be carried out in the Project.
+### 3.2 Roles Table
 
-2)Project Manager - Maintains co-ordination within the team ans is responsible for end to end delivery right from Requirements gathering to Software delivery.
+| Role| 	Responsibility| 
+| ------------|:-------------| 
+| Project Manager| Maintains co-ordination within the team ans is responsible for end to end delivery right from Requirements gathering to Software delivery|
+| Development Lead| Responsible for leading the code development activities|
+| Document lead| Responsible for all the documentation works that need to be carried out in the Project|
+| Q/A manager| Responsible for interacting with the Client and report testing progress and makes sure that the software is developed as per the requirements and ensures quality software is being delivered|
+| Developer| Responsible for developing the code|
+| Tester| Ensures good quality software is being delivered by performing rigorous testing of the software being developed|
 
-3) Development Lead - Responsible for leading the code development activities
-
-4) Q/A manager - Responsible for interacting with the Client and report testing progress and makes sure that the software is developed as per the requirements and ensures quality software is being delivered.
-
-5) Developer – Responsible for developing the code
-
-6)Tester – Ensures good quality software is being delivered by performing rigorous testing of the software being developed
+### 3.3 Role assignment table
 
 
 | Team Members| 	Roles taken| 
 | ------------|:-------------:| 
 | Paul Cassell| Document lead and Developer |
-| Rui Zhang   | Project Manager and Developer|
 | Roopa Haribabu| Development Lead and Tester|
 | Fujia Wu      | Q/A manager and Developer|
+| Rui Zhang   | Project Manager and Developer|
 
 
 ##4 Estimates
