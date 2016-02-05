@@ -1,20 +1,20 @@
 # **Project Plan Document -- Team 54**
 
 ##1 Introduction
-This project "Average Sentence Length" aims to create a tool that helps students to keep track of the average number of words per sentence in their essays, which also helps them to follow a perfect writing style.
+The project "Average Sentence Length" aims to create a tool that helps students keep track of the average number of words per sentence in their essays, which also helps them to follow a perfect writing style.
 
-The software that we are going to build to solve this purpose is a command line Java based tool that can be used by all students who have no technical background to students who have self-sufficient programming knowledge. A documentation will also be provided on how to use this tool so that everyone who uses it can understand how it works. There are some situations which may lead to error conditions which may be indicated to the students by producing some friendly error messages if something goes wrong.
+In order to accomplish this task, our team will build a command line based Java tool.  This tool shall be simple to use regardless of the technical proficiency of the student - from the novice to those more technically adept.  We plan to indicate any error conditions to the end user via friendly error messages.  Finally, documentation will be provided on how to use the tool.
 
 ##2 Process Description
 ###2.1 Project Life cycle
-We adopt Waterfall model in our software development process. The life cycles of this project include Requirement Gathering and Analysis, System Design, Implementation, Testing and Maintenance.
+We have adopted a Waterfall model for our software development process. The life cycles of this project include Requirements Gathering and Analysis, System Design, Implementation, Testing and Maintenance.
 
 ###2.2 Process Activities 
-####2.2.1 *Requirement Gathering and Analysis*:
-In this phase all possible requirements of the system to be developed are base lined and documented in a requirement Specification document. 
+####2.2.1 *Requirements Gathering and Analysis*:
+In this phase all possible requirements of the system to be developed are baselined and documented in a Requirement Specification document. 
 
 ##### *Activities Performed:*
-- The software development team requests for meeting with Lauren, to understand the requirements.
+- The software development team requests for a meeting with Lauren in order to understand the requirements.
 - Lauren explains the software tool that she wants the team to develop.
 - Project plan is created used to guide both project execution and project control.
 
@@ -34,10 +34,12 @@ Hardware and Software requirements of the system are specified for each of the s
 ##### *Activities Performed:*
 The System being developed should have the following standards:
 
-- System is to be built with Vanilla java 1.7/1.8  – must not make use of non-standard java libraries
-- Program should be an application ie., it should have a main method and should be executable from the command line using the java command
+- System is to be built with standard Java version 1.7 (JDK 7)
+- System must not make use of non-standard java libraries
+- Program should be an application i.e., it should have a main method and be executable from the command line using the java command
 - User should specify a file path they wish to be analyzed as a command line argument
-- User should be able to specify which delimiters count as sentence separators, using the flag –d, defaulting to period, question mark or exclamation mark may be even the comma or semi-colon
+- User should be able to specify which delimiters count as sentence separators by using the flag –d
+- By default, the delimeter is a period, question mark or exclamation mark.  This may be expanded to include the comma or semi-colon
 - User should be able to specify a lower limit for word length using the flag –l defaulting to Lauren’s guess at what might be good. (words more than 3 letters)
 - Program’s output should be the average sentence length rounded to the nearest integer
 
@@ -49,7 +51,7 @@ The System being developed should have the following standards:
 - LLD (Low Level Design document)
 
 ####2.2.3 Implementation
-Actual code is implemented during this phase as per the design specified. Unit testing is performed to test individual pieces of code and verify whether individual modules are doing what they are intended to do.
+Source code is implemented during this phase as per the design specified. Unit testing is performed to test individual pieces of code and to verify whether individual modules are doing what they are intended to do.
 
 ##### *Entry Criteria:*
 
@@ -61,7 +63,7 @@ Actual code is implemented during this phase as per the design specified. Unit t
 
 ####2.2.4 System Testing
 
-Perform Integration testing by putting together all the modules that have been developed and tested individually to make sure if it works as expected. Perform functional and non-functional testing to make sure that the system meets the requirements. Report issues in case of anomalies Log the defect and track it to closure. Progress on testing can be tracked via tools like traceability metrics, ALM.
+Perform Integration testing by putting together all the modules that have been developed and tested individually to make sure it works as expected. Perform functional and non-functional testing to make sure that the system meets the requirements. Report issues in case of anomalies by logging the defect and tracking it to closure. Progress on testing can be tracked via tools like traceability metrics, ALM.
 
 
 ##### *Entry Criteria:*
@@ -112,10 +114,10 @@ Make sure that the application is up and running in the respective environment. 
 
 | Team Members| 	Roles taken| 
 | :------------|:-------------| 
-| Paul Cassell| Document lead and Developer |
-| Roopa Haribabu| Development Lead and Tester|
-| Fujia Wu      | Q/A manager and Developer|
-| Rui Zhang   | Project Manager and Developer|
+| Paul Cassell| Document Lead, Developer |
+| Roopa Haribabu| Development Lead, Tester|
+| Fujia Wu      | Q/A Manager, Developer|
+| Rui Zhang   | Project Manager, Developer|
 
 
 ##4 Estimates
