@@ -99,7 +99,7 @@ Make sure that the application is up and running in the respective environment. 
 ### 3.2 Roles Table
 
 | Role| 	Responsibility| 
-| ------------|:-------------| 
+|:------------|:-------------| 
 | Project Manager| Maintains co-ordination within the team ans is responsible for end to end delivery right from Requirements gathering to Software delivery|
 | Development Lead| Responsible for leading the code development activities|
 | Document lead| Responsible for all the documentation works that need to be carried out in the Project|
@@ -111,7 +111,7 @@ Make sure that the application is up and running in the respective environment. 
 
 
 | Team Members| 	Roles taken| 
-| ------------|:-------------:| 
+| :------------|:-------------| 
 | Paul Cassell| Document lead and Developer |
 | Roopa Haribabu| Development Lead and Tester|
 | Fujia Wu      | Q/A manager and Developer|
