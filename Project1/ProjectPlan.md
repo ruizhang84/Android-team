@@ -1,7 +1,7 @@
 # **Project Plan Document -- Team 54**
 
 ##1 Introduction
-The project "Average Sentence Length" aims to create a tool that helps students keep track of the average number of words per sentence in their essays, which also helps them to follow a perfect writing style.
+The project "Average Sentence Length" aims to create a tool that helps students keep track of the average number of words per sentence in their essays.  This will aid in helping them become better writers.
 
 In order to accomplish this task, our team will build a command line based Java tool.  This tool shall be simple to use regardless of the technical proficiency of the student - from the novice to those more technically adept.  We plan to indicate any error conditions to the end user via friendly error messages.  Finally, documentation will be provided on how to use the tool.
 
