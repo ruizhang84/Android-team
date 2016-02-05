@@ -1,22 +1,26 @@
-# **Requirements Document -- Team X**
+# **Requirements Document -- Team 54**
 
 ##1 User Requirements
 
 ###1.1 Software Interfaces
 
-List all the external systems with which the software product interacts. These are external systems/libraries that you have to interact with.
+Vanilla Java 1.6, compile with javac with no options, executable from command line on linux, windows or mac.
 
 ###1.2 User Interfaces
 
-Specify the logical characteristics of each interface between the software product and its users. This is a description of how the system will interact with its users.
+User execute the software from command line in windows, linux or mac.
+User specifies file path.
+User specifies additional delimiters with -d option.
+User specifies minimum word length with -l option.
+Output average sentence length.
 
 ###1.3 User Characteristics
 
-Describe those general characteristics of the intended users of the product, including educational level, experience, and technical expertise.
+University and high school students with broad range of proficiency in terms of their computer usage and tech skills.
 
 ##2 System Requirements
 
-These subsections contain all the software requirements at a level of detail sufficient to enable designers/developers to design/develop a system that satisfies those requirements, and testers to test that the system satisfies those requirements. This part of the document should provide a numbered (possibly hierarchical) list of simple, complete, and consistent functional and non-functional requirements.
+Windows, linux or mac.
  
 ###2.1 Functional Requirements
 ###2.2 Non-Functional Requirements
