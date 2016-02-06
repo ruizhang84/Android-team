@@ -25,7 +25,7 @@ Answers:
 1.Quoted sentences?
 Only a simple program, not intended to interpret the meaning of the essay. As long as the character stream doesn't encounter a sentence separator, it is treated as one sentence. No special treatement for quotes.
 2.Words like Mr., e.g., Prof.?
-Will count them as a sentence since . is a sentence separator. No special treatment for those words.
+No special treatment for those words. Will count them as a sentence since . is a sentence separator. 
 3.Format of text file?
 Treat the file as regular ASCII text file.
 4.How should the output be presented?
@@ -43,30 +43,29 @@ No.
 10.What is the estimated file size?
 We should not make any assumption on the file size.
 11.What about line break?
-We don't make special treatement line break.
+We don't make special treatement for line break.
 12.Are there any sample input files?
-No.
+No. Later they changed and said there might be. Check Piazza.
 13.The word limit inclusive or exclusive?
 Inclusive. For example, 4 or longer words are counted, if 4 is the word limit.
 14.How to specify option flag?
 -l and -d can be with any order
--d abc
--l 4
+for example: java wc -d ?!. -l 4
 15.Should the program handle unicode?
 No, only ASCII.
 16.Should we make man page and -h flag?
-Program should not provide -h flag.
+No, program does not provide -h flag.
 17.How fast the program should run?
 Program should process 5000 characters per second on average.
 This is a non-functional requirements.
 18.User-provided delimiters replace the defaults or add to the defaults?
 Replace the defaults.
-19.What are the default delimiter?
+19.What are the default sentence delimiters?
 .?!:;
-20.Should sentences of zero word be included in the calculation or not?
+20.Should sentences of zero word be included in the average word count calculation or not?
 No, sentences of zero word should be excluded from the calculation.
 21.Is there any limitation on the number of words in a setence to be counted as a sentence?
-Yes, that is 1.
+Yes, that is 1, inclusive. Means sentences of zero words are ignored.
 22.Is there any sampling files for testing?
 There might be.
 23.Can we put a limit of the file size in the program?
@@ -79,9 +78,9 @@ Return an error to the user.
 All the error messages should be printed as:
 ERROR:[error messages]
 27.What should be considered as a word?
-only standard white spaces: space, tab, carrage return, newline and sentence delimiters.
+Only standard white spaces: space, tab, carrage return, newline and sentence delimiters.
 28.Is there a preferred name?
-Yes, wc
+Yes, wc [But I am not sure it is WC or wc]
 29.What rounding mode for output?
 To 2 decimal points. 5 or higher, round up; 4 or lower, round down.
 30.Remote file support?
@@ -89,8 +88,8 @@ No, only local files.
 31.Stdout vs Stderr?
 Regular output to stdout.
 Error message to stderre.
-32.Does sentence part of the sentence or a word?
-No.
+32.Is the sentence delimiter part of the sentence or a word?
+No. Not part of the sentence, and not part of a word.
 33.What checks should program do?
 file access, command line agruments
 
