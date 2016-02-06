@@ -19,7 +19,7 @@ The tool will be an executable on the command line. The user will specify the fi
 The intended users are university students taking Lauren’s course. The average number of students are 45 per unit and 6 units per semester. Students submit their thesis via email to Lauren. The students have a broad range of proficiency in terms of their computer usage and technical skills.
 
 ###2.4 Assumptions and Dependencies
-We assume that students mostly write the thesis in English words and the documents are in ASCII code. 
+We assume that students mostly write the thesis in English words and the documents are in UTF-8 code. 
 
 ##3 System Requirements
 ###3.1 Functional Requirements
