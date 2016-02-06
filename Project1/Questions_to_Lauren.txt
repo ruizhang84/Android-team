@@ -20,3 +20,94 @@ Questions to Lauren:
 19.Do you need information other than the average word counts? How about std?
 20.How to deal with garbage input, such as @#$%@#%$@#$^#$%^#, do we need to validate sentences?
 21.How to count a long word such as a URL? As one word or multiple?
+
+Answers:
+1.Quoted sentences?
+Only a simple program, not intended to interpret the meaning of the essay. As long as the character stream doesn't encounter a sentence separator, it is treated as one sentence. No special treatement for quotes.
+2.Words like Mr., e.g., Prof.?
+Will count them as a sentence since . is a sentence separator. No special treatment for those words.
+3.Format of text file?
+Treat the file as regular ASCII text file.
+4.How should the output be presented?
+A double number in the console
+5.Do digits, symbols or any special characters count as a character?
+Treat them as regular characters.
+6.Will the program run for multiple files at a time?
+No, one file at a time.
+7.If use -l flag but with no argument, what to do?
+Throw an error.
+8.What languages are the essay?
+It doesn't matter. We need not to validate the languages.
+9.Does input file include sections that we need to ignore?
+No.
+10.What is the estimated file size?
+We should not make any assumption on the file size.
+11.What about line break?
+We don't make special treatement line break.
+12.Are there any sample input files?
+No.
+13.The word limit inclusive or exclusive?
+Inclusive. For example, 4 or longer words are counted, if 4 is the word limit.
+14.How to specify option flag?
+-l and -d can be with any order
+-d abc
+-l 4
+15.Should the program handle unicode?
+No, only ASCII.
+16.Should we make man page and -h flag?
+Program should not provide -h flag.
+17.How fast the program should run?
+Program should process 5000 characters per second on average.
+This is a non-functional requirements.
+18.User-provided delimiters replace the defaults or add to the defaults?
+Replace the defaults.
+19.What are the default delimiter?
+.?!:;
+20.Should sentences of zero word be included in the calculation or not?
+No, sentences of zero word should be excluded from the calculation.
+21.Is there any limitation on the number of words in a setence to be counted as a sentence?
+Yes, that is 1.
+22.Is there any sampling files for testing?
+There might be.
+23.Can we put a limit of the file size in the program?
+Yes, just be reasonable.
+24.If all words are less than minimum world length?
+All sentences are of 0 length. Just return 0.
+25.What to do if there is no file permission?
+Return an error to the user.
+26.How to display error messages?
+All the error messages should be printed as:
+ERROR:[error messages]
+27.What should be considered as a word?
+only standard white spaces: space, tab, carrage return, newline and sentence delimiters.
+28.Is there a preferred name?
+Yes, wc
+29.What rounding mode for output?
+To 2 decimal points. 5 or higher, round up; 4 or lower, round down.
+30.Remote file support?
+No, only local files.
+31.Stdout vs Stderr?
+Regular output to stdout.
+Error message to stderre.
+32.Does sentence part of the sentence or a word?
+No.
+33.What checks should program do?
+file access, command line agruments
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
