@@ -15,7 +15,8 @@ public class AverageSentenceLength {
 	public static void main(String[] args) {
 		Core c = new Core();
 		try {
-			c.parseArgs(args);
+			//c.parseArgs(args);
+			c.parseArgs(new String[]{"-l", "5", "-d", ".;", "./samedirfile.txt"});
 		} catch (IllegalArgumentException e) {
 			System.out.println("Usage: java wc [-ld] [file]");
 			System.out.println(e.getMessage());
