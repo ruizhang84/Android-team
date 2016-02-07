@@ -28,36 +28,35 @@ public class Core {
 		if (args.length == 0)
 			throw new IllegalArgumentException("No arguments given.");
 		
-		for (int i = 0; i < args.length; i++) {
-			//last argument?  if so it should be a file, verify
-			if (i == args.length - 1) {
-				if (args[i].equals(""))
-					throw new IllegalArgumentException("No file name given.");
-				File f = new File(args[i]);
-				if (!f.exists() || !f.isFile())
-					throw new IllegalArgumentException("The file either does not exist or it is not a file");
-				this.file = args[args.length - 1];
-			} else if (args[i].equals("-l")) {
-				//if not, check for -l flag
-				//after -l flag, we have a space, so increment i
+		for (int i = 0; i < args.length - 1; i++) {
+			if (args[i].equals("-l")) {
+				//check for -l flag
 				//next string should be a positive number
 				i++;
 				if (!args[i].matches("^[0-9]+$"))
 					throw new IllegalArgumentException("The -l option must be given with a valid positive number");
 				this.wordLengthLimit = Integer.parseInt(args[i]);
 			} else if (args[i].equals("-d")) {
-				//if not, check for -d flag
-				//after -l flag, we have a space, so increment i
+				//check for -d flag
 				//next string should be character delimiters
 				i++;
-				//if (i >= args.length)
-					//-d was given, but either there is no 
 				this.delimeters = args[i].toCharArray();
 			} else {
 				//otherwise, invalid
 				throw new IllegalArgumentException();
 			}
+			if (i == args.length - 1)
+				throw new IllegalArgumentException("No file name given.");
 		}
+			
+		//last argument should be a file, verify
+		String a = args[args.length - 1];
+		if (a.equals(""))
+			throw new IllegalArgumentException("No file name given.");
+		File f = new File(a);
+		if (!f.exists() || !f.isFile())
+			throw new IllegalArgumentException("The file either does not exist or it is not a file");
+		this.file = a;
 		
 	}
 	

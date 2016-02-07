@@ -108,15 +108,24 @@ public class CoreTest extends Core {
 	}
 	
 	@Test
+	public void testParseArgsValid6() {
+		//-d delimiter is valid, and same as file
+		this.c.parseArgs(new String[]{"-l", "3", "-d", "7", "7"});
+		assertArrayEquals("7".toCharArray(), this.c.getDelimeters());
+		assertEquals("7", this.c.getFileName());
+		assertEquals(3, this.c.getWordLengthLimit());
+	}
+	
+	@Test
 	public void testParseArgsBad1() {
-		//test invalid file
+		//file name should not be first
 		exception.expect(IllegalArgumentException.class);
 		this.c.parseArgs(new String[]{"./samedirfile.txt", "-l", "4"});
 	}
 	
 	@Test
 	public void testParseArgsBad2() {
-		//test invalid file
+		//test -l argument bad, also file doesn't exist
 		exception.expect(IllegalArgumentException.class);
 	    exception.expectMessage("The -l option must be given with a valid positive number");
 		this.c.parseArgs(new String[]{"-l", "a", "-d", ";", "non_existant_file"});
@@ -124,10 +133,18 @@ public class CoreTest extends Core {
 	
 	@Test
 	public void testParseArgsBad3() {
-		//test invalid file
+		//test no file name given, -d delimiter is a proper file name
 		exception.expect(IllegalArgumentException.class);
-	    //exception.expectMessage("The -l option must be given with a valid positive number");
-		this.c.parseArgs(new String[]{"-l", "3", "-d", "non_existant_file"});
+	    exception.expectMessage("No file name given.");
+		this.c.parseArgs(new String[]{"-l", "3", "-d", "7"});
+	}
+	
+	@Test
+	public void testParseArgsBad4() {
+		//test no file name given but proper flag
+		exception.expect(IllegalArgumentException.class);
+	    exception.expectMessage("No file name given.");
+		this.c.parseArgs(new String[]{"-l", "7"});
 	}
 
 }
