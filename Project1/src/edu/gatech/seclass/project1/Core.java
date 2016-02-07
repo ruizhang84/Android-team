@@ -14,6 +14,8 @@ public class Core {
 	private String delimeters = Core.defaultDelimeters;
 	private int wordLengthLimit = 3;
 	private String file;
+	private double wordCount = 0;
+	private double sentenceCount = 0;
 	
 	public Core() {
 		
@@ -26,10 +28,10 @@ public class Core {
 		//can be in any order
 		
 		if (args.length == 0)
-			throw new IllegalArgumentException("No arguments given.");
+			throw new IllegalArgumentException("No arguments given");
 		
 		String[][] argTable = new String[][] {{"-l","^[0-9]+$", this.wordLengthLimit + ""}, 
-											{"-d", "^.*$", this.delimeters}};		
+											{"-d", "^.+$", this.delimeters}};		
 		
 		for (int i = 0; i < argTable.length; i++) {
 			for (int j = 0; j < args.length; j++) {
@@ -92,6 +94,10 @@ public class Core {
 	}
 	
 	public double getAverageSentenceLength() {
+		//loop through this.file
+		//for every word that is > this.wordLengthLimit, this.wordCount++
+		//every time we get to a sentence delimiter, sentenceCount++
+		//return average
 		return 0;
 	}
 

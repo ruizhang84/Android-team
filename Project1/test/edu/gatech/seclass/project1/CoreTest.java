@@ -200,5 +200,29 @@ public class CoreTest extends Core {
 	    exception.expectMessage("-d option invalid");
 		this.c.parseArgs(new String[]{"-l", "4", "-d"});
 	}
+	
+	@Test
+	public void testParseArgsBad12() {
+		//test only flags
+		exception.expect(IllegalArgumentException.class);
+	    exception.expectMessage("No arguments given");
+		this.c.parseArgs(new String[]{});
+	}
+	
+	@Test
+	public void testParseArgsBad13() {
+		//test only flags
+		exception.expect(IllegalArgumentException.class);
+	    exception.expectMessage("No file name given");
+		this.c.parseArgs(new String[]{"-d", "7"});
+	}
+	
+	@Test
+	public void testParseArgsBad14() {
+		//test only flags
+		exception.expect(IllegalArgumentException.class);
+	    exception.expectMessage("-l option invalid");
+		this.c.parseArgs(new String[]{"-d", "-l"});
+	}
 
 }
