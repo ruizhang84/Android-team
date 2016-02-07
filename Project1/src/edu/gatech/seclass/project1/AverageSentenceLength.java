@@ -14,7 +14,13 @@ public class AverageSentenceLength {
 	 */
 	public static void main(String[] args) {
 		Core c = new Core();
-		c.parseArgs(args);
+		try {
+			c.parseArgs(args);
+		} catch (IllegalArgumentException e) {
+			System.out.println("Usage: java wc [-ld] [file]");
+			System.out.println(e.getMessage());
+			System.exit(1);
+		}
 		System.out.println(c.getAverageSentenceLength());
 	}
 
