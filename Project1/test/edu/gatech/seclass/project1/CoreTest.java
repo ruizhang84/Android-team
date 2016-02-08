@@ -224,5 +224,13 @@ public class CoreTest extends Core {
 	    exception.expectMessage("-l option invalid");
 		this.c.parseArgs(new String[]{"-d", "-l"});
 	}
+	
+	@Test
+	public void testGetAverageSentenceLength() {
+		//test invalid file
+		this.c.parseArgs(new String[]{"-d", ".", "./samedirfile.txt"});
+		
+		assertEquals(11, this.c.getAverageSentenceLength(), 1);
+	}
 
 }

@@ -104,8 +104,8 @@ public class Core {
 	// and filename
 	public double getAverageSentenceLength (){
 		double ave_len = 0;   //default ave_len = 0;
-		int wordCount = 0;
-		int SentenceCount = 0;
+		wordCount = 0;
+		sentenceCount = 0;
 		
 		//get filename, delimiter, and minimum characters
 		String filename = this.getFileName();
@@ -159,6 +159,7 @@ public class Core {
             				charCount = false;
             				sentenceCount++;
             			}
+            			
             		}else{
             			//with in a sentence
             			if ( line.charAt(i) == ' '){// space
@@ -171,7 +172,7 @@ public class Core {
             				charLen ++;            				
             			}
             			
-            			if (charCount && charLen >= wordLengthLimit){
+            			if (charCount && charLen > wordLengthLimit){
             				wordCount++;
             				charCount = false; //no need to track word length
         				}
@@ -186,7 +187,7 @@ public class Core {
             
             // round up double in two decimal place
             if (sentenceCount != 0){
-            	ave_len = (double) sentenceCount/wordCount;
+            	ave_len = (double) wordCount/sentenceCount;
             }
 
             
