@@ -28,28 +28,25 @@ The tool will be developed using Java 1.7 (JDK 7) and compiled on the command li
 ###2.3 User Characteristics
 The intended users are university students taking Lauren’s course. The average number of students are 45 per unit and 6 units per semester. Students submit their thesis via email to Lauren. The students have a broad range of proficiency in terms of their computer usage and technical skills.
 
-###2.4 Assumptions and Dependencies
-We assume that students mostly write the thesis in English words and the documents are in standard ASCII characters.
-
 ##3 System Requirements
 ###3.1 Functional Requirements
-- The software will check the command line. If the user provided command line argument is not valid, output error message to the standard error with the following format: "ERROR: [error message]" (not including the quotes)
-- The software will check access to the file, if there is no read permission, output error to standard error in this format: "ERROR: [error message]" (not including the quotes)
-- The software assumes the file content is ASCII characters only, process all characters in the file, does not check or interpret the meaning or languages of the essay, does not perform special treatment to words like: Prof., Mrs., e.g., etc. differently, does not perform special treatment to digits and special characters.
+- The software will read the content of the text file, calculate the average sentence length, and output the result in the standard output. If error occurs, output error message to the standard error.
+- The software will first check the command line. If the user provided command line argument is not valid, output error message to the standard error with the following format: "ERROR: [error message]" (not including the quotes).
+- The software will first check access to the file, if there is no read permission, output error to standard error in this format: "ERROR: [error message]" (not including the quotes).
+- The software assumes the file content is ASCII characters only, process all characters in the file.
+- The software does not check or interpret the meaning or languages of the essay, does not perform special treatment to words like: Prof., Mrs., e.g., etc. differently, does not perform special treatment to digits and special characters.
 - The software define words as the characters in between standard white spaces, i.e., space, tab, carrage return, newline. A word also ends when a sentence delimiter appear. The word separators and sentence delimiters are not counted in word length and sentence length computation.
 - If a sentence has no word, or contain only words with length less than the word limit, the number of words in this sentence is 0. In this case, this sentence is not used in the average word length statistics.
 - If all the sentences in the essay has 0 words, or contain words with length less than the word limit, output 0.
 - The output is a single line double number rounded to two decimal points. The rounding method is: 5 or higher round up and 4 or lower round down.
 
 ###3.2 Non-Functional Requirements
-*Maintainability*: Technical documentation will be required in order to help develope and maintain the software tools.
+*Maintainability*: Technical documentation will be required in order to help develop and maintain the software tools.
 
 *Usability*: User documentation is required to help students, especially those with no programming experience, to appropriately compile and use the software tool. For the first time user, we expect them to have no difficulty in running the program.
 
 *Performance*: Program should approximately process 5000 characters per second on average.
 
 *Reliability and portability*:  The software tool should avoid crashes.  Scenarios such as invalid input files should be handled gracefully.  Finally, the tool shold run on different operating systems.
-
-The reliability and portability of the software tool will be thoroughly tested. The reliability will be assured by testing various input files. The portability will be assured by running our tool on different operating systems. The performance of software tool will be tested using different sizes of raw text.
 
 
