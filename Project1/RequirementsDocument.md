@@ -18,11 +18,9 @@ The tool will be developed using Java 1.7 (JDK 7) and compiled on the command li
 - User specifies minimum word length with -l option, followed by the word length, for example, "wc my_essay.txt -l 4". The word length limit specified here is inclusive, with this example, words that have length 4 or longer are counted in. If -l option is used, but no option argument, then throw an error.
 - The -d and -l options are optional. The default ones for sentence delimiters are: ".?!:;" (not including the quotes). The default word limit is 4.
 - The software tool process one file at a time, that is, interpret the file path as one file, not multiple files.
-- The two options can be specified with any order, and any of them can be specified before the file path argument, for example, the following are all valid command lines:
-         wc my_essay.txt -d ?.! -l 4
-         wc my_essay.txt -l 4 -d ?.!
-         wc -d ?.! -l 4 my_essay.txt
-         wc -d ?.! my_essay.txt -l 4
+- The two options can be specified with any order, for example:
+ - wc my_essay.txt -d ?.! -l 4
+ - wc my_essay.txt -l 4 -d ?.!
 - The tool returns the average sentence length on the screen as output. 
 
 ###2.3 User Characteristics
