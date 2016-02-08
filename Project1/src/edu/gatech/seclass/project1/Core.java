@@ -3,7 +3,11 @@
  */
 package edu.gatech.seclass.project1;
 
+import java.io.BufferedReader;
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 
 /**
  * @author Team 54
@@ -93,12 +97,112 @@ public class Core {
 		return this.wordLengthLimit;
 	}
 	
-	public double getAverageSentenceLength() {
-		//loop through this.file
-		//for every word that is > this.wordLengthLimit, this.wordCount++
-		//every time we get to a sentence delimiter, sentenceCount++
-		//return average
-		return 0;
+	
+	
+	// a function to calculate average sentence length 
+	// given the delimiter, minimum character length in a word,
+	// and filename
+	public double getAverageSentenceLength (){
+		double ave_len = 0;   //default ave_len = 0;
+		int wordCount = 0;
+		int SentenceCount = 0;
+		
+		//get filename, delimiter, and minimum characters
+		String filename = this.getFileName();
+		String delimiter = this.getDelimeters();
+		int wordLengthLimit = this.getWordLengthLimit();
+		
+		//read in file and throws exceptions
+        try {
+            // FileReader reads plain text
+            FileReader fileReader = new FileReader(filename);
+
+            // to improve performance wrap FileReader in BufferedReader
+            BufferedReader file = new BufferedReader(fileReader);
+
+    		//***************
+            //loop through this.file
+    		//for every word that is >= this.wordLengthLimit, inclusive limits, this.wordCount++
+    		//every time we get to a sentence delimiter, sentenceCount++
+    		//return average
+            String line = null;
+            int charLen = 0;  //current character length
+            boolean charCount = true; //whether to keep track the characters number
+            
+            while((line = file.readLine()) != null) {
+            	//iteration through string line
+            	for (int i = 0; i < line.length(); i++) {
+            		
+            		if (line.charAt(i) == delimiter.charAt(0) ){ //delimiter case
+            			charCount = true;
+            			boolean delimiterMatch = true;
+            			
+            			//check if match with delimiter
+            			// if match sentence Count ++
+            			// else counts as characters
+            			for (int j = 0; j < delimiter.length(); j++){
+            				if (line.charAt(i+j) == delimiter.charAt(j) ){
+            					charLen ++;
+            				}else{
+            					delimiterMatch = false;
+            					
+            					if (charLen >= wordLengthLimit){
+                    				wordCount++;
+                    				charCount = false; //no need to track word length
+                				}
+            				}
+            			}
+            			
+            			//all match
+            			if (delimiterMatch){
+            				charLen = 0;
+            				charCount = false;
+            				sentenceCount++;
+            			}
+            		}else{
+            			//with in a sentence
+            			if ( line.charAt(i) == ' '){// space
+            				charLen = 0;
+            				charCount = false;
+            			}else if (charLen == 0 && charCount == false ){ //new word
+            				charCount = true;
+            				charLen ++;
+            			}else{
+            				charLen ++;            				
+            			}
+            			
+            			if (charCount && charLen >= wordLengthLimit){
+            				wordCount++;
+            				charCount = false; //no need to track word length
+        				}
+            		}
+            		
+            		
+            		
+            	}
+            	
+            
+            }   
+            
+            // round up double in two decimal place
+            if (sentenceCount != 0){
+            	ave_len = (double) sentenceCount/wordCount;
+            }
+
+            
+
+            // close the plain text file
+            file.close();         
+        }
+        catch(FileNotFoundException ex) {
+            System.out.println( "ERROR: Unable to open file '" + filename + "'");                
+        }
+        catch(IOException ex) {
+            System.out.println("ERROR: reading file '" + filename + "'");                  
+        }
+		
+		
+		return ave_len;
 	}
 
 }
