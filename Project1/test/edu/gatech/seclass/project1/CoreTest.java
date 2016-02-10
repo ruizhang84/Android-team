@@ -1,3 +1,5 @@
+
+
 /**
  * 
  */
@@ -5,12 +7,8 @@ package edu.gatech.seclass.project1;
 
 import static org.junit.Assert.*;
 
-import java.io.File;
-import java.io.FileNotFoundException;
-
 import org.junit.After;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.Rule;
 import org.junit.rules.ExpectedException;
@@ -231,12 +229,11 @@ public class CoreTest extends Core {
 	
 	@Test
 	public void testGetAverageSentenceLength() {
-		//test invalid file
-		this.c.parseArgs(new String[]{"-d", ".", "./samedirfile.txt"});
-		
-		assertEquals(11, this.c.getAverageSentenceLength(), 1);
+		this.c.parseArgs(new String[]{"-d", "bb.", "./simple.txt"});
+		//assertEquals("..", this.c.getDelimeters());
+		assertEquals(2, this.c.getAverageSentenceLength(), 0.1);
 	}
-	
+	//Roopa Changes starts
 	@Test
 	//test empty file
 	public void testGetAverageSentenceLength1() {
@@ -277,8 +274,9 @@ public class CoreTest extends Core {
 		assertEquals(4.3, this.c.getAverageSentenceLength(), 0);
 
 	}
-
+	//Roopa Changes ends
 	
 
 
 }
+
