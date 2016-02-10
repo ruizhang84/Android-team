@@ -10,7 +10,7 @@ package edu.gatech.seclass.project1;
 public class AverageSentenceLength {
 
 	/**
-	 * @param args
+	 * @param args 
 	 */
 	public static void main(String[] args) {
 		Core c = new Core();

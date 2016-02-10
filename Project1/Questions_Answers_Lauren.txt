@@ -75,7 +75,7 @@ All sentences are of 0 length. Just return 0.
 25.What to do if there is no file permission?
 Return an error to the user.
 26.How to display error messages?
-All the error messages should be printed as:
+All the error messages should be printed as: 
 ERROR:[error messages]
 27.What should be considered as a word?
 Only standard white spaces: space, tab, carrage return, newline and sentence delimiters.
