@@ -237,7 +237,7 @@ public class CoreTest extends Core {
 		assertEquals(11, this.c.getAverageSentenceLength(), 1);
 	}
 	
-	@Test(expected=IllegalArgumentException.class)
+	@Test
 	//test empty file
 	public void testGetAverageSentenceLength1() {
 		this.c.parseArgs(new String[]{"-d", ".", "./Emptyfile.txt"});
@@ -246,7 +246,9 @@ public class CoreTest extends Core {
 	}
 	
 	@Ignore
-	@Test(expected=java.io.IOException.class)
+	@Test(expected=IllegalArgumentException.class)
+
+	//@Test(expected=java.io.IOException.class)
 	//test empty file
 	public void testGetAverageSentenceLength2() {
 
