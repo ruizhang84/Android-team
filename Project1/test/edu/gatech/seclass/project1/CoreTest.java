@@ -7,8 +7,14 @@ package edu.gatech.seclass.project1;
 
 import static org.junit.Assert.*;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.text.DecimalFormat;
+
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.Rule;
 import org.junit.rules.ExpectedException;
@@ -233,7 +239,6 @@ public class CoreTest extends Core {
 		//assertEquals("..", this.c.getDelimeters());
 		assertEquals(2, this.c.getAverageSentenceLength(), 0.1);
 	}
-	//Roopa Changes starts
 	@Test
 	//test empty file
 	public void testGetAverageSentenceLength1() {
@@ -242,39 +247,44 @@ public class CoreTest extends Core {
 
 	}
 	
-	@Ignore
 	@Test(expected=IllegalArgumentException.class)
-
-	//@Test(expected=java.io.IOException.class)
-	//test empty file
+	//Test to check if appropriate exception is thrown when a file doesn't exist
 	public void testGetAverageSentenceLength2() {
 
-
-		this.c.parseArgs(new String[]{"-d", ".", "X:NoSuchFileExists.txt"});
+		this.c.parseArgs(new String[]{"-d", ".", "./NoSuchFileExists.txt"});
+		assertEquals("", "ERROR: Unable to open file 'simple.txt'", this.c.getAverageSentenceLength());
 
 	}
-	@Ignore
-	@Test
+	@Test(expected=IllegalArgumentException.class)
+	//Test to check appropriate exception is thrown when file extension is given differently 
 	public void testGetAverageSentenceLength3() {
-		
-		//tests whether words less than 3 are not counted
-		//this.c.parseArgs(new String[]{"-l", "2", "-d", "<","./samedirfile.txt"});
-		this.c.parseArgs(new String[]{"-l", "2", "./samedirfile.txt"});
-
-		assertEquals(0, this.c.getAverageSentenceLength(), 0);
-
+		this.c.parseArgs(new String[]{"-d", ".", "./simple.pdf"});
 	}
 	
 	@Test
 	public void testGetAverageSentenceLength4() {
-		
-		//tests whether words less than 3 are not counted
-		this.c.parseArgs(new String[]{"-l", "5", "-d", ".","./samedirfile.txt"});
-
-		assertEquals(4.3, this.c.getAverageSentenceLength(), 0);
-
+	//Checks if a number with only 2 decimal places is returned	
+    	this.c.parseArgs(new String[]{"-l", "3", "-d", ".","./samedirfile.txt"});
+    	assertEquals("Checks if a number with only 2 decimal places is returned", 14.33, this.c.getAverageSentenceLength(), 0);
 	}
-	//Roopa Changes ends
+	@Test
+
+	public void testGetAverageSentenceLength5() {
+		//Checks if the value returned is rounded up if digits after decimal is greater than 5
+    	this.c.parseArgs(new String[]{"-l", "1", "-d", ".","./samedirfile.txt"});
+    	assertEquals("Checks if the value returned is rounded up if greater than 5", 17.67, this.c.getAverageSentenceLength(), 0);
+	}
+
+	@Test
+
+	public void testGetAverageSentenceLength6() {
+		//Checks if the value returned is rounded down if digits after decimal is less than 5
+
+    	this.c.parseArgs(new String[]{"-l", "2", "-d", ".","./samedirfile.txt"});
+    	assertEquals("Checks if the value returned is rounded down if less than 5", 16.0, this.c.getAverageSentenceLength(), 0);
+	}
+
+	
 	
 
 
