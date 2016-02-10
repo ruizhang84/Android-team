@@ -227,10 +227,9 @@ public class CoreTest extends Core {
 	
 	@Test
 	public void testGetAverageSentenceLength() {
-		//test invalid file
-		this.c.parseArgs(new String[]{"-d", ".", "./samedirfile.txt"});
-		
-		assertEquals(11, this.c.getAverageSentenceLength(), 1);
+		this.c.parseArgs(new String[]{"-d", "bb.", "./simple.txt"});
+		//assertEquals("..", this.c.getDelimeters());
+		assertEquals(2, this.c.getAverageSentenceLength(), 0.1);
 	}
 
 }

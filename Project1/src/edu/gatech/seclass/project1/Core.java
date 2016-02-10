@@ -111,6 +111,8 @@ public class Core {
 		String filename = this.getFileName();
 		String delimiter = this.getDelimeters();
 		int wordLengthLimit = this.getWordLengthLimit();
+
+		int charLen = 0;  //current character length
 		
 		//read in file and throws exceptions
         try {
@@ -126,7 +128,7 @@ public class Core {
     		//every time we get to a sentence delimiter, sentenceCount++
     		//return average
             String line = null;
-            int charLen = 0;  //current character length
+
             boolean charCount = true; //whether to keep track the characters number
             
             while((line = file.readLine()) != null) {
@@ -134,22 +136,31 @@ public class Core {
             	for (int i = 0; i < line.length(); i++) {
             		
             		if (line.charAt(i) == delimiter.charAt(0) ){ //delimiter case
-            			charCount = true;
+            			
             			boolean delimiterMatch = true;
+            			
+            			if (charLen == 0 && charCount == false ){ //new word
+            				charCount = true;
+            			}
             			
             			//check if match with delimiter
             			// if match sentence Count ++
             			// else counts as characters
             			for (int j = 0; j < delimiter.length(); j++){
-            				if (line.charAt(i+j) == delimiter.charAt(j) ){
-            					charLen ++;
-            				}else{
+            				charLen ++;
+            				
+            				if (i+j >= line.length()								//partial matched delimiter before end line
+            					|| 	line.charAt(i+j) != delimiter.charAt(j) ){	//not matched
+            						 	
             					delimiterMatch = false;
+            					i += j+1;                   	//add up matched and passed characters
             					
-            					if (charLen >= wordLengthLimit){
+            					if (charCount && charLen >= wordLengthLimit){
                     				wordCount++;
-                    				charCount = false; //no need to track word length
+                    				charCount = false;          //no need to track word length
                 				}
+            					
+            					break;
             				}
             			}
             			
@@ -159,7 +170,8 @@ public class Core {
             				charCount = false;
             				sentenceCount++;
             			}
-            			
+                        
+
             		}else{
             			//with in a sentence
             			if ( line.charAt(i) == ' '){// space
@@ -172,13 +184,11 @@ public class Core {
             				charLen ++;            				
             			}
             			
-            			if (charCount && charLen > wordLengthLimit){
+            			if (charCount && charLen >= wordLengthLimit){
             				wordCount++;
             				charCount = false; //no need to track word length
         				}
             		}
-            		
-            		
             		
             	}
             	
@@ -187,10 +197,8 @@ public class Core {
             
             // round up double in two decimal place
             if (sentenceCount != 0){
-            	ave_len = (double) wordCount/sentenceCount;
+            	ave_len = Math.round(100.0*((double) wordCount/sentenceCount))/100.0 ;
             }
-
-            
 
             // close the plain text file
             file.close();         
@@ -203,7 +211,7 @@ public class Core {
         }
 		
 		
-		return ave_len;
+		return  (double) ave_len;
 	}
 
 }
