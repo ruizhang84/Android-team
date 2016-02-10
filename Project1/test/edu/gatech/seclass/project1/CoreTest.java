@@ -5,8 +5,12 @@ package edu.gatech.seclass.project1;
 
 import static org.junit.Assert.*;
 
+import java.io.File;
+import java.io.FileNotFoundException;
+
 import org.junit.After;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.Rule;
 import org.junit.rules.ExpectedException;
@@ -66,7 +70,7 @@ public class CoreTest extends Core {
 	public void testParseArgsValid1() {
 		//test all valid args
 		this.c.parseArgs(new String[]{"-d", ".", "./samedirfile.txt"});
-		assertArrayEquals(".".toCharArray(), this.c.getDelimeters());
+		assertEquals(".", this.c.getDelimeters());
 		assertEquals("./samedirfile.txt", this.c.getFileName());
 		assertEquals(3, this.c.getWordLengthLimit());
 	}
@@ -75,7 +79,7 @@ public class CoreTest extends Core {
 	public void testParseArgsValid2() {
 		//test all valid args
 		this.c.parseArgs(new String[]{"-l", "5", "./samedirfile.txt"});
-		assertArrayEquals(Core.getDefaultDelimeters(), this.c.getDelimeters());
+		assertEquals(Core.getDefaultDelimeters(), this.c.getDelimeters());
 		assertEquals("./samedirfile.txt", this.c.getFileName());
 		assertEquals(5, this.c.getWordLengthLimit());
 	}
@@ -84,7 +88,7 @@ public class CoreTest extends Core {
 	public void testParseArgsValid3() {
 		//test all valid args
 		this.c.parseArgs(new String[]{"-l", "5", "-d", ".;", "./samedirfile.txt"});
-		assertArrayEquals(".;".toCharArray(), this.c.getDelimeters());
+		assertEquals(".;", this.c.getDelimeters());
 		assertEquals("./samedirfile.txt", this.c.getFileName());
 		assertEquals(5, this.c.getWordLengthLimit());
 	}
@@ -93,7 +97,7 @@ public class CoreTest extends Core {
 	public void testParseArgsValid4() {
 		//test all valid args
 		this.c.parseArgs(new String[]{"-d", ".", "-l", "6", "./samedirfile.txt"});
-		assertArrayEquals(".".toCharArray(), this.c.getDelimeters());
+		assertEquals(".", this.c.getDelimeters());
 		assertEquals("./samedirfile.txt", this.c.getFileName());
 		assertEquals(6, this.c.getWordLengthLimit());
 	}
@@ -102,7 +106,7 @@ public class CoreTest extends Core {
 	public void testParseArgsValid5() {
 		//test all valid args
 		this.c.parseArgs(new String[]{"./samedirfile.txt"});
-		assertArrayEquals(Core.getDefaultDelimeters(), this.c.getDelimeters());
+		assertEquals(Core.getDefaultDelimeters(), this.c.getDelimeters());
 		assertEquals("./samedirfile.txt", this.c.getFileName());
 		assertEquals(3, this.c.getWordLengthLimit());
 	}
@@ -111,7 +115,7 @@ public class CoreTest extends Core {
 	public void testParseArgsValid6() {
 		//-d delimiter is valid, and same as file
 		this.c.parseArgs(new String[]{"-l", "3", "-d", "7", "7"});
-		assertArrayEquals("7".toCharArray(), this.c.getDelimeters());
+		assertEquals("7", this.c.getDelimeters());
 		assertEquals("7", this.c.getFileName());
 		assertEquals(3, this.c.getWordLengthLimit());
 	}
@@ -127,7 +131,7 @@ public class CoreTest extends Core {
 	public void testParseArgsBad2() {
 		//test -l argument bad, also file doesn't exist
 		exception.expect(IllegalArgumentException.class);
-	    exception.expectMessage("The -l option must be given with a valid positive number");
+	    exception.expectMessage("-l option invalid");
 		this.c.parseArgs(new String[]{"-l", "a", "-d", ";", "non_existant_file"});
 	}
 	
@@ -135,7 +139,7 @@ public class CoreTest extends Core {
 	public void testParseArgsBad3() {
 		//test no file name given, -d delimiter is a proper file name
 		exception.expect(IllegalArgumentException.class);
-	    exception.expectMessage("No file name given.");
+	    exception.expectMessage("No file name given");
 		this.c.parseArgs(new String[]{"-l", "3", "-d", "7"});
 	}
 	
@@ -143,8 +147,136 @@ public class CoreTest extends Core {
 	public void testParseArgsBad4() {
 		//test no file name given but proper flag
 		exception.expect(IllegalArgumentException.class);
-	    exception.expectMessage("No file name given.");
+	    exception.expectMessage("No file name given");
 		this.c.parseArgs(new String[]{"-l", "7"});
 	}
+	
+	@Test
+	public void testParseArgsBad5() {
+		//test only flags
+		exception.expect(IllegalArgumentException.class);
+	    exception.expectMessage("-l option invalid");
+		this.c.parseArgs(new String[]{"-l"});
+	}
+	
+	@Test
+	public void testParseArgsBad6() {
+		//test only flags
+		exception.expect(IllegalArgumentException.class);
+	    exception.expectMessage("-l option invalid");
+		this.c.parseArgs(new String[]{"-l", "-d", "."});
+	}
+	
+	@Test
+	public void testParseArgsBad7() {
+		//test only flags
+		exception.expect(IllegalArgumentException.class);
+	    exception.expectMessage("-d option invalid");
+		this.c.parseArgs(new String[]{"-d"});
+	}
+	
+	@Test
+	public void testParseArgsBad8() {
+		//test only flags
+		exception.expect(IllegalArgumentException.class);
+	    exception.expectMessage("-d option invalid");
+		this.c.parseArgs(new String[]{"-d", "-l", "4"});
+	}
+	
+	@Test
+	public void testParseArgsBad9() {
+		//test only flags
+		exception.expect(IllegalArgumentException.class);
+		this.c.parseArgs(new String[]{"-c"});
+	}
+	
+	@Test
+	public void testParseArgsBad10() {
+		//test only flags
+		exception.expect(IllegalArgumentException.class);
+		this.c.parseArgs(new String[]{"-c", ".", "-l", "4"});
+	}
+	
+	@Test
+	public void testParseArgsBad11() {
+		//test only flags
+		exception.expect(IllegalArgumentException.class);
+	    exception.expectMessage("-d option invalid");
+		this.c.parseArgs(new String[]{"-l", "4", "-d"});
+	}
+	
+	@Test
+	public void testParseArgsBad12() {
+		//test only flags
+		exception.expect(IllegalArgumentException.class);
+	    exception.expectMessage("No arguments given");
+		this.c.parseArgs(new String[]{});
+	}
+	
+	@Test
+	public void testParseArgsBad13() {
+		//test only flags
+		exception.expect(IllegalArgumentException.class);
+	    exception.expectMessage("No file name given");
+		this.c.parseArgs(new String[]{"-d", "7"});
+	}
+	
+	@Test
+	public void testParseArgsBad14() {
+		//test only flags
+		exception.expect(IllegalArgumentException.class);
+	    exception.expectMessage("-l option invalid");
+		this.c.parseArgs(new String[]{"-d", "-l"});
+	}
+	
+	@Test
+	public void testGetAverageSentenceLength() {
+		//test invalid file
+		this.c.parseArgs(new String[]{"-d", ".", "./samedirfile.txt"});
+		
+		assertEquals(11, this.c.getAverageSentenceLength(), 1);
+	}
+	
+	@Test(expected=IllegalArgumentException.class)
+	//test empty file
+	public void testGetAverageSentenceLength1() {
+		this.c.parseArgs(new String[]{"-d", ".", "./Emptyfile.txt"});
+		assertEquals(0, this.c.getAverageSentenceLength(),0);
+
+	}
+	
+	@Ignore
+	@Test(expected=java.io.IOException.class)
+	//test empty file
+	public void testGetAverageSentenceLength2() {
+
+
+		this.c.parseArgs(new String[]{"-d", ".", "X:NoSuchFileExists.txt"});
+
+	}
+	@Ignore
+	@Test
+	public void testGetAverageSentenceLength3() {
+		
+		//tests whether words less than 3 are not counted
+		//this.c.parseArgs(new String[]{"-l", "2", "-d", "<","./samedirfile.txt"});
+		this.c.parseArgs(new String[]{"-l", "2", "./samedirfile.txt"});
+
+		assertEquals(0, this.c.getAverageSentenceLength(), 0);
+
+	}
+	
+	@Test
+	public void testGetAverageSentenceLength4() {
+		
+		//tests whether words less than 3 are not counted
+		this.c.parseArgs(new String[]{"-l", "5", "-d", ".","./samedirfile.txt"});
+
+		assertEquals(4.3, this.c.getAverageSentenceLength(), 0);
+
+	}
+
+	
+
 
 }
