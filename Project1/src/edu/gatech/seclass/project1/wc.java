@@ -7,7 +7,7 @@ package edu.gatech.seclass.project1;
  * @author Team 54
  *
  */
-public class AverageSentenceLength {
+public class wc {
 
 	/**
 	 * @param args 
