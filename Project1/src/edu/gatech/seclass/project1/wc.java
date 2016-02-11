@@ -17,7 +17,7 @@ public class wc {
 		try {
 			c.parseArgs(args);
 			//c.parseArgs(new String[]{"-d", "bb.", "./simple.txt"});
-			c.setDebug(true);
+			//c.setDebug(true);
 			//System.out.println(c.getAverageSentenceLength());
 			System.out.format("%.2f%n", c.getAverageSentenceLength());
 		} catch (Exception e) {

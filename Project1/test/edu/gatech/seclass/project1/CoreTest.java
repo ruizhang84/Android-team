@@ -46,7 +46,7 @@ public class CoreTest extends Core {
 	public void testParseArgsBadFileName1() {
 		//test invalid file
 		exception.expect(IllegalArgumentException.class);
-	    exception.expectMessage("The file either does not exist or it is not a file");
+	    exception.expectMessage("ERROR: The file either does not exist or it is not a file");
 		this.c.parseArgs(new String[]{"-l", "4", "-d", ";", "non_existant_file"});
 		
 	}
@@ -55,7 +55,7 @@ public class CoreTest extends Core {
 	public void testParseArgsBadFileName2() {
 		//test invalid file
 		exception.expect(IllegalArgumentException.class);
-	    exception.expectMessage("The file either does not exist or it is not a file");
+	    exception.expectMessage("ERROR: The file either does not exist or it is not a file");
 		this.c.parseArgs(new String[]{"non_existant_file"});
 	}
 	
@@ -63,7 +63,7 @@ public class CoreTest extends Core {
 	public void testParseArgsBadFileName3() {
 		//test invalid file
 		exception.expect(IllegalArgumentException.class);
-	    exception.expectMessage("The file either does not exist or it is not a file");
+	    exception.expectMessage("ERROR: The file either does not exist or it is not a file");
 		this.c.parseArgs(new String[]{"-d", ".", "non_existant_file"});
 	}
 	
@@ -73,7 +73,7 @@ public class CoreTest extends Core {
 		this.c.parseArgs(new String[]{"-d", ".", "./samedirfile.txt"});
 		assertEquals(".", this.c.getDelimeters());
 		assertEquals("./samedirfile.txt", this.c.getFileName());
-		assertEquals(3, this.c.getWordLengthLimit());
+		assertEquals(4, this.c.getWordLengthLimit());
 	}
 	
 	@Test
@@ -109,7 +109,7 @@ public class CoreTest extends Core {
 		this.c.parseArgs(new String[]{"./samedirfile.txt"});
 		assertEquals(Core.getDefaultDelimeters(), this.c.getDelimeters());
 		assertEquals("./samedirfile.txt", this.c.getFileName());
-		assertEquals(3, this.c.getWordLengthLimit());
+		assertEquals(4, this.c.getWordLengthLimit());
 	}
 	
 	@Test
@@ -125,6 +125,7 @@ public class CoreTest extends Core {
 	public void testParseArgsBad1() {
 		//file name should not be first
 		exception.expect(IllegalArgumentException.class);
+		exception.expectMessage("ERROR: Arguments invalid");
 		this.c.parseArgs(new String[]{"./samedirfile.txt", "-l", "4"});
 	}
 	
@@ -132,7 +133,7 @@ public class CoreTest extends Core {
 	public void testParseArgsBad2() {
 		//test -l argument bad, also file doesn't exist
 		exception.expect(IllegalArgumentException.class);
-	    exception.expectMessage("-l option invalid");
+	    exception.expectMessage("ERROR: -l option invalid");
 		this.c.parseArgs(new String[]{"-l", "a", "-d", ";", "non_existant_file"});
 	}
 	
@@ -140,7 +141,7 @@ public class CoreTest extends Core {
 	public void testParseArgsBad3() {
 		//test no file name given, -d delimiter is a proper file name
 		exception.expect(IllegalArgumentException.class);
-	    exception.expectMessage("No file name given");
+	    exception.expectMessage("ERROR: No file name given");
 		this.c.parseArgs(new String[]{"-l", "3", "-d", "7"});
 	}
 	
@@ -148,7 +149,7 @@ public class CoreTest extends Core {
 	public void testParseArgsBad4() {
 		//test no file name given but proper flag
 		exception.expect(IllegalArgumentException.class);
-	    exception.expectMessage("No file name given");
+	    exception.expectMessage("ERROR: No file name given");
 		this.c.parseArgs(new String[]{"-l", "7"});
 	}
 	
@@ -156,7 +157,7 @@ public class CoreTest extends Core {
 	public void testParseArgsBad5() {
 		//test only flags
 		exception.expect(IllegalArgumentException.class);
-	    exception.expectMessage("-l option invalid");
+	    exception.expectMessage("ERROR: -l option invalid");
 		this.c.parseArgs(new String[]{"-l"});
 	}
 	
@@ -164,7 +165,7 @@ public class CoreTest extends Core {
 	public void testParseArgsBad6() {
 		//test only flags
 		exception.expect(IllegalArgumentException.class);
-	    exception.expectMessage("-l option invalid");
+	    exception.expectMessage("ERROR: -l option invalid");
 		this.c.parseArgs(new String[]{"-l", "-d", "."});
 	}
 	
@@ -172,7 +173,7 @@ public class CoreTest extends Core {
 	public void testParseArgsBad7() {
 		//test only flags
 		exception.expect(IllegalArgumentException.class);
-	    exception.expectMessage("-d option invalid");
+	    exception.expectMessage("ERROR: -d option invalid");
 		this.c.parseArgs(new String[]{"-d"});
 	}
 	
@@ -180,7 +181,7 @@ public class CoreTest extends Core {
 	public void testParseArgsBad8() {
 		//test only flags
 		exception.expect(IllegalArgumentException.class);
-	    exception.expectMessage("-d option invalid");
+	    exception.expectMessage("ERROR: -d option invalid");
 		this.c.parseArgs(new String[]{"-d", "-l", "4"});
 	}
 	
@@ -188,6 +189,7 @@ public class CoreTest extends Core {
 	public void testParseArgsBad9() {
 		//test only flags
 		exception.expect(IllegalArgumentException.class);
+		exception.expectMessage("ERROR: The file either does not exist or it is not a file");
 		this.c.parseArgs(new String[]{"-c"});
 	}
 	
@@ -195,6 +197,7 @@ public class CoreTest extends Core {
 	public void testParseArgsBad10() {
 		//test only flags
 		exception.expect(IllegalArgumentException.class);
+		exception.expectMessage("ERROR: Arguments invalid");
 		this.c.parseArgs(new String[]{"-c", ".", "-l", "4"});
 	}
 	
@@ -202,7 +205,7 @@ public class CoreTest extends Core {
 	public void testParseArgsBad11() {
 		//test only flags
 		exception.expect(IllegalArgumentException.class);
-	    exception.expectMessage("-d option invalid");
+	    exception.expectMessage("ERROR: -d option invalid");
 		this.c.parseArgs(new String[]{"-l", "4", "-d"});
 	}
 	
@@ -210,7 +213,7 @@ public class CoreTest extends Core {
 	public void testParseArgsBad12() {
 		//test only flags
 		exception.expect(IllegalArgumentException.class);
-	    exception.expectMessage("No arguments given");
+	    exception.expectMessage("ERROR: No arguments given");
 		this.c.parseArgs(new String[]{});
 	}
 	
@@ -218,7 +221,7 @@ public class CoreTest extends Core {
 	public void testParseArgsBad13() {
 		//test only flags
 		exception.expect(IllegalArgumentException.class);
-	    exception.expectMessage("No file name given");
+	    exception.expectMessage("ERROR: No file name given");
 		this.c.parseArgs(new String[]{"-d", "7"});
 	}
 	
@@ -226,7 +229,7 @@ public class CoreTest extends Core {
 	public void testParseArgsBad14() {
 		//test only flags
 		exception.expect(IllegalArgumentException.class);
-	    exception.expectMessage("-l option invalid");
+	    exception.expectMessage("ERROR: -l option invalid");
 		this.c.parseArgs(new String[]{"-d", "-l"});
 	}
 	
