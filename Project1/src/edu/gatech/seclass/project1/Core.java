@@ -3,11 +3,11 @@
  */
 package edu.gatech.seclass.project1;
 
-import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
+import java.text.DecimalFormat;
+import java.util.Scanner;
+import java.util.regex.Pattern;
 
 /**
  * @author Team 54
@@ -20,6 +20,7 @@ public class Core {
 	private String file;
 	private double wordCount = 0;
 	private double sentenceCount = 0;
+	private boolean debug = false;
 	
 	public Core() {
 		
@@ -32,7 +33,7 @@ public class Core {
 		//can be in any order
 		
 		if (args.length == 0)
-			throw new IllegalArgumentException("No arguments given");
+			throw new IllegalArgumentException("ERROR: No arguments given");
 		
 		String[][] argTable = new String[][] {{"-l","^[0-9]+$", this.wordLengthLimit + ""}, 
 											{"-d", "^.+$", this.delimeters}};		
@@ -53,7 +54,7 @@ public class Core {
 						args[j+1] = null;
 						j++;
 					} else {
-						throw new IllegalArgumentException(argTable[i][0] + " option invalid");
+						throw new IllegalArgumentException("ERROR: " + argTable[i][0] + " option invalid");
 					}
 				break;
 				}
@@ -64,21 +65,80 @@ public class Core {
 		this.delimeters = argTable[1][2];
 		
 		//loop through args, if any part is not null, we had extra stuff, invalid
+		//*we can move this after the file check, remove the -1 on args.length
 		for (int i = 0; i < args.length - 1; i++) {
 			if (args[i] != null)
-				throw new IllegalArgumentException();
+				throw new IllegalArgumentException("ERROR: Arguments invalid");
 		}
+		
+		//instead of last, scan for any non null left, test if file
 					
 		//last argument should be a file, verify
 		String a = args[args.length - 1];
 		if (a == null || a.equals(""))
-			throw new IllegalArgumentException("No file name given");
+			throw new IllegalArgumentException("ERROR: No file name given");
 		File f = new File(a);
 		if (!f.exists() || !f.isFile())
-			throw new IllegalArgumentException("The file either does not exist or it is not a file");
+			throw new IllegalArgumentException("ERROR: The file either does not exist or it is not a file");
 		this.file = a;
 		args[args.length-1] = null;
 		
+	}
+	
+	public double getAverageSentenceLength() throws FileNotFoundException {
+		this.wordCount = 0;
+		this.sentenceCount = 0; 
+		
+		String s;
+		double charsInWord = 0;
+		//Don't add words in "current" sentence until we get to delimiter
+		//we need to discard all words without an ending delimiter
+		double wordCountButNoDelimiterYet = 0;
+		boolean atLeastOneWordInASentence = false;
+		//some regex characters (like '?' and '.') need escape characters
+		String delimiterRegex = "^[" + Pattern.quote(this.getDelimeters()) + "]+$";
+		
+		//i want to use a scanner class to have flexibility 
+		//right now i'll read character by character
+		Scanner scan = new Scanner(new File(this.getFileName()));
+	    scan.useDelimiter("");
+	    while (scan.hasNext()) {
+	        //going through characters individually
+	    	s = scan.next();
+	    	this.printDebug(s);
+	    	if (s.matches("^[\\s]+$") || s.matches(delimiterRegex)) {
+	    		//regex for whitespace or regex for all our delimiters
+	    		//end of old word and start of new word
+	    		//we need to treat a delimiter like the end of a word too
+	    		if (charsInWord >= this.getWordLengthLimit()) {
+	    			wordCountButNoDelimiterYet++;
+	    			this.printDebug("(w)");
+	    			atLeastOneWordInASentence = true;
+	    		}
+	    		//reset number of characters in word counter
+	    		charsInWord = 0;
+	    		if (s.matches(delimiterRegex)) {
+	    			//end of old sentence
+		    		//start of new sentence
+		    		if (atLeastOneWordInASentence) {
+			    		this.sentenceCount++;
+			    		this.printDebug("(s)");
+		    			this.wordCount += wordCountButNoDelimiterYet;
+		    			wordCountButNoDelimiterYet = 0;
+		    		}
+		    		atLeastOneWordInASentence = false;
+	    		}
+	    	} else {
+	    		//anything else should be a character
+	    		charsInWord++;
+	    	}
+	    }
+	    scan.close();
+	    this.printDebug("\n");
+	    if (this.sentenceCount == 0) return 0;
+	    //lots of ways to round to nearest .00
+	    DecimalFormat df = new DecimalFormat("#.##");
+	    return Double.valueOf(df.format(this.wordCount / this.sentenceCount));
 	}
 	
 	public String getDelimeters() {
@@ -97,121 +157,13 @@ public class Core {
 		return this.wordLengthLimit;
 	}
 	
+	public void setDebug(boolean debug) {
+		this.debug = debug;
+	}
 	
-	
-	// a function to calculate average sentence length 
-	// given the delimiter, minimum character length in a word,
-	// and filename
-	public double getAverageSentenceLength (){
-		double ave_len = 0;   //default ave_len = 0;
-		wordCount = 0;
-		sentenceCount = 0;
-		
-		//get filename, delimiter, and minimum characters
-		String filename = this.getFileName();
-		String delimiter = this.getDelimeters();
-		int wordLengthLimit = this.getWordLengthLimit();
-
-		int charLen = 0;  //current character length
-		
-		//read in file and throws exceptions
-        try {
-            // FileReader reads plain text
-            FileReader fileReader = new FileReader(filename);
-
-            // to improve performance wrap FileReader in BufferedReader
-            BufferedReader file = new BufferedReader(fileReader);
-
-    		//***************
-            //loop through this.file
-    		//for every word that is >= this.wordLengthLimit, inclusive limits, this.wordCount++
-    		//every time we get to a sentence delimiter, sentenceCount++
-    		//return average
-            String line = null;
-
-            boolean charCount = true; //whether to keep track the characters number
-            
-            while((line = file.readLine()) != null) {
-            	//iteration through string line
-            	for (int i = 0; i < line.length(); i++) {
-            		
-            		if (line.charAt(i) == delimiter.charAt(0) ){ //delimiter case
-            			
-            			boolean delimiterMatch = true;
-            			
-            			if (charLen == 0 && charCount == false ){ //new word
-            				charCount = true;
-            			}
-            			
-            			//check if match with delimiter
-            			// if match sentence Count ++
-            			// else counts as characters
-            			for (int j = 0; j < delimiter.length(); j++){
-            				charLen ++;
-            				
-            				if (i+j >= line.length()								//partial matched delimiter before end line
-            					|| 	line.charAt(i+j) != delimiter.charAt(j) ){	//not matched
-            						 	
-            					delimiterMatch = false;
-            					i += j+1;                   	//add up matched and passed characters
-            					
-            					if (charCount && charLen >= wordLengthLimit){
-                    				wordCount++;
-                    				charCount = false;          //no need to track word length
-                				}
-            					
-            					break;
-            				}
-            			}
-            			
-            			//all match
-            			if (delimiterMatch){
-            				charLen = 0;
-            				charCount = false;
-            				sentenceCount++;
-            			}
-                        
-
-            		}else{
-            			//with in a sentence
-            			if ( line.charAt(i) == ' '){// space
-            				charLen = 0;
-            				charCount = false;
-            			}else if (charLen == 0 && charCount == false ){ //new word
-            				charCount = true;
-            				charLen ++;
-            			}else{
-            				charLen ++;            				
-            			}
-            			
-            			if (charCount && charLen >= wordLengthLimit){
-            				wordCount++;
-            				charCount = false; //no need to track word length
-        				}
-            		}
-            		
-            	}
-            	
-            
-            }   
-            
-            // round up double in two decimal place
-            if (sentenceCount != 0){
-            	ave_len = Math.round(100.0*((double) wordCount/sentenceCount))/100.0 ;
-            }
-
-            // close the plain text file
-            file.close();         
-        }
-        catch(FileNotFoundException ex) {
-            System.out.println( "ERROR: Unable to open file '" + filename + "'");                
-        }
-        catch(IOException ex) {
-            System.out.println("ERROR: reading file '" + filename + "'");                  
-        }
-		
-		
-		return  (double) ave_len;
+	public void printDebug(String s) {
+		if (this.debug)
+			System.out.print(s);
 	}
 
 }
