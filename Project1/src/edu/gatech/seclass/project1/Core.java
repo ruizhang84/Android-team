@@ -32,7 +32,7 @@ public class Core {
 		//can be in any order
 		
 		if (args.length == 0)
-			throw new IllegalArgumentException("No arguments given");
+			throw new IllegalArgumentException("ERROR: No arguments given");
 		
 		String[][] argTable = new String[][] {{"-l","^[0-9]+$", this.wordLengthLimit + ""}, 
 											{"-d", "^.+$", this.delimeters}};		
@@ -72,10 +72,10 @@ public class Core {
 		//last argument should be a file, verify
 		String a = args[args.length - 1];
 		if (a == null || a.equals(""))
-			throw new IllegalArgumentException("No file name given");
+			throw new IllegalArgumentException("ERROR: No file name given");
 		File f = new File(a);
 		if (!f.exists() || !f.isFile())
-			throw new IllegalArgumentException("The file either does not exist or it is not a file");
+			throw new IllegalArgumentException("ERROR: The file either does not exist or it is not a file");
 		this.file = a;
 		args[args.length-1] = null;
 		
