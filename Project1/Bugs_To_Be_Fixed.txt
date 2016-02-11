@@ -1,0 +1,24 @@
+========== Bugs ===========
+
+1.The error message format is not right. [Status: to be fixed]
+
+The format for ANY error message is the following:
+ERROR: [error message]
+
+Currently, the main class wc, when the argument is wrong, the following message is printed:
+Usage: java wc [-ld] [file]
+No arguments given
+
+Insteady, the following error message should be proper:
+ERROR: No arguments given, 
+Usage: java wc [-ld] [file]
+
+
+2.getAverageSentenceLength() doesn't return the correct number [Status: to be fixed]
+For example, I added a simple2.txt file.
+The correct output obviously should be 2.00, because there are 2 words and 1 sentence, but now the output is 0.0
+
+
+3.The output format is not correct [Status: to be fixed]
+
+The format of wc output should be a double rounded to 2 decimal point, but now it is not. 
