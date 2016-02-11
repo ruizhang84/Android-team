@@ -15,10 +15,11 @@ public class wc {
 	public static void main(String[] args) {
 		Core c = new Core();
 		try {
-			//c.parseArgs(args);
-			c.parseArgs(new String[]{"-d", "bb.", "./simple.txt"});
+			c.parseArgs(args);
+			//c.parseArgs(new String[]{"-d", "bb.", "./simple.txt"});
 			c.setDebug(true);
-			System.out.println(c.getAverageSentenceLength());
+			//System.out.println(c.getAverageSentenceLength());
+			System.out.format("%.2f%n", c.getAverageSentenceLength());
 		} catch (Exception e) {
 			System.err.println(e.getMessage());
 		} finally {

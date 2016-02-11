@@ -1,6 +1,6 @@
 ========== Bugs ===========
 
-1.The error message format is not right. [Status: to be fixed]
+1.The error message format is not right. [Status: Fixed]
 
 The format for ANY error message is the following:
 ERROR: [error message]
@@ -14,11 +14,15 @@ ERROR: No arguments given,
 Usage: java wc [-ld] [file]
 
 
-2.getAverageSentenceLength() doesn't return the correct number [Status: to be fixed]
+2.getAverageSentenceLength() doesn't return the correct number [Status: Fixed]
 For example, I added a simple2.txt file.
 The correct output obviously should be 2.00, because there are 2 words and 1 sentence, but now the output is 0.0
 
 
-3.The output format is not correct [Status: to be fixed]
+3.The output format is not correct [Status: Fixed]
 
 The format of wc output should be a double rounded to 2 decimal point, but now it is not. 
+
+4.The default word length issue
+
+The default word length should be 4, because this number is inclusive meaning word with length 3 or less are not counted. [Status: Fixed]

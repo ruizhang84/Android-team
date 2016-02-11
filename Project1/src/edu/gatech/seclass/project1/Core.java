@@ -16,7 +16,7 @@ import java.util.regex.Pattern;
 public class Core {
 	private static final String defaultDelimeters = ".?!:;";
 	private String delimeters = Core.defaultDelimeters;
-	private int wordLengthLimit = 3;
+	private int wordLengthLimit = 4;
 	private String file;
 	private double wordCount = 0;
 	private double sentenceCount = 0;
