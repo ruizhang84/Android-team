@@ -136,7 +136,7 @@ public class Core {
 	    scan.close();
 	    this.printDebug("wordCount:");
 	    this.printDebug(this.wordCount);
-	    this.printDebug("sentenceCount:");
+	    this.printDebug(", sentenceCount:");
 	    this.printDebug(this.sentenceCount);
 	    this.printDebug("\n");
 	    if (this.sentenceCount == 0) return 0;

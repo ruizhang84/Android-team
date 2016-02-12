@@ -272,7 +272,7 @@ public class CoreTest extends Core {
 	@Test
 	public void testGetAverageSentenceLength5() throws Exception{
 		// Check a slightly longer text file
-		c.setDebug(true);
+		//c.setDebug(true);
 		this.c.parseArgs(new String[]{"-l", "2", "-d", ".","./samedirfile.txt"});
 		assertEquals(12.67, this.c.getAverageSentenceLength(), 0);
     }

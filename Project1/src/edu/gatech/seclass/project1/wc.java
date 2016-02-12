@@ -16,7 +16,7 @@ public class wc {
 		Core c = new Core();
 		try {
 			c.parseArgs(args);
-			c.setDebug(true);
+			//c.setDebug(true);
 			System.out.format("%.2f%n", c.getAverageSentenceLength());
 		} catch (Exception e) {
 			System.err.println(e.getMessage());
