@@ -380,5 +380,45 @@ public class CoreTest extends Core {
 		this.c.parseArgs(new String[]{"-d", "qerasfasfasd", "./Project1Deliverable2.pdf"});
 		assertEquals(10, this.c.getAverageSentenceLength(), 10);
     }
-}
 
+	public void testGetAverageSentenceLength18() throws Exception{
+		// Check a very long characters length for -l word.
+		this.c.parseArgs(new String[]{"-l", "100", "-d", ".", "./samedirfile.txt"});
+		assertEquals(0, this.c.getAverageSentenceLength(), 0);
+    }
+
+	@Test
+	public void testGetAverageSentenceLength19() throws Exception{
+		// Check tab for word.
+		this.c.parseArgs(new String[]{"-l", "3", "-d", ".", "./simple3-tab.txt"});
+		assertEquals(2, this.c.getAverageSentenceLength(), 0);
+    }
+	
+	@Test
+	public void testGetAverageSentenceLength20() throws Exception{
+		// Check " " quote case  for word.
+		this.c.parseArgs(new String[]{"-l", "3", "-d", ".", "./simple4.txt"});
+		assertEquals(3, this.c.getAverageSentenceLength(), 0);
+    }
+	
+	@Test
+	public void testGetAverageSentenceLength21() throws Exception{
+		// Check no delimiter case  for word.
+		this.c.parseArgs(new String[]{"-l", "3", "-d", "!", "./simple4.txt"});
+		assertEquals(0, this.c.getAverageSentenceLength(), 0);
+    }
+	
+	@Test
+	public void testGetAverageSentenceLength22() throws Exception{
+		// Check 0 character  for word.
+		this.c.parseArgs(new String[]{"-l", "0", "-d", ".", "./simple3-tab.txt"});
+		assertEquals(2, this.c.getAverageSentenceLength(), 0);
+    }
+	
+	@Test
+	public void testGetAverageSentenceLength23() throws Exception{
+		// Check delimiter as space.
+		this.c.parseArgs(new String[]{"-l", "3", "-d", " ", "./simple.txt"});
+		assertEquals(1, this.c.getAverageSentenceLength(), 0);
+    }
+}
