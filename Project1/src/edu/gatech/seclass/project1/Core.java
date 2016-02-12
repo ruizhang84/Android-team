@@ -28,7 +28,7 @@ public class Core {
 
 	public void parseArgs(String[] args) throws IllegalArgumentException {
 		//expect command line argument to look like this
-		//java wc [-ld] [file]
+		//java WC [-ld] [file]
 		//-l or -d are optional, require a number/char after them
 		//can be in any order
 		
