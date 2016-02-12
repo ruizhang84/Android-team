@@ -233,81 +233,49 @@ public class CoreTest extends Core {
 		this.c.parseArgs(new String[]{"-d", "-l"});
 	}
 	
-	@Ignore
 	@Test
 	public void testGetAverageSentenceLength() throws Exception {
-		this.c.parseArgs(new String[]{"-d", "bb.", "./simple.txt"});
-		//assertEquals("..", this.c.getDelimeters());
-		//here is the output i get when running this test manually with
-		//my debug enabled
-		//aaa (w)b(s)bb bb.
-		//1.0
-		//
-		//delimiters are b, b, and .
-		//the below is wrong
-		//also, we shouldn't use a delta
-		assertEquals(2, this.c.getAverageSentenceLength(), 0.1);
+		//test default flag values
+		this.c.parseArgs(new String[]{"./simple.txt"});
+		assertEquals(3, this.c.getAverageSentenceLength(), 0.1);
 	}
 	
 	@Test
-	@Ignore
-	//test empty file
-	//re work
 	public void testGetAverageSentenceLength1() throws FileNotFoundException {
+        //test empty file
 		this.c.parseArgs(new String[]{"-d", ".", "./Emptyfile.txt"});
-		assertEquals(0, this.c.getAverageSentenceLength(),0);
-
+		assertEquals(0, this.c.getAverageSentenceLength(), 0);
 	}
 	
-	@Ignore
-	@Test(expected=IllegalArgumentException.class)
-	//Test to check if appropriate exception is thrown when a file doesn't exist
+	@Test
 	public void testGetAverageSentenceLength2() throws Exception {
-		//invalid file names are also checked in parseArgs
-		//need to rewrite this
-		//-paul
-		this.c.parseArgs(new String[]{"-d", ".", "./NoSuchFileExists.txt"});
-		assertEquals("", "ERROR: Unable to open file 'simple.txt'", this.c.getAverageSentenceLength());
-
+		// Check other file extension, should also work
+		this.c.parseArgs(new String[]{"./simple.pdf"});
+		assertEquals(3, this.c.getAverageSentenceLength(), 0);
 	}
 	
-	@Ignore
-	@Test(expected=IllegalArgumentException.class)
-	//Test to check appropriate exception is thrown when file extension is given differently 
-	//i did not see where there had to be an extension of the filename check
-	//i assumed any filename passed was a text file, so .pdf is never checked
-	//-paul
-	public void testGetAverageSentenceLength3() {
-		this.c.parseArgs(new String[]{"-d", ".", "./simple.pdf"});
-	}
+	@Test
+	public void testGetAverageSentenceLength3() throws Exception{
+		// Check a slightly longer text file
+		//c.setDebug(true);
+    	this.c.parseArgs(new String[]{"./samedirfile.txt"});
+    	assertEquals(5.5, this.c.getAverageSentenceLength(), 0);
+    }
 	
-	@Ignore
 	@Test
 	public void testGetAverageSentenceLength4() throws Exception{
-	//Checks if a number with only 2 decimal places is returned	
-		//this is incorrect by my calculations
-		//you can use the debug feature to see how the words and sentences are counted
-		//-paul
-    	this.c.parseArgs(new String[]{"-l", "3", "-d", ".","./samedirfile.txt"});
-    	assertEquals("Checks if a number with only 2 decimal places is returned", 14.33, this.c.getAverageSentenceLength(), 0);
+		// Check a slightly longer text file
+		this.c.parseArgs(new String[]{"-l", "1", "-d", ".","./samedirfile.txt"});
+		assertEquals(14, this.c.getAverageSentenceLength(), 0);
 	}
-	
-	@Ignore
+
 	@Test
 	public void testGetAverageSentenceLength5() throws Exception{
-		//Checks if the value returned is rounded up if digits after decimal is greater than 5
-    	this.c.parseArgs(new String[]{"-l", "1", "-d", ".","./samedirfile.txt"});
-    	assertEquals("Checks if the value returned is rounded up if greater than 5", 17.67, this.c.getAverageSentenceLength(), 0);
-	}
-
-	@Ignore
-	@Test
-	public void testGetAverageSentenceLength6() throws Exception{
-		//Checks if the value returned is rounded down if digits after decimal is less than 5
-
-    	this.c.parseArgs(new String[]{"-l", "2", "-d", ".","./samedirfile.txt"});
-    	assertEquals("Checks if the value returned is rounded down if less than 5", 16.0, this.c.getAverageSentenceLength(), 0);
-	}
+		// Check a slightly longer text file
+		c.setDebug(true);
+		this.c.parseArgs(new String[]{"-l", "2", "-d", ".","./samedirfile.txt"});
+		assertEquals(12.67, this.c.getAverageSentenceLength(), 0);
+    }
 
 	
 	

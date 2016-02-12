@@ -23,6 +23,6 @@ The correct output obviously should be 2.00, because there are 2 words and 1 sen
 
 The format of wc output should be a double rounded to 2 decimal point, but now it is not. 
 
-4.The default word length issue
+4.The default word length issue [Status: Fixed]
 
-The default word length should be 4, because this number is inclusive meaning word with length 3 or less are not counted. [Status: Fixed]
+The default word length should be 4, because this number is inclusive meaning word with length 3 or less are not counted. 

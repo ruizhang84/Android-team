@@ -134,6 +134,10 @@ public class Core {
 	    	}
 	    }
 	    scan.close();
+	    this.printDebug("wordCount:");
+	    this.printDebug(this.wordCount);
+	    this.printDebug("sentenceCount:");
+	    this.printDebug(this.sentenceCount);
 	    this.printDebug("\n");
 	    if (this.sentenceCount == 0) return 0;
 	    //lots of ways to round to nearest .00
@@ -164,6 +168,11 @@ public class Core {
 	public void printDebug(String s) {
 		if (this.debug)
 			System.out.print(s);
+	}
+	
+	public void printDebug(double i) {
+		if (this.debug)
+			System.out.print(i);
 	}
 
 }
