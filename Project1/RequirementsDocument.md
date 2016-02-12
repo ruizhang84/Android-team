@@ -4,7 +4,7 @@
 
 Lauren, an instructor at a local university, requires a software tool to track the average sentence length of her students’ thesis. In particular, these students tend to write very long and wordy sentences. Thus, a user-friendly software tool that calculate the average sentence length of an essay will be built to help students improving their writing style.
 
-We, team 54, will build a high-quality command line tool named "wc" (for word count) that reports the average sentence length from a raw text file. The tool will be 1) customizable based on Lauren's request for flexibility in sentence definition and minimum word length to be counted; 2) user-friendly and error proof due to students’ diverse background in technical proficiency and operating system environments. 
+We, team 54, will build a high-quality command line tool named "WC" (for word count) that reports the average sentence length from a raw text file. The tool will be 1) customizable based on Lauren's request for flexibility in sentence definition and minimum word length to be counted; 2) user-friendly and error proof due to students’ diverse background in technical proficiency and operating system environments. 
 
 ## 2 User Requirements
 
@@ -13,14 +13,14 @@ The tool will be developed using Java 1.7 (JDK 7) and compiled on the command li
 
 ###2.2 User Interfaces
 - The tool will be an executable on the command line. The user will specify the file path and configuration options, if any, such as -d (for delimiter) and -l (for word length limit).
-- User specifies file path as argument, for example, "wc my_essay.txt". Only local file will be considered. If the user has no read access to the file, an error will be displayed.
-- User specifies additional delimiters with -d option followed by the delimiters, for example, "wc my_essay.txt -d ?!:.". This option will replace the default delimiters, not add into the default lists of delimiters. If -d option is used, but no option argument, then throw an error.
-- User specifies minimum word length with -l option, followed by the word length, for example, "wc my_essay.txt -l 4". The word length limit specified here is inclusive, with this example, words that have length 4 or longer are counted in. If -l option is used, but no option argument, then throw an error.
+- User specifies file path as argument, for example, "WC my_essay.txt". Only local file will be considered. If the user has no read access to the file, an error will be displayed.
+- User specifies additional delimiters with -d option followed by the delimiters, for example, "WC my_essay.txt -d ?!:.". This option will replace the default delimiters, not add into the default lists of delimiters. If -d option is used, but no option argument, then throw an error.
+- User specifies minimum word length with -l option, followed by the word length, for example, "WC my_essay.txt -l 4". The word length limit specified here is inclusive, with this example, words that have length 4 or longer are counted in. If -l option is used, but no option argument, then throw an error.
 - The -d and -l options are optional. The default ones for sentence delimiters are: ".?!:;" (not including the quotes). The default word limit is 4.
 - The software tool process one file at a time, that is, interpret the file path as one file, not multiple files.
 - The two options can be specified with any order, for example:
- - wc -d ?.! -l 4 my_essay.txt 
- - wc -l 4 -d ?.! my_essay.txt 
+ - WC -d ?.! -l 4 my_essay.txt 
+ - WC -l 4 -d ?.! my_essay.txt 
 - The tool returns the average sentence length on the screen as output. 
 
 ###2.3 User Characteristics
