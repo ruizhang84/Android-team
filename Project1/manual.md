@@ -23,14 +23,13 @@ A step by step instruction as follows
 - After pressing return on keyboard, the tool will return the average sentence length on the screen. 
 Then the tool "wc" can be run for the next file.
  
-###2.2 TroubleShooting for Errors
+###2.2 Troubleshooting for Errors
 - *ERROR: The file either does not exist or it is not a file*:
   - check if file name or file path is given correctly. It does not matter if the extension of text file is ".pdf" or so.
 - *ERROR: Arguments invalid*:
   - check if the file path and configuration option is specified as in step-by-step instructions. 
   - check if extra arugment is specified. 
   - check if other undefined option such as '-c' was used.
-  - check if file name is coming after the options. For example, "wc file.txt -d 1" is invalid configuration.
 - *ERROR: No file name given*:
   - check if file name is given after "wc".
 - *ERROR: -l option invalid*:
