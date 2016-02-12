@@ -227,35 +227,51 @@ public class CoreTest extends Core {
 	
 	@Test
 	public void testParseArgsBad14() {
-		//test only flags
+		//test extra argument
+		exception.expect(IllegalArgumentException.class);
+	    exception.expectMessage("ERROR: Arguments invalid");
+		this.c.parseArgs(new String[]{"simple.txt", "-l", "4", "extra" });
+	}
+	
+	@Test
+	public void testParseArgsBad15() {
+		//test extra arguments
 		exception.expect(IllegalArgumentException.class);
 	    exception.expectMessage("ERROR: -l option invalid");
 		this.c.parseArgs(new String[]{"-d", "-l"});
 	}
 	
 	@Test
-	public void testGetAverageSentenceLength() throws Exception {
+	public void testParseArgsBad16() {
+		//test extra argument
+		exception.expect(IllegalArgumentException.class);
+	    exception.expectMessage("ERROR: Arguments invalid");
+		this.c.parseArgs(new String[]{"simple.txt", "-l", "4", "-d", "asdf", "extra" });
+	}
+	
+	@Test
+	public void testGetAverageSentenceLength1() throws Exception {
 		//test default flag values
 		this.c.parseArgs(new String[]{"./simple.txt"});
 		assertEquals(3, this.c.getAverageSentenceLength(), 0.1);
 	}
 	
 	@Test
-	public void testGetAverageSentenceLength1() throws FileNotFoundException {
+	public void testGetAverageSentenceLength2() throws FileNotFoundException {
         //test empty file
 		this.c.parseArgs(new String[]{"-d", ".", "./Emptyfile.txt"});
 		assertEquals(0, this.c.getAverageSentenceLength(), 0);
 	}
 	
 	@Test
-	public void testGetAverageSentenceLength2() throws Exception {
+	public void testGetAverageSentenceLength3() throws Exception {
 		// Check other file extension, should also work
 		this.c.parseArgs(new String[]{"./simple.pdf"});
 		assertEquals(3, this.c.getAverageSentenceLength(), 0);
 	}
 	
 	@Test
-	public void testGetAverageSentenceLength3() throws Exception{
+	public void testGetAverageSentenceLength4() throws Exception{
 		// Check a slightly longer text file
 		//c.setDebug(true);
     	this.c.parseArgs(new String[]{"./samedirfile.txt"});
@@ -263,23 +279,106 @@ public class CoreTest extends Core {
     }
 	
 	@Test
-	public void testGetAverageSentenceLength4() throws Exception{
+	public void testGetAverageSentenceLength5() throws Exception{
 		// Check a slightly longer text file
 		this.c.parseArgs(new String[]{"-l", "1", "-d", ".","./samedirfile.txt"});
 		assertEquals(14, this.c.getAverageSentenceLength(), 0);
 	}
 
 	@Test
-	public void testGetAverageSentenceLength5() throws Exception{
+	public void testGetAverageSentenceLength6() throws Exception{
 		// Check a slightly longer text file
 		//c.setDebug(true);
 		this.c.parseArgs(new String[]{"-l", "2", "-d", ".","./samedirfile.txt"});
 		assertEquals(12.67, this.c.getAverageSentenceLength(), 0);
     }
 
+	@Test
+	public void testGetAverageSentenceLength7() throws Exception{
+		// Check a file with all short words
+		//c.setDebug(true);
+		this.c.parseArgs(new String[]{"./short_words.txt"});
+		assertEquals(0, this.c.getAverageSentenceLength(), 0);
+    }
 	
+	@Test
+	public void testGetAverageSentenceLength8() throws Exception{
+		// Check delimiters other than .
+		//c.setDebug(true);
+		this.c.parseArgs(new String[]{"./special_delimiters1.txt"});
+		assertEquals(2, this.c.getAverageSentenceLength(), 0);
+    }
 	
+	@Test
+	public void testGetAverageSentenceLength9() throws Exception{
+		// Check delimiters other than .
+		//c.setDebug(true);
+		this.c.parseArgs(new String[]{"./special_delimiters2.txt"});
+		assertEquals(2, this.c.getAverageSentenceLength(), 0);
+    }
+	
+	@Test
+	public void testGetAverageSentenceLength10() throws Exception{
+		// Check delimiters other than .
+		//c.setDebug(true);
+		this.c.parseArgs(new String[]{"./special_delimiters3.txt"});
+		assertEquals(2, this.c.getAverageSentenceLength(), 0);
+    }
+	
+	@Test
+	public void testGetAverageSentenceLength11() throws Exception{
+		// Check delimiters other than .
+		//c.setDebug(true);
+		this.c.parseArgs(new String[]{ "-d", "$%", "./special_delimiters4.txt"});
+		assertEquals(2, this.c.getAverageSentenceLength(), 0);
+    }
+	
+	@Test
+	public void testGetAverageSentenceLength12() throws Exception{
+		// Check delimiters other than .
+		//c.setDebug(true);
+		this.c.parseArgs(new String[]{ "-d", "$%", "./special_delimiters5.txt"});
+		assertEquals(2, this.c.getAverageSentenceLength(), 0);
+    }
+	
+	@Test
+	public void testGetAverageSentenceLength13() throws Exception{
+		// Check a large text file
+		//c.setDebug(true);
+		this.c.parseArgs(new String[]{"./large_file.txt"});
+		assertEquals(10, this.c.getAverageSentenceLength(), 100);
+    }
+	
+	@Test
+	public void testGetAverageSentenceLength14() throws Exception{
+		// Check a non-text file
+		//c.setDebug(true);
+		this.c.parseArgs(new String[]{"./image.jpg"});
+		assertEquals(10, this.c.getAverageSentenceLength(), 10);
+    }
+	
+	@Test
+	public void testGetAverageSentenceLength15() throws Exception{
+		// Check a non-text file with large lists of delimiters
+		//c.setDebug(true);
+		this.c.parseArgs(new String[]{"-d", "@#$%@#$%@#%$qerqwerqwerasdfasfzxczxvafdasdfaasfdasas", "./image.jpg"});
+		assertEquals(10, this.c.getAverageSentenceLength(), 10);
+    }
 
-
+	@Test
+	public void testGetAverageSentenceLength16() throws Exception{
+		// Check a real pdf file
+		//c.setDebug(true);
+		this.c.parseArgs(new String[]{"./Project1Deliverable2.pdf"});
+		assertEquals(10, this.c.getAverageSentenceLength(), 10);
+    }
+	
+	@Test
+	public void testGetAverageSentenceLength17() throws Exception{
+		// Check a real pdf file with lots of delimiters
+		//c.setDebug(true);
+		this.c.parseArgs(new String[]{"-d", "qerasfasfasd", "./Project1Deliverable2.pdf"});
+		assertEquals(10, this.c.getAverageSentenceLength(), 10);
+    }
 }
 

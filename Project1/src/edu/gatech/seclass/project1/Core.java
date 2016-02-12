@@ -134,6 +134,7 @@ public class Core {
 	    	}
 	    }
 	    scan.close();
+	    this.printDebug("\n");
 	    this.printDebug("wordCount:");
 	    this.printDebug(this.wordCount);
 	    this.printDebug(", sentenceCount:");
