@@ -69,54 +69,54 @@ public class CoreTest extends Core {
 	@Test
 	public void testParseArgsValid1() {
 		//test all valid args
-		this.c.parseArgs(new String[]{"-d", ".", "./samedirfile.txt"});
+		this.c.parseArgs(new String[]{"-d", ".", "./text_files/samedirfile.txt"});
 		assertEquals(".", this.c.getDelimeters());
-		assertEquals("./samedirfile.txt", this.c.getFileName());
+		assertEquals("./text_files/samedirfile.txt", this.c.getFileName());
 		assertEquals(4, this.c.getWordLengthLimit());
 	}
 	
 	@Test
 	public void testParseArgsValid2() {
 		//test all valid args
-		this.c.parseArgs(new String[]{"-l", "5", "./samedirfile.txt"});
+		this.c.parseArgs(new String[]{"-l", "5", "./text_files/samedirfile.txt"});
 		assertEquals(Core.getDefaultDelimeters(), this.c.getDelimeters());
-		assertEquals("./samedirfile.txt", this.c.getFileName());
+		assertEquals("./text_files/samedirfile.txt", this.c.getFileName());
 		assertEquals(5, this.c.getWordLengthLimit());
 	}
 	
 	@Test
 	public void testParseArgsValid3() {
 		//test all valid args
-		this.c.parseArgs(new String[]{"-l", "5", "-d", ".;", "./samedirfile.txt"});
+		this.c.parseArgs(new String[]{"-l", "5", "-d", ".;", "./text_files/samedirfile.txt"});
 		assertEquals(".;", this.c.getDelimeters());
-		assertEquals("./samedirfile.txt", this.c.getFileName());
+		assertEquals("./text_files/samedirfile.txt", this.c.getFileName());
 		assertEquals(5, this.c.getWordLengthLimit());
 	}
 	
 	@Test
 	public void testParseArgsValid4() {
 		//test all valid args
-		this.c.parseArgs(new String[]{"-d", ".", "-l", "6", "./samedirfile.txt"});
+		this.c.parseArgs(new String[]{"-d", ".", "-l", "6", "./text_files/samedirfile.txt"});
 		assertEquals(".", this.c.getDelimeters());
-		assertEquals("./samedirfile.txt", this.c.getFileName());
+		assertEquals("./text_files/samedirfile.txt", this.c.getFileName());
 		assertEquals(6, this.c.getWordLengthLimit());
 	}
 	
 	@Test
 	public void testParseArgsValid5() {
 		//test all valid args
-		this.c.parseArgs(new String[]{"./samedirfile.txt"});
+		this.c.parseArgs(new String[]{"./text_files/samedirfile.txt"});
 		assertEquals(Core.getDefaultDelimeters(), this.c.getDelimeters());
-		assertEquals("./samedirfile.txt", this.c.getFileName());
+		assertEquals("./text_files/samedirfile.txt", this.c.getFileName());
 		assertEquals(4, this.c.getWordLengthLimit());
 	}
 	
 	@Test
 	public void testParseArgsValid6() {
 		//-d delimiter is valid, and same as file
-		this.c.parseArgs(new String[]{"-l", "3", "-d", "7", "7"});
+		this.c.parseArgs(new String[]{"-l", "3", "-d", "7", "./text_files/7"});
 		assertEquals("7", this.c.getDelimeters());
-		assertEquals("7", this.c.getFileName());
+		assertEquals("./text_files/7", this.c.getFileName());
 		assertEquals(3, this.c.getWordLengthLimit());
 	}
 	
@@ -125,7 +125,7 @@ public class CoreTest extends Core {
 		//file name should not be first
 		exception.expect(IllegalArgumentException.class);
 		exception.expectMessage("ERROR: Arguments invalid");
-		this.c.parseArgs(new String[]{"./samedirfile.txt", "-l", "4"});
+		this.c.parseArgs(new String[]{"./text_files/samedirfile.txt", "-l", "4"});
 	}
 	
 	@Test
@@ -251,21 +251,21 @@ public class CoreTest extends Core {
 	@Test
 	public void testGetAverageSentenceLength1() throws Exception {
 		//test default flag values
-		this.c.parseArgs(new String[]{"./simple.txt"});
+		this.c.parseArgs(new String[]{"./text_files/simple.txt"});
 		assertEquals(3, this.c.getAverageSentenceLength(), 0.1);
 	}
 	
 	@Test
 	public void testGetAverageSentenceLength2() throws FileNotFoundException {
         //test empty file
-		this.c.parseArgs(new String[]{"-d", ".", "./Emptyfile.txt"});
+		this.c.parseArgs(new String[]{"-d", ".", "./text_files/Emptyfile.txt"});
 		assertEquals(0, this.c.getAverageSentenceLength(), 0);
 	}
 	
 	@Test
 	public void testGetAverageSentenceLength3() throws Exception {
 		// Check other file extension, should also work
-		this.c.parseArgs(new String[]{"./simple.pdf"});
+		this.c.parseArgs(new String[]{"./text_files/simple.pdf"});
 		assertEquals(3, this.c.getAverageSentenceLength(), 0);
 	}
 	
@@ -273,14 +273,14 @@ public class CoreTest extends Core {
 	public void testGetAverageSentenceLength4() throws Exception{
 		// Check a slightly longer text file
 		//c.setDebug(true);
-    	this.c.parseArgs(new String[]{"./samedirfile.txt"});
+    	this.c.parseArgs(new String[]{"./text_files/samedirfile.txt"});
     	assertEquals(5.5, this.c.getAverageSentenceLength(), 0);
     }
 	
 	@Test
 	public void testGetAverageSentenceLength5() throws Exception{
 		// Check a slightly longer text file
-		this.c.parseArgs(new String[]{"-l", "1", "-d", ".","./samedirfile.txt"});
+		this.c.parseArgs(new String[]{"-l", "1", "-d", ".","./text_files/samedirfile.txt"});
 		assertEquals(14, this.c.getAverageSentenceLength(), 0);
 	}
 
@@ -288,7 +288,7 @@ public class CoreTest extends Core {
 	public void testGetAverageSentenceLength6() throws Exception{
 		// Check a slightly longer text file
 		//c.setDebug(true);
-		this.c.parseArgs(new String[]{"-l", "2", "-d", ".","./samedirfile.txt"});
+		this.c.parseArgs(new String[]{"-l", "2", "-d", ".","./text_files/samedirfile.txt"});
 		assertEquals(12.67, this.c.getAverageSentenceLength(), 0);
     }
 
@@ -296,7 +296,7 @@ public class CoreTest extends Core {
 	public void testGetAverageSentenceLength7() throws Exception{
 		// Check a file with all short words
 		//c.setDebug(true);
-		this.c.parseArgs(new String[]{"./short_words.txt"});
+		this.c.parseArgs(new String[]{"./text_files/short_words.txt"});
 		assertEquals(0, this.c.getAverageSentenceLength(), 0);
     }
 	
@@ -304,7 +304,7 @@ public class CoreTest extends Core {
 	public void testGetAverageSentenceLength8() throws Exception{
 		// Check delimiters other than .
 		//c.setDebug(true);
-		this.c.parseArgs(new String[]{"./special_delimiters1.txt"});
+		this.c.parseArgs(new String[]{"./text_files/special_delimiters1.txt"});
 		assertEquals(2, this.c.getAverageSentenceLength(), 0);
     }
 	
@@ -312,7 +312,7 @@ public class CoreTest extends Core {
 	public void testGetAverageSentenceLength9() throws Exception{
 		// Check delimiters other than .
 		//c.setDebug(true);
-		this.c.parseArgs(new String[]{"./special_delimiters2.txt"});
+		this.c.parseArgs(new String[]{"./text_files/special_delimiters2.txt"});
 		assertEquals(2, this.c.getAverageSentenceLength(), 0);
     }
 	
@@ -320,7 +320,7 @@ public class CoreTest extends Core {
 	public void testGetAverageSentenceLength10() throws Exception{
 		// Check delimiters other than .
 		//c.setDebug(true);
-		this.c.parseArgs(new String[]{"./special_delimiters3.txt"});
+		this.c.parseArgs(new String[]{"./text_files/special_delimiters3.txt"});
 		assertEquals(2, this.c.getAverageSentenceLength(), 0);
     }
 	
@@ -328,7 +328,7 @@ public class CoreTest extends Core {
 	public void testGetAverageSentenceLength11() throws Exception{
 		// Check delimiters other than .
 		//c.setDebug(true);
-		this.c.parseArgs(new String[]{ "-d", "$%", "./special_delimiters4.txt"});
+		this.c.parseArgs(new String[]{ "-d", "$%", "./text_files/special_delimiters4.txt"});
 		assertEquals(2, this.c.getAverageSentenceLength(), 0);
     }
 	
@@ -336,7 +336,7 @@ public class CoreTest extends Core {
 	public void testGetAverageSentenceLength12() throws Exception{
 		// Check delimiters other than .
 		//c.setDebug(true);
-		this.c.parseArgs(new String[]{ "-d", "$%", "./special_delimiters5.txt"});
+		this.c.parseArgs(new String[]{ "-d", "$%", "./text_files/special_delimiters5.txt"});
 		assertEquals(2, this.c.getAverageSentenceLength(), 0);
     }
 	
@@ -344,7 +344,7 @@ public class CoreTest extends Core {
 	public void testGetAverageSentenceLength13() throws Exception{
 		// Check a large text file
 		//c.setDebug(true);
-		this.c.parseArgs(new String[]{"./large_file.txt"});
+		this.c.parseArgs(new String[]{"./text_files/large_file.txt"});
 		assertEquals(10, this.c.getAverageSentenceLength(), 100);
     }
 	
@@ -352,7 +352,7 @@ public class CoreTest extends Core {
 	public void testGetAverageSentenceLength14() throws Exception{
 		// Check a non-text file
 		//c.setDebug(true);
-		this.c.parseArgs(new String[]{"./image.jpg"});
+		this.c.parseArgs(new String[]{"./text_files/image.jpg"});
 		assertEquals(10, this.c.getAverageSentenceLength(), 10);
     }
 	
@@ -360,7 +360,7 @@ public class CoreTest extends Core {
 	public void testGetAverageSentenceLength15() throws Exception{
 		// Check a non-text file with large lists of delimiters
 		//c.setDebug(true);
-		this.c.parseArgs(new String[]{"-d", "@#$%@#$%@#%$qerqwerqwerasdfasfzxczxvafdasdfaasfdasas", "./image.jpg"});
+		this.c.parseArgs(new String[]{"-d", "@#$%@#$%@#%$qerqwerqwerasdfasfzxczxvafdasdfaasfdasas", "./text_files/image.jpg"});
 		assertEquals(10, this.c.getAverageSentenceLength(), 10);
     }
 
@@ -368,7 +368,7 @@ public class CoreTest extends Core {
 	public void testGetAverageSentenceLength16() throws Exception{
 		// Check a real pdf file
 		//c.setDebug(true);
-		this.c.parseArgs(new String[]{"./Project1Deliverable2.pdf"});
+		this.c.parseArgs(new String[]{"./text_files/Project1Deliverable2.pdf"});
 		assertEquals(10, this.c.getAverageSentenceLength(), 10);
     }
 	
@@ -376,48 +376,48 @@ public class CoreTest extends Core {
 	public void testGetAverageSentenceLength17() throws Exception{
 		// Check a real pdf file with lots of delimiters
 		//c.setDebug(true);
-		this.c.parseArgs(new String[]{"-d", "qerasfasfasd", "./Project1Deliverable2.pdf"});
+		this.c.parseArgs(new String[]{"-d", "qerasfasfasd", "./text_files/Project1Deliverable2.pdf"});
 		assertEquals(10, this.c.getAverageSentenceLength(), 10);
     }
 
 	public void testGetAverageSentenceLength18() throws Exception{
 		// Check a very long characters length for -l word.
-		this.c.parseArgs(new String[]{"-l", "100", "-d", ".", "./samedirfile.txt"});
+		this.c.parseArgs(new String[]{"-l", "100", "-d", ".", "./text_files/samedirfile.txt"});
 		assertEquals(0, this.c.getAverageSentenceLength(), 0);
     }
 
 	@Test
 	public void testGetAverageSentenceLength19() throws Exception{
 		// Check tab for word.
-		this.c.parseArgs(new String[]{"-l", "3", "-d", ".", "./simple3-tab.txt"});
+		this.c.parseArgs(new String[]{"-l", "3", "-d", ".", "./text_files/simple3-tab.txt"});
 		assertEquals(2, this.c.getAverageSentenceLength(), 0);
     }
 	
 	@Test
 	public void testGetAverageSentenceLength20() throws Exception{
 		// Check " " quote case  for word.
-		this.c.parseArgs(new String[]{"-l", "3", "-d", ".", "./simple4.txt"});
+		this.c.parseArgs(new String[]{"-l", "3", "-d", ".", "./text_files/simple4.txt"});
 		assertEquals(3, this.c.getAverageSentenceLength(), 0);
     }
 	
 	@Test
 	public void testGetAverageSentenceLength21() throws Exception{
 		// Check no delimiter case  for word.
-		this.c.parseArgs(new String[]{"-l", "3", "-d", "!", "./simple4.txt"});
+		this.c.parseArgs(new String[]{"-l", "3", "-d", "!", "./text_files/simple4.txt"});
 		assertEquals(0, this.c.getAverageSentenceLength(), 0);
     }
 	
 	@Test
 	public void testGetAverageSentenceLength22() throws Exception{
 		// Check 0 character  for word.
-		this.c.parseArgs(new String[]{"-l", "0", "-d", ".", "./simple3-tab.txt"});
+		this.c.parseArgs(new String[]{"-l", "0", "-d", ".", "./text_files/simple3-tab.txt"});
 		assertEquals(2, this.c.getAverageSentenceLength(), 0);
     }
 	
 	@Test
 	public void testGetAverageSentenceLength23() throws Exception{
 		// Check delimiter as space.
-		this.c.parseArgs(new String[]{"-l", "3", "-d", " ", "./simple.txt"});
+		this.c.parseArgs(new String[]{"-l", "3", "-d", " ", "./text_files/simple.txt"});
 		assertEquals(1, this.c.getAverageSentenceLength(), 0);
 	}
 
@@ -427,7 +427,7 @@ public class CoreTest extends Core {
 		//http://generator.lorem-ipsum.info/
 		//http://wordcounttools.com/
 		//203 words / 25 sentences
-		this.c.parseArgs(new String[]{"-l", "1", "-d", ".", "./loremipsum1.txt"});
+		this.c.parseArgs(new String[]{"-l", "1", "-d", ".", "./text_files/loremipsum1.txt"});
 		assertEquals(8.12, this.c.getAverageSentenceLength(), 0);
     }
 	
@@ -437,7 +437,7 @@ public class CoreTest extends Core {
 		//http://generator.lorem-ipsum.info/
 		//http://wordcounttools.com/
 		//3999 words / 460 sentences
-		this.c.parseArgs(new String[]{"-l", "1", "-d", ".?!", "./loremipsum2.txt"});
+		this.c.parseArgs(new String[]{"-l", "1", "-d", ".?!", "./text_files/loremipsum2.txt"});
 		assertEquals(8.69, this.c.getAverageSentenceLength(), 0);
     }
 
