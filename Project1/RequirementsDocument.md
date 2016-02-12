@@ -19,8 +19,8 @@ The tool will be developed using Java 1.7 (JDK 7) and compiled on the command li
 - The -d and -l options are optional. The default ones for sentence delimiters are: ".?!:;" (not including the quotes). The default word limit is 4.
 - The software tool process one file at a time, that is, interpret the file path as one file, not multiple files.
 - The two options can be specified with any order, for example:
- - wc my_essay.txt -d ?.! -l 4
- - wc my_essay.txt -l 4 -d ?.!
+ - wc -d ?.! -l 4 my_essay.txt 
+ - wc -l 4 -d ?.! my_essay.txt 
 - The tool returns the average sentence length on the screen as output. 
 
 ###2.3 User Characteristics
