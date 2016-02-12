@@ -11,7 +11,6 @@ import java.io.FileNotFoundException;
 
 import org.junit.After;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.junit.Rule;
 import org.junit.rules.ExpectedException;
@@ -319,6 +318,26 @@ public class CoreTest extends Core {
 		// Check delimiter as space.
 		this.c.parseArgs(new String[]{"-l", "3", "-d", " ", "./simple.txt"});
 		assertEquals(1, this.c.getAverageSentenceLength(), 0);
+    }
+	
+	@Test
+	public void testGetAverageSentenceLength12() throws Exception{
+		//Using the following websites
+		//http://generator.lorem-ipsum.info/
+		//http://wordcounttools.com/
+		//203 words / 25 sentences
+		this.c.parseArgs(new String[]{"-l", "1", "-d", ".", "./loremipsum1.txt"});
+		assertEquals(8.12, this.c.getAverageSentenceLength(), 0);
+    }
+	
+	@Test
+	public void testGetAverageSentenceLength13() throws Exception{
+		//Using the following websites
+		//http://generator.lorem-ipsum.info/
+		//http://wordcounttools.com/
+		//3999 words / 460 sentences
+		this.c.parseArgs(new String[]{"-l", "1", "-d", ".?!", "./loremipsum2.txt"});
+		assertEquals(8.69, this.c.getAverageSentenceLength(), 0);
     }
 	
 	
