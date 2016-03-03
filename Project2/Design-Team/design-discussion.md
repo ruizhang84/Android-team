@@ -91,9 +91,9 @@
 
 ## 3. Summary
  - We learned how to discuss project questions in groups.
- - 
+ 
  - We team work to complete the task. 
- - 
+  
  - We have learn how to perform design for the software development.
 
 
