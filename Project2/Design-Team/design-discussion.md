@@ -90,8 +90,10 @@
  - We decide to use Design 1 as template for our group design and UML class digram. It doesn't necessary mean the other's is not good. We want to be use one major design principle instead of hybrid so that we can be consistent in the future design. 
 
 ## 3. Summary
- - We learned how to discuss project questions in groups. 
+ - We learned how to discuss project questions in groups.
+ - 
  - We team work to complete the task. 
+ - 
  - We have learn how to perform design for the software development.
 
 
