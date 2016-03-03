@@ -6,7 +6,7 @@
 <img src="pcassell3-design.png" width="700" />
 
 #### Pros
- - The deign is short and sweet. The implementation would be much easier with a simple class defination and direct function calls.
+ - The deign is short and sweet. The implementation would be much easier with a simple class definition and direct function calls.
 
  - The single TCCart class performs the tasks such as printCustomerCard() and sendMail().
 
