@@ -20,7 +20,7 @@
 
 ### Design 2 - rharibabu3
 
-<img src="Roopa.png" width="700" />
+<img src="C:\Users\SandeepSekhar\Documents\Roopa Docs\SDP\Roopa.png" width="700"/>
 
 #### Pros
  - The Item, Customer, Rewards, Purchase, and Transaction class each have a associated ID (i.e., ItemID, CustomerID, PurchaseID, and TransactionID) to identify itself. This provides a very convenient way to refer the instance. Moreover, the design is easier to be implemented in the database.
@@ -40,7 +40,7 @@
 
 ### Design 3 - fwu35
 
-<img src="Fujia.png" width="700" />
+<img src="C:\Users\SandeepSekhar\Documents\Roopa Docs\SDP\Fujia.png" width="700" />
 
 #### Pros
  - The relationships between classes are well defined. The logic and functions of classes are very clear to understand/implement.
@@ -58,7 +58,7 @@
 
 ### Design 4 - rzhang360
 
-<img src="Rui.png" width="700" />
+<img src="C:\Users\SandeepSekhar\Documents\Roopa Docs\SDP\Rui.png" width="700" />
 
 #### Pros
  - The structure are the same as others and the design is clear. For example, a relationship between Store and Customer is well represented.
