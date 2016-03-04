@@ -20,7 +20,7 @@
 
 ### Design 2 - rharibabu3
 
-<img src="C:\Users\SandeepSekhar\Documents\Roopa Docs\SDP\Roopa.png" width="700"/>
+<img src="C:\Users\SandeepSekhar\Documents\Roopa Docs\SDP\Roopa" width="700"/>
 
 #### Pros
  - The Item, Customer, Rewards, Purchase, and Transaction class each have a associated ID (i.e., ItemID, CustomerID, PurchaseID, and TransactionID) to identify itself. This provides a very convenient way to refer the instance. Moreover, the design is easier to be implemented in the database.
