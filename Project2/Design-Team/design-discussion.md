@@ -43,6 +43,8 @@
 ![enter image description here](https://lh3.googleusercontent.com/yScqvzHOtXFC7uCRx_8Pc3hncoXqE5__Hc8nd4FgE0kuFRJCaxY2P_KqFS-W55W0aFQ=s0 "Fujia.png")
 
 
+
+
 #### Pros
  - The relationships between classes are well defined. The logic and functions of classes are very clear to understand/implement.
 
@@ -59,6 +61,7 @@
 
 ### Design 4 - rzhang360
 ![enter image description here](https://lh3.googleusercontent.com/MZFD3MNataDNiNPubg6ruaQ0q9qmPLLfE7oE7KuGabu3b73wyAafByV1UDSguipX3H8=s0 "Rui.png")
+
 
 
 #### Pros
