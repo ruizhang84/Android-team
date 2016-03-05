@@ -78,6 +78,8 @@
 
 ## 2. Team Design
 
+<img src="design-team.png" width="700" />
+
 ### Commonalities
  - The structure of class design are mostly same among our group. This is very expected as the design is all about customer-purchase-item activities.
 
