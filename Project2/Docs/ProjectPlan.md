@@ -2,18 +2,19 @@
 
 **Author**: 6300Spring16Team54 
 
-## 1 Introduction
-The Project "TCCart" aims at developing a payment and rewards management system for carts that sells tea/coffee and runs on Android platform.
+| Version | Description     |
+| --------|:---------------:|
+| V1      | Initial version |
 
-The Android app ‘TCCart’ is a simple and user-friendly payment and rewards management system for tea and coffee carts, with a clean user interface that enables the TC Cart Manager to conveniently, add customers,print customer cards,edit customer information, process purchases, keep track of purchases and rewards .  The app has multiple advantages such as easy-to-use User interface with stunning design and it let's the manager to get Customer details such as Purchases & Rewards on a tap. Another great feature of this app is it prints Customer card immediately when any new Customer is added to the System.
- 
+## 1 Introduction
+The "TCCart" project aims to develope a payment and rewards system for coffee and tea carts.  The project will be developed for the Android platform.
 
 
 ## 2 Process Description
 
 ***2.1 Project Life Cycle***
 
-We have adopted  Waterfall model for our software development process. The life cycles of this project include Requirements Gathering and Analysis, System Design, Implementation, Testing and Maintenance.
+We have adopted the Waterfall model for our software development process. The life cycles of this project include Requirements Gathering and Analysis, System Design, Implementation, Testing and Maintenance.
 
 ***2.2.1 Requirements Gathering and Analysis:***
 
