@@ -1,35 +1,40 @@
 # Design Document
 
-*This is the template for your design document. The parts in italics are concise explanations of what should go in the corresponding sections and should not appear in the final document.*
-
-**Author**: \<person or team name\>
+**Author**: \<Team 54\>
 
 | Version | Description     |
 | --------|:---------------:|
 | V1      | Initial version |
-*In case you revise this document in later deliverables, increase the version number and concisely describe what you modified. For example:*
-
-| *Version* | *Description*       | 
-| ----------|:-------------------:|
-| *V1*      | *Initial version*   |
-| *V2*      | *Updated Sections 2 and 3 basd on better understanding of the system* |
-| *...*     | *...*               |
 
 ## 1 Design Considerations
 
-*The subsections below describe the issues that need to be addressed or resolved prior to or while completing the design, as well as issues that may influence the design process.*
-
 ### 1.1 Assumptions
 
-*Describe any assumption, background, or dependencies of the software, its use, the operational environment, or significant project issues.*
+The purpose of developing the Android app *TCCart* is to provide a payment and reward managment system in a timely manner to help our contractor's coffee and tea selling bussiness grow. To develop TCCart, we made the following assumptions:
+
+- The software is Android app that runs on minimum target at API Level 15 (IceCreamSandwich).
+
+- The software is dependent on Android utilities for printing, QR code scanning, credit card scanning,  payment processing, and email sending, which are provided by our contractor and used as-is.
+
+- We assume the hadware is sufficient for the basic function to perform (for example, sufficient storage to save customer info). 
+
+- We assume the payment will be processed only for credit card, no cash allowed. 
+
+- We assume the general credit/discount rule will be strictly applied to each transactions as described, no special rule will be employed.
 
 ### 1.2 Constraints
 
-*Describe any constraints on the system that have a significant impact on the design of the system.*
+- The current design for TCCart requires the system runs on mobile phone. Thus, the neceesary functions need to
+be robust and able to handle common situations(/failures) within a mobile environment.
+
+- The priciple of Unified Software Process will be used in designing the solution.
 
 ### 1.3 System Environment
 
-*Describe the hardware and software that the system must operate in and interact with.*
+| Requirements | Description     |
+| --------|:---------------:|
+| Android     | 4.0.3 and up |
+| Permissions     | Photos/Media/Files, Storage, Camera, other |
 
 ## 2 Architectural Design
 
