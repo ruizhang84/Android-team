@@ -48,8 +48,6 @@ be robust and able to handle common situations(/failures) within a mobile enviro
 
 ## 3 Low-Level Design
 
-*Describe the low-level design for each of the system components identified in the previous section. For each component, you should provide details in the following UML diagrams to show its internal structure.*
-
 ### 3.1 Class Diagram
 
 ![Image Text](../Design-Team/design-team.png)
