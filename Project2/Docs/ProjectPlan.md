@@ -11,7 +11,7 @@ The Android app ‘TCCart’ is a simple and user-friendly payment and rewards m
 
 ## 2 Process Description
 
-***2.1 Project Life Cycle ***
+***2.1 Project Life Cycle***
 
 We have adopted  Waterfall model for our software development process. The life cycles of this project include Requirements Gathering and Analysis, System Design, Implementation, Testing and Maintenance.
 
