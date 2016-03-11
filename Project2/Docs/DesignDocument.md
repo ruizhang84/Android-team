@@ -40,21 +40,17 @@ be robust and able to handle common situations(/failures) within a mobile enviro
 
 ### 2.1 Component Diagram
 
-*This section should provide and describe a diagram that shows the various components and how they are connected. This diagram shows the logical/functional components of the system, where each component represents a cluster of related functionality. In the case of simple systems, where there is a single component, this diagram may be unnecessary; in these cases, simply state so and concisely state why.*
+![Image Text](./Component_Diagram.png)
 
 ### 2.2 Deployment Diagram
 
-*This section should describe how the different components will be deployed on actual hardware devices. Similar to the previous subsection, this diagram may be unnecessary for simple systems; in these cases, simply state so and concisely state why.*
+![Image Text](./Deployment_Diagram.png)
 
 ## 3 Low-Level Design
 
 ### 3.1 Class Diagram
 
 ![Image Text](../Design-Team/design-team.png)
-
-### 3.2 Other Diagrams
-
-*<u>Optionally</u>, you can decide to describe some dynamic aspects of your system using one or more behavioral diagrams, such as sequence and state diagrams.*
 
 ## 4 User Interface Design
 *For GUI-based systems, this section should provide the specific format/layout of the user interface of the system (e.g., in the form of graphical mockups).*
