@@ -1,6 +1,6 @@
 # Vision Document
 
-**Author**: \<Team 54\>
+**Author**: 6300Spring16Team54
 
 | Version | Description     |
 | --------|:---------------:|
@@ -9,13 +9,13 @@
 
 ## 1 Introduction
 
-Brad and Janet, our contractor, own a cart at Atlanta where they sell coffee and tea during the weekend. They require our team to develop **TCCart**, a payment and rewards management system on Android to manage their tea and coffee carts.  
+The "TCCart" project aims to develope a payment and rewards system for coffee and tea carts. The project will be developed for the Android platform.
 
 ## 2 Business Needs/Requirements
 
-We are very glad to provide the mobile software TCCart required by Brad and Janet in a timely manner to help their entrepreneurship and bussiness grow. In general, they require us to develop TCCart specifically that (1) allow their customers to pay on credit card and (2) reward their most loyal customers. A detailed requirements for TCCart are listed below. 
+We are very glad to provide the mobile software TCCart required by Brad and Janet in a timely manner to help their entrepreneurship and bussiness grow. In general, they are requesting us to develop TCCart so that they can (1) allow their customers to pay on credit card and (2) reward their most loyal customers. A detailed list of requirements for TCCart are listed below. 
 
- - The cart manager is able to use the TCCart to (1) add new customers, (2) print and scan customers ID card, (3) edit customer info, (4) scan credit card and process purchases, and (5) track purchases and rewards. 
+ - The cart manager is able to use the TCCart to (1) add new customers, (2) print and scan customer's ID card, (3) edit customer info, (4) scan credit card and process purchases, and (5) track purchases and rewards. 
 
  - The cart manager is also able to keep track of a complete list of transactions for any customer in the system.
 
@@ -23,7 +23,7 @@ We are very glad to provide the mobile software TCCart required by Brad and Jane
 
  - For each valid transaction, if a customer spends $30 or more, he/she gets a $3 credit towards his/her next purchase as a reward. The following rules also apply:
 
-    - The reward credit expired in a month.
+    - The reward credit expires in a month.
 
     - The credit is applied towards the very next purchase.
 
