@@ -34,21 +34,42 @@ All the hardware devices attached to the system such as card printer, videocam, 
 
 *Post-conditions*
 
--Unique id should be generated and Customer card should be printed using a special card printer as soon as a new Customer has been added by the 'TCCartManager'.
--customer card contains a QR code which should be read using a videocam attached to the system and encodes the customer’s unique ID.
--As soon as the Customer swipes the Credit Card it should be read by a Credit Card Scanner which ensures Authentication.
--The external libraries connected to the system should enable it to connect to the Payment Processing system once transaction has been initiated and send emails.
+- Unique id should be generated and Customer card should be printed using a special card printer as soon as a new Customer has been added by the 'TCCartManager'.
+- customer card contains a QR code which should be read using a videocam attached to the system and encodes the customer’s unique ID.
+- As soon as the Customer swipes the Credit Card it should be read by a Credit Card Scanner which ensures Authentication.
+- The external libraries connected to the system should enable it to connect to the Payment Processing system once transaction has been initiated and send emails.
 
 **Transaction**
 
-*Requiremens*
+*Requirements*
 
 Once the Customer makes Purchase and swipes his Credit Card, the transaction has been initiated which allows the system to authenticate the credit card used by the Customer, Calculate Credit, apply Discounts & Rewards for the Purchase being made, enables Payment through Credit Card service provider and send email after every purchase.
 
   *Pre-conditions:*
--Customer should have swiped Credit Card for the transaction to be initiated
+- Customer should have swiped Credit Card for the transaction to be initiated
 
   *Post-conditions:*
 
--Credit Card Authentication is done after which Credit and Discounts are applied for the current purchase and enables the Customer to Pay through Credit card service provider and send email after the purchase is complete.
+- Credit Card Authentication is done after which Credit and Discounts are applied for the current purchase and enables the Customer to Pay through Credit card service provider and send email after the purchase is complete.
+
+**Edit Customer Info**
+
+This usecase let's the TC Cart Manager to edit Customer information whenever needed.
+
+
+**View Purchase & Rewards History**
+
+*Requiremens*
+
+This usecase let's the TC Cart Manager to keep track of all the Purchases made by the Customer and the Rewards applied for each purchase.
+
+  *Pre-conditions:*
+
+Customer must have made at least one Purchase.
+
+  *Post-conditions:*
+
+TC Cart Manage will be able to view the transaction history of the Customer.
+
+
 
