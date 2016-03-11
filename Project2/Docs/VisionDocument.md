@@ -46,7 +46,15 @@ TCCart app will have three major classes TCCart (referred as TC), Transaction, a
 
 ## 4 Major Features
 
-We expect the major features of our product, TCCart, is user-friendly, simple, very reliable, and resposive. The portion will be updated after next version/deliverable. 
+We expect the major features of our product, TCCart, will be user-friendly, simple, very reliable, and resposive. Some noteworthy features are:
+
+- Create customers info and print cusotmer card with QR code, etc.
+
+- The purchase price can be calcualted with credit & discount for each transaction. 
+
+- Send email notification to customer when any item purchased, credit rewarded, or VIP status changed. 
+
+- View customer info and their transaction history at any time.
 
 ## 5 Scope and Limitations
 
