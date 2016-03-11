@@ -3,7 +3,7 @@
 **Author**: 6300Spring16Team54 
 
 ## 1 Introduction
-The Project "TCCart" aims at developing a payment and rewards management system for tea and coffee carts that runs on Android platform.
+The Project "TCCart" aims at developing a payment and rewards management system for carts that sells tea/coffee and runs on Android platform.
 
 The Android app ‘TCCart’ is a simple and user-friendly payment and rewards management system for tea and coffee carts, with a clean user interface that enables the TC Cart Manager to conveniently, add customers,print customer cards,edit customer information, process purchases, keep track of purchases and rewards .  The app has multiple advantages such as easy-to-use User interface with stunning design and it let's the manager to get Customer details such as Purchases & Rewards on a tap. Another great feature of this app is it prints Customer card immediately when any new Customer is added to the System.
  
@@ -22,7 +22,7 @@ In this phase all possible requirements of the system to be developed are base l
 *Activities Performed:*
 
  The software development team, at first created UML Class diagrams individually in order to understand the requirements thoroughly. 
-        Project plan is created used to guide both project execution and project control.
+        Project plan created is used to guide both project execution and project control.
 
 *Entry Criteria:*
 
@@ -40,6 +40,7 @@ Exit Criteria:
 ***2.2.2 System Design***
 
 *Activities Performed:*
+
 In this phase the architecture of the system to be developed is designed as per the requirements specified and is documented. Define a series of components such as screens/interfaces/modules or other systems and how they interact with each other. Hardware and Software requirements of the system are specified for each of the screens.
 
 The Software Development Team had a discussion on the System requirements , analyzed the Class diagrams created by each individual in the team and came up with a single UML Class diagram which best describes the System Design to be presented to the Client.
@@ -89,7 +90,7 @@ Perform Integration testing by putting together all the modules that have been d
 *Exit Criteria:*
 
   - Test cases
-  - -Test reports
+  - Test reports
   - Defect reports and 
   - Updated matrices.
 
@@ -112,12 +113,12 @@ Make sure that the application is up and running in the respective environment. 
 
 *Entry Criteria:*
 
-    User Manual
+- User Manual
 
 *Exit Criteria:*
 
-    List of production tickets
-    List of new features implemented.
+ - List of production tickets
+ -  List of new features implemented.
 
 
 ## 3 Team
