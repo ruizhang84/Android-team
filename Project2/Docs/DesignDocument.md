@@ -53,13 +53,17 @@ be robust and able to handle common situations(/failures) within a mobile enviro
 ![Image Text](../Design-Team/design-team.png)
 
 ## 4 User Interface Design
+
 - Start Interface
+
 ![Image Text](./Android_mockup_UserInterface.png)
 
 - Customer Info
+
 ![Image Text](./Android_mockup_Customer.png)
 
 - Transaction
+
 ![Image Text](./Android_mockup_Transaction.png)
 
 
