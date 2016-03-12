@@ -2,132 +2,152 @@
 
 **Author**: 6300Spring16Team54 
 
-## 1 Introduction
-The Project "TCCart" aims at developing a payment and rewards management system for tea and coffee carts that runs on Android platform.
+| Version | Description     |
+| --------|:---------------:|
+| V1      | Initial version |
 
-The Android app ‘TCCart’ is a simple and user-friendly payment and rewards management system for tea and coffee carts, with a clean user interface that enables the TC Cart Manager to conveniently, add customers,print customer cards,edit customer information, process purchases, keep track of purchases and rewards .  The app has multiple advantages such as easy-to-use User interface with stunning design and it let's the manager to get Customer details such as Purchases & Rewards on a tap. Another great feature of this app is it prints Customer card immediately when any new Customer is added to the System.
- 
+## 1 Introduction
+The "TCCart" project aims to develope a payment and rewards system for coffee and tea carts.  The project will be developed for the Android platform.
 
 
 ## 2 Process Description
 
-***2.1 Project Life Cycle ***
+***2.1 Project Life Cycle***
 
-We have adopted  Waterfall model for our software development process. The life cycles of this project include Requirements Gathering and Analysis, System Design, Implementation, Testing and Maintenance.
+We have adopted the Unified Process model for our software development process. The life cycles of this project include four phases Inception, Elaboration(milestone), Construction(release), and Transition(final production release).
 
-***2.2.1 Requirements Gathering and Analysis:***
 
-In this phase all possible requirements of the system to be developed are base lined and presented to the Client with the help of UML(Unified Modeling Language) class diagram along with an understanding document.
+***2.2.1 Inception :***
+
+In this phase, we will go from the the idea of the product to the vision of the end product. We need to delimite the project scope and make the business case for the product presented. 
+
 
 *Activities Performed:*
 
- The software development team, at first created UML Class diagrams individually in order to understand the requirements thoroughly. 
-        Project plan is created used to guide both project execution and project control.
+We will develope the initial project plan, which shows the phase, iterations, roles roles of the participants, schedule, and milestones, etc. We will also make vision document that produce a simplified use-case model. In addition, we will aslo develop a tentative architecture.
+
+- Project plan (initial, this document).
+
+- Vision document (VisionDocument.md).
 
 *Entry Criteria:*
 
- Understand the requirements thoroughly by doing brainstorming and
-   analyzing the requirements to identify and refine (1) classes, (2)   
-   attributes, (3) operations, and (4) relationships. Perform
-   requirements feasibility analysis to ensure that the requirements are
-   testable or not.
+- Software design. Understand the requirements thoroughly by doing brainstorming and
+analyzing the requirements to identify and refine (1) classes, (2)   
+attributes, (3) operations, and (4) relationships. Perform
+requirements feasibility analysis to ensure that the requirements are
+testable or not.
 
-Exit Criteria:
-
-- UML Class Diagram describing the System Design
-- Project Plan
-
-***2.2.2 System Design***
-
-*Activities Performed:*
-In this phase the architecture of the system to be developed is designed as per the requirements specified and is documented. Define a series of components such as screens/interfaces/modules or other systems and how they interact with each other. Hardware and Software requirements of the system are specified for each of the screens.
-
-The Software Development Team had a discussion on the System requirements , analyzed the Class diagrams created by each individual in the team and came up with a single UML Class diagram which best describes the System Design to be presented to the Client.
-
-Also the team created a Use case diagram that perfectly describes the Actors,Use cases,System and relationship between them.
-
-*Entry Criteria:*
-
- - Requirements Specification Document
- -    Individual UML Class diagrams created by the individual team members.
 
 *Exit Criteria:*
 
-- UML Class diagram that best describes the System Design.
+- Stakeholder concurrence. All the stakeholders must agree on the scope, definition, and cost schedule estimates for the projects.
+
+- Identify the main risks (and the countermeasures) for the project and also produce a initial plan.
+
+
+
+***2.2.2 Elaboration***
+
+We will analyze the app design problem to get a better understanding of app development. We will address the most critical use-cases. In addition, we will try to refine the plan of activities.
+
+
+*Activities Performed:*
+
+We will complete use-case model with all use-cases and actors identified and most case-use descriptions developed. We will also identify supplementary requirements. In design document, we will also define the lower-level design for the system as well as a complete set of test cases. In additin, we may revise the project plan accordingly.
+
+- Use-case model (UseCaseModel.md).
+
+- Supplementary requirements (i.e., requirements that do not fit the use-case model, such as non-functional requirements. ExtraRequirements.md).
+
+- Design document (DesignDocument.md).
+
+- Test plan (without results, TestPlan.md).
+
+- project plan (revised, this document).
+
+
+*Entry Criteria:*
+
+- Preliminary project plan and vision document.
+
+- Main risks of problem have been indentified.
+
+*Exit Criteria:*
+
+In general, we should check if the the major risks that we have identified have been resolved or at least addressed.
+
+- Project Plan.
+
 - Design Document
+
 - Vision Document
+
 - Use Case Model
-- Test Plan without results
 
-***2.2.3 Implementation***
-
-Source code is implemented during this phase as per the design specified in the UML diagram.  Unit testing is performed to test individual pieces of code and to verify whether individual modules are doing what they are intended to do.Traceability matrix has been created to keep track if the requirements are being met.
- 
-*Entry Criteria:*
-
-- UML Class diagram that best describes the System Design.
-- Design Document
--  Use Case Model
 - Test Plan without results
 
 
-*Exit Criteria:*
 
-  - Initial version of the app
-  - Unit test cases and results
-  - Test Plan with partial results
-  - User Manual
+***2.2.3 Construction***
 
-***2.2.4 System Testing***
+In this phase, we will get most of the actual development done. The app should not only be fully developed but also ready for thoroughly tested.
 
-Perform Integration testing by putting together all the modules that have been developed and tested individually to make sure it works as expected. Perform functional and non-functional testing to make sure that the system meets the requirements. Report issues in case of anomalies by logging the defect and tracking it to closure. Progress on testing can be tracked via tools like traceability metrics, ALM.
+*Activities Performed:*
 
-*Entry Criteria:*
+We will have a a complete set of artifacts that include design documents, code test cases, etc.
 
-   - Unit tested code and test cases
+- Development. Source code is implemented during this phase as per the design specified in the UML diagram. 
 
-*Exit Criteria:*
+- Quality assurance. Unit testing is performed to test individual pieces of code and to verify whether individual modules are doing what they are intended to do. 
 
-  - Test cases
-  - -Test reports
-  - Defect reports and 
-  - Updated matrices.
+- Traceability matrix will be created to keep track if the requirements are being met.
 
-***2.2.5 System Deployment***
-
-During this phase make sure that the final version of the app is ready with all the exit criteria met and  no open Severity 1 issues. Ensure that the environment is up and running. Deploy the application in the respective environment; perform a sanity check in the environment after the application is deployed to ensure the application does not break.
 
 *Entry Criteria:*
 
-  - Final version of the Android app with no outstanding issues
+- The project risk/problem has been well analyzed and addressed.
 
 *Exit Criteria:*
 
-- User Manual and environment definition / specification
-- Test plan with final results.
+- The software is ready to be deployed to user.
 
-***2.2.6 System Maintenance***
+- The software has been thorougly tested.
 
-Make sure that the application is up and running in the respective environment. If the user encounters any defect, make sure to note and fix the issues faced. In case any issue is fixed; the updated code is deployed in the environment and regression testing is performed to ensure the existing functionality is not changed.
+- A complete product, which should be somehow stable and mature. 
+
+
+
+***2.2.4 Transition***
+
+I will mainly develop and maintain the Android app according to user's feedback (for example, they may want to see some improvement in the software).
+
+*Activities Performed:*
+
+- Develop and maintain the app.
+
+- Have a new release of the software.
+
+- Provide training and other assistance if necessary.
+
 
 *Entry Criteria:*
 
-    User Manual
+- The software is deployed to user.
 
 *Exit Criteria:*
 
-    List of production tickets
-    List of new features implemented.
+- The user is satisfied with app.
 
 
 ## 3 Team
 
 ***3.1 Team member names***
 
-   - Paul Cassell pcassell3, [paulcassell@gmail.com](paulcassell@gmail.com)
-   - Roopa Haribabu rharibabu3, [roopasandeep.49@gmail.com](roopasandeep.49@gmail.com)
-   - Fujia Wu fwu35, [wufujia@gmail.com](wufujia@gmail.com)
-   - Rui Zhang rzhang360, [ruizhang84.mail@gmail.com](ruizhang84.mail@gmail.com)
+- Paul Cassell pcassell3, [paulcassell@gmail.com](paulcassell@gmail.com)
+- Roopa Haribabu rharibabu3, [roopasandeep.49@gmail.com](roopasandeep.49@gmail.com)
+- Fujia Wu fwu35, [wufujia@gmail.com](wufujia@gmail.com)
+- Rui Zhang rzhang360, [ruizhang84.mail@gmail.com](ruizhang84.mail@gmail.com)
 
 ***3.2 Roles Table***
 
