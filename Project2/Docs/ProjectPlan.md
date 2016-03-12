@@ -14,12 +14,12 @@ The "TCCart" project aims to develope a payment and rewards system for coffee an
 
 ***2.1 Project Life Cycle***
 
-We have adopted the Unified Process model for our software development process. The life cycles of this project include four phases Inception, Elaboration(milestone), Construction(release), and Transition(final production release).
+We have adopted the Unified Process model for our software development process. The life cycles of this project includes four phases Inception, Elaboration(milestone), Construction(release), and Transition(final production release).
 
 
 ***2.2.1 Inception :***
 
-In this phase, we will go from the the idea of the product to the vision of the end product. We need to delimite the project scope and make the business case for the product presented. 
+In this phase, we will go from the the idea of the product to the vision of the end product, the Android app TCCart. We will need to delimite the project scope and make the business case for the product presented. 
 
 
 *Activities Performed:*
