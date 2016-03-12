@@ -1,6 +1,6 @@
 # Design Document
 
-**Author**: \<Team 54\>
+**Author**: 6300Spring16Team54
 
 | Version | Description     |
 | --------|:---------------:|
