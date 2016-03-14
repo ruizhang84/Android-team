@@ -17,5 +17,9 @@
 | TC Cart Manager | View Purchase/Rewards History | To_be_finished | To_be_finished | To_be_finished |
 | Customer | Do Purchase | To_be_finished | To_be_finished | To_be_finished |
 | External Library | Do Purchase | To_be_finished | To_be_finished | To_be_finished |
-| External Library | Hardware Devices | To_be_finished | To_be_finished | To_be_finished |
+| External Library | Print Customer Card | To_be_finished | To_be_finished | To_be_finished |
+| External Library | Read QR Code | To_be_finished | To_be_finished | To_be_finished |
+| External Library | Scan Credit Card | To_be_finished | To_be_finished | To_be_finished |
+| External Library | Send Email | To_be_finished | To_be_finished | To_be_finished |
+| External Library | Process Payment | To_be_finished | To_be_finished | To_be_finished |
 | Payment Service | Do Purchase | To_be_finished | To_be_finished | To_be_finished |
