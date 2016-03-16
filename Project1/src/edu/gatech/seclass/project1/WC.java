@@ -20,10 +20,9 @@ public class WC {
 			System.out.format("%.2f%n", c.getAverageSentenceLength());
 		} catch (Exception e) {
 			System.err.println(e.getMessage());
-		} finally {
+			//comment out the below to get the CoreTestInstructors.java JUnit cases to run
 			System.exit(1);
 		}
-		
 	}
 
 }

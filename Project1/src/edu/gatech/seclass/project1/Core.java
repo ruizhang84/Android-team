@@ -106,8 +106,9 @@ public class Core {
 	        //going through characters individually
 	    	s = scan.next();
 	    	this.printDebug(s);
-	    	if (s.matches("^[\\s]+$") || s.matches(delimiterRegex)) {
+	    	if (s.matches("^[\\s]+$") || s.matches(delimiterRegex) || !scan.hasNext()) {
 	    		//regex for whitespace or regex for all our delimiters
+	    		//or EOF
 	    		//end of old word and start of new word
 	    		//we need to treat a delimiter like the end of a word too
 	    		if (charsInWord >= this.getWordLengthLimit()) {
@@ -117,7 +118,9 @@ public class Core {
 	    		}
 	    		//reset number of characters in word counter
 	    		charsInWord = 0;
-	    		if (s.matches(delimiterRegex)) {
+	    		if (s.matches(delimiterRegex) || !scan.hasNext()) {
+	    			//regex for all our delimiters
+	    			//or EOF
 	    			//end of old sentence
 		    		//start of new sentence
 		    		if (atLeastOneWordInASentence) {
