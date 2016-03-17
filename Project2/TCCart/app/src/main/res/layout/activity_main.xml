@@ -47,47 +47,45 @@
 
         <LinearLayout
             android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="49dp">
-
-            <Button
-                android:layout_width="58dp"
-                android:layout_height="wrap_content"
-                android:text="Add New"
-                android:id="@+id/rbAddCustomer"
-                android:layout_weight="0.44" />
-
-            <Button
-                android:layout_width="54dp"
-                android:layout_height="wrap_content"
-                android:text="Edit Info"
-                android:id="@+id/rbEditCustomerInfo"
-                android:layout_weight="0.63" />
+            android:layout_width="299dp"
+            android:layout_height="49dp"
+            android:weightSum="1">
 
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Scan Card"
-                android:id="@+id/rbScanCustomerCard"
-                android:layout_weight="0.20" />
+                android:text="Add New"
+                android:id="@+id/rbAddCustomer"
+                android:layout_weight="0.39" />
+
+            <Button
+                android:layout_width="121dp"
+                android:layout_height="wrap_content"
+                android:text="Edit Info"
+                android:id="@+id/rbEditCustomerInfo" />
+
         </LinearLayout>
 
         <LinearLayout
             android:orientation="horizontal"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:weightSum="1">
 
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="View Transaction History"
-                android:id="@+id/rbViewTransactionHistory" />
+                android:text="View Transaction"
+                android:id="@+id/rbViewTransaction"
+                android:layout_weight="0.32" />
 
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Select"
-                android:id="@+id/rbSelectCustomer" />
+                android:text="Print Card"
+                android:id="@+id/rbPrintCard"
+                android:layout_weight="0.45" />
+
         </LinearLayout>
 
         <LinearLayout
@@ -146,8 +144,8 @@
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Delete"
-                android:id="@+id/rbDeleteItem" />
+                android:text="Edit/Delete"
+                android:id="@+id/rbEditDeleteItem" />
         </LinearLayout>
 
     </LinearLayout>
