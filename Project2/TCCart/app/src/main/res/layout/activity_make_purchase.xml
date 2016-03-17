@@ -7,7 +7,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="tccar.seclass.gatech.edu.tccart.PrintCardActivity">
+    tools:context="tccar.seclass.gatech.edu.tccart.MakePurchaseActivity">
 
     <TextView
         android:layout_width="wrap_content"
@@ -37,7 +37,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Print Customer Card"
+                android:text="Make Purchase"
                 android:id="@+id/textView6"
                 android:layout_marginTop="20dp" />
         </LinearLayout>
@@ -113,28 +113,7 @@
 
         </LinearLayout>
 
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.03">
-
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Print Card"
-                android:id="@+id/rbPrintCard"
-                android:layout_weight="0.03" />
-
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Cancel"
-                android:id="@+id/rbCancel"
-                android:layout_gravity="center_horizontal"
-                android:layout_weight="0.03" />
-        </LinearLayout>
-
     </LinearLayout>
 </RelativeLayout>
+
 
