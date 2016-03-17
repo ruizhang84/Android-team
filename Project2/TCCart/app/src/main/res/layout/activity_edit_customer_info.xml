@@ -169,22 +169,22 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="OK"
-                android:id="@+id/rbOKEditCustomer"
+                android:id="@+id/rbEditOK"
                 android:layout_weight="0.03" />
 
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Clear"
-                android:id="@+id/rbClearCustomerInfo"
+                android:id="@+id/rbClear"
                 android:layout_gravity="center_horizontal"
                 android:layout_weight="0.03" />
 
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Back"
-                android:id="@+id/rbBack"
+                android:text="Cancel"
+                android:id="@+id/rbCancel"
                 android:layout_gravity="center_horizontal"
                 android:layout_weight="0.03" />
         </LinearLayout>

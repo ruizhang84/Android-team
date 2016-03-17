@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">TCCart</string>
+    <string name="title_activity_print_card">PrintCardActivity</string>
 </resources>

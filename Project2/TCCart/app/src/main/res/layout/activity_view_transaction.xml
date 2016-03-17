@@ -7,7 +7,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="tccar.seclass.gatech.edu.tccart.AddCustomerActivity">
+    tools:context="tccar.seclass.gatech.edu.tccart.ViewTransactionActivity">
 
     <TextView
         android:layout_width="wrap_content"
@@ -37,9 +37,24 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceMedium"
-                android:text="Add New Customer"
+                android:text="View Transaction"
                 android:id="@+id/textView6"
                 android:layout_marginTop="20dp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.03"
+            android:weightSum="1">
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Scan Customer Card"
+                android:id="@+id/rbScanCard"
+                android:layout_weight="0.03" />
         </LinearLayout>
 
         <LinearLayout
@@ -53,15 +68,13 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:text="Name:"
-                android:id="@+id/textView7" />
+                android:id="@+id/textView10" />
 
-            <EditText
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:inputType="textPersonName"
-                android:ems="10"
-                android:id="@+id/textName"
-                android:layout_weight="1" />
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:id="@+id/textView12" />
 
         </LinearLayout>
 
@@ -76,15 +89,14 @@
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:text="Email:"
-                android:id="@+id/textView8" />
+                android:id="@+id/textView11" />
 
-            <EditText
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:inputType="textEmailAddress"
-                android:ems="10"
-                android:id="@+id/textEmail"
-                android:layout_weight="1" />
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:id="@+id/textView13" />
+
         </LinearLayout>
 
         <LinearLayout
@@ -93,48 +105,30 @@
             android:layout_height="wrap_content"
             android:layout_weight="0.03">
 
-            <Button
+            <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Generate ID"
-                android:id="@+id/rbGenerateID" />
-
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:id="@+id/textID"
-                android:layout_gravity="center_horizontal" />
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="Transaction Reward History:"
+                android:id="@+id/textView4" />
         </LinearLayout>
 
         <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="wrap_content"
+            android:orientation="vertical"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="0.03"
-            android:layout_marginTop="20dp">
+            android:layout_weight="0.03">
 
-            <Button
-                android:layout_width="wrap_content"
+            <TextView
+                android:layout_width="299dp"
                 android:layout_height="wrap_content"
-                android:text="Add"
-                android:id="@+id/rbAdd"
-                android:layout_weight="0.03" />
-
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Clear"
-                android:id="@+id/rbClear"
+                android:text="Customer Transaction and Rewards History:"
+                android:id="@+id/textTransactionRewardHistory"
                 android:layout_gravity="center_horizontal"
-                android:layout_weight="0.03" />
-
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Cancel"
-                android:id="@+id/rbCancel"
-                android:layout_weight="0.03" />
+                android:layout_weight="126763.68" />
         </LinearLayout>
 
     </LinearLayout>
 </RelativeLayout>
+
+
