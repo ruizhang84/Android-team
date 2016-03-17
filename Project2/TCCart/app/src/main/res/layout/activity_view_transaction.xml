@@ -40,6 +40,7 @@
                 android:text="View Transaction"
                 android:id="@+id/textView6"
                 android:layout_marginTop="20dp" />
+
         </LinearLayout>
 
         <LinearLayout
@@ -52,9 +53,14 @@
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Scan Customer Card"
-                android:id="@+id/rbScanCard"
-                android:layout_weight="0.03" />
+                android:text="Scan Card"
+                android:id="@+id/rbScanCard" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Back"
+                android:id="@+id/rbBack" />
         </LinearLayout>
 
         <LinearLayout
