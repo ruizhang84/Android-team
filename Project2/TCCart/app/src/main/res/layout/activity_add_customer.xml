@@ -96,8 +96,8 @@
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="Get ID"
-                android:id="@+id/rbGetID" />
+                android:text="Generate ID"
+                android:id="@+id/rbGenerateID" />
 
             <EditText
                 android:layout_width="match_parent"
