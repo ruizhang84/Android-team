@@ -36,7 +36,8 @@
             android:layout_height="wrap_content"
             android:text="Scan Customer Card"
             android:id="@+id/btScanCard"
-            android:layout_gravity="center_horizontal" />
+            android:layout_gravity="center_horizontal"
+            android:onClick="handleScanCard" />
 
         <Button
             android:layout_width="250dp"
@@ -53,6 +54,14 @@
             android:id="@+id/btEditCustomerInfo"
             android:layout_gravity="center_horizontal"
             android:onClick="handleEditCustomerInfo" />
+
+        <Button
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:text="Print Customer Card"
+            android:id="@+id/button"
+            android:layout_gravity="center_horizontal"
+            android:onClick="handlePrintCard" />
 
         <Button
             android:layout_width="250dp"

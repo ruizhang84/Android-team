@@ -19,10 +19,14 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        textName = (TextView)findViewById(R.id.textName);
-        textEmail = (TextView)findViewById(R.id.textEmail);
-        textID = (TextView)findViewById(R.id.textID);
+        textName = (TextView) findViewById(R.id.textName);
+        textEmail = (TextView) findViewById(R.id.textEmail);
+        textID = (TextView) findViewById(R.id.textID);
 
+    }
+
+    public void handleScanCard(View view){
+        
     }
 
     public void handleAddNewCustomer(View view){
@@ -35,6 +39,10 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void handlePrintCard(View view){
+
+    }
+
     public void handleViewTransaction(View view){
         Intent intent = new Intent(this, ViewTransactionActivity.class);
         startActivity(intent);
@@ -44,4 +52,5 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, MakePurchaseActivity.class);
         startActivity(intent);
     }
+
 }
