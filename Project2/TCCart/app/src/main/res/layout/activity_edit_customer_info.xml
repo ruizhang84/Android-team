@@ -53,8 +53,9 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Scan Customer Card"
-                android:id="@+id/rbScanCard"
-                android:layout_weight="0.03" />
+                android:id="@+id/btScanCard"
+                android:layout_weight="0.03"
+                android:onClick="handleScanCard" />
         </LinearLayout>
 
         <LinearLayout
@@ -88,7 +89,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
-                android:id="@+id/textView12" />
+                android:id="@+id/textName" />
 
         </LinearLayout>
 
@@ -109,7 +110,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
-                android:id="@+id/textView13" />
+                android:id="@+id/textEmail" />
 
         </LinearLayout>
 
@@ -169,24 +170,27 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="OK"
-                android:id="@+id/rbEditOK"
-                android:layout_weight="0.03" />
+                android:id="@+id/btEditOK"
+                android:layout_weight="0.03"
+                android:onClick="handleOK" />
 
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Clear"
-                android:id="@+id/rbClear"
+                android:id="@+id/btClear"
                 android:layout_gravity="center_horizontal"
-                android:layout_weight="0.03" />
+                android:layout_weight="0.03"
+                android:onClick="handleClear" />
 
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Cancel"
-                android:id="@+id/rbCancel"
+                android:id="@+id/btCancel"
                 android:layout_gravity="center_horizontal"
-                android:layout_weight="0.03" />
+                android:layout_weight="0.03"
+                android:onClick="handleCancel" />
         </LinearLayout>
 
     </LinearLayout>

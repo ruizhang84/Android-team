@@ -97,13 +97,15 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Generate ID"
-                android:id="@+id/rbGenerateID" />
+                android:id="@+id/btGenerateID"
+                android:onClick="handleGenerateID" />
 
-            <EditText
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:id="@+id/textID"
-                android:layout_gravity="center_horizontal" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:id="@+id/textID" />
+
         </LinearLayout>
 
         <LinearLayout
@@ -117,23 +119,26 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Add"
-                android:id="@+id/rbAdd"
-                android:layout_weight="0.03" />
+                android:id="@+id/btAdd"
+                android:layout_weight="0.03"
+                android:onClick="handleAdd" />
 
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Clear"
-                android:id="@+id/rbClear"
+                android:id="@+id/btClear"
                 android:layout_gravity="center_horizontal"
-                android:layout_weight="0.03" />
+                android:layout_weight="0.03"
+                android:onClick="handleClear" />
 
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Cancel"
-                android:id="@+id/rbCancel"
-                android:layout_weight="0.03" />
+                android:id="@+id/btCancel"
+                android:layout_weight="0.03"
+                android:onClick="handleCancel" />
         </LinearLayout>
 
     </LinearLayout>

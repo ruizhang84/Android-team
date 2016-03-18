@@ -39,7 +39,7 @@
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="Make Transaction"
                 android:id="@+id/textView6"
-                android:layout_marginTop="20dp" />
+                android:layout_marginTop="10dp" />
         </LinearLayout>
 
         <LinearLayout
@@ -53,15 +53,17 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Scan Customer Card"
-                android:id="@+id/rbScanCustomerCard"
-                android:layout_weight="0.03" />
+                android:id="@+id/btScanCustomerCard"
+                android:layout_weight="0.03"
+                android:onClick="handleScanCustomerCard" />
 
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Scan Credit Card"
-                android:id="@+id/rbScanCreditCard"
-                android:layout_weight="0.03" />
+                android:id="@+id/btScanCreditCard"
+                android:layout_weight="0.03"
+                android:onClick="handleScanCreditCard" />
         </LinearLayout>
 
         <LinearLayout
@@ -117,7 +119,7 @@
                 android:textAppearance="?android:attr/textAppearanceLarge"
                 android:text="Price:"
                 android:id="@+id/textView18"
-                android:layout_weight="0.03" />
+                android:layout_weight="0.01" />
 
             <EditText
                 android:layout_width="wrap_content"
@@ -140,7 +142,8 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Apply Reward/Discount"
-                android:id="@+id/rbApplyRewardDiscount" />
+                android:id="@+id/btApplyRewardDiscount"
+                android:onClick="handleApplyRewardDiscount" />
         </LinearLayout>
 
         <LinearLayout
@@ -219,23 +222,26 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Confirm"
-                android:id="@+id/rbConfirm"
+                android:id="@+id/btConfirm"
                 android:layout_gravity="center_horizontal"
-                android:layout_weight="0.03" />
+                android:layout_weight="0.03"
+                android:onClick="handleConfirm" />
 
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Clear"
-                android:id="@+id/rbClear"
-                android:layout_weight="0.03" />
+                android:id="@+id/btClear"
+                android:layout_weight="0.03"
+                android:onClick="handleClear" />
 
             <Button
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Cancel"
-                android:id="@+id/rbCancel"
-                android:layout_weight="0.03" />
+                android:id="@+id/btCancel"
+                android:layout_weight="0.03"
+                android:onClick="handleCancel" />
         </LinearLayout>
 
     </LinearLayout>

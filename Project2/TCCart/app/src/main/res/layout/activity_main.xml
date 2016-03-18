@@ -35,36 +35,40 @@
             android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:text="Scan Customer Card"
-            android:id="@+id/rbScanCard"
+            android:id="@+id/btScanCard"
             android:layout_gravity="center_horizontal" />
 
         <Button
             android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:text="Add New Customer"
-            android:id="@+id/rbAddNew"
-            android:layout_gravity="center_horizontal" />
+            android:id="@+id/btAddNewCustomer"
+            android:layout_gravity="center_horizontal"
+            android:onClick="handleAddNewCustomer" />
 
         <Button
             android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:text="Edit Customer Info"
-            android:id="@+id/rbEdit"
-            android:layout_gravity="center_horizontal" />
+            android:id="@+id/btEditCustomerInfo"
+            android:layout_gravity="center_horizontal"
+            android:onClick="handleEditCustomerInfo" />
 
         <Button
             android:layout_width="250dp"
             android:layout_height="wrap_content"
             android:text="View Transaction History"
-            android:id="@+id/rbViewTransaction"
-            android:layout_gravity="center_horizontal" />
+            android:id="@+id/btViewTransaction"
+            android:layout_gravity="center_horizontal"
+            android:onClick="handleViewTransaction" />
 
         <Button
             android:layout_width="250dp"
             android:layout_height="wrap_content"
-            android:text="Make Transaction"
-            android:id="@+id/rbMakeTransaction"
-            android:layout_gravity="center_horizontal" />
+            android:text="Make Purchase"
+            android:id="@+id/btMakePurchase"
+            android:layout_gravity="center_horizontal"
+            android:onClick="handleMakePurchase" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -72,36 +76,34 @@
             android:textAppearance="?android:attr/textAppearanceMedium"
             android:text="Customer Selected:"
             android:id="@+id/textView2"
-            android:layout_marginTop="20dp" />
+            android:layout_marginTop="10dp" />
 
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center_horizontal"
-            android:layout_marginTop="20dp">
+            android:layout_gravity="center_horizontal">
 
             <LinearLayout
                 android:orientation="horizontal"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="center_horizontal">
+                android:layout_gravity="center_horizontal"
+                android:layout_marginTop="5dp">
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text="Name:"
-                    android:id="@+id/textView3"
-                    android:layout_gravity="center_horizontal" />
+                    android:id="@+id/textView3" />
 
-                <EditText
-                    android:layout_width="match_parent"
+                <TextView
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:inputType="textPersonName"
-                    android:ems="10"
-                    android:id="@+id/textName"
-                    android:layout_gravity="center_horizontal" />
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:id="@+id/textName" />
+
             </LinearLayout>
 
             <LinearLayout
@@ -113,17 +115,15 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text="Email:"
                     android:id="@+id/textView16" />
 
-                <EditText
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:inputType="textEmailAddress"
-                    android:ems="10"
-                    android:id="@+id/textEmail"
-                    android:layout_weight="1" />
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:id="@+id/textEmail" />
             </LinearLayout>
 
             <LinearLayout
@@ -135,15 +135,15 @@
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textAppearance="?android:attr/textAppearanceLarge"
+                    android:textAppearance="?android:attr/textAppearanceMedium"
                     android:text="ID:"
                     android:id="@+id/textView17" />
 
-                <EditText
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:id="@+id/textID"
-                    android:layout_weight="1" />
+                    android:textAppearance="?android:attr/textAppearanceMedium"
+                    android:id="@+id/TEXTid" />
             </LinearLayout>
         </LinearLayout>
 
