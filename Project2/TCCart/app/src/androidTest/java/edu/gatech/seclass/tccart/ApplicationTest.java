@@ -1,4 +1,4 @@
-package tccar.seclass.gatech.edu.tccart;
+package edu.gatech.seclass.tccart;
 
 import android.app.Application;
 import android.test.ApplicationTestCase;

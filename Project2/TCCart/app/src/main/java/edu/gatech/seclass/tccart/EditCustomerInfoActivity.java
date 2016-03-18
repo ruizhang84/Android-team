@@ -1,4 +1,4 @@
-package tccar.seclass.gatech.edu.tccart;
+package edu.gatech.seclass.tccart;
 
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;

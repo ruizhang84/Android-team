@@ -3,9 +3,8 @@ apply plugin: 'com.android.application'
 android {
     compileSdkVersion 23
     buildToolsVersion "23.0.2"
-
     defaultConfig {
-        applicationId "tccar.seclass.gatech.edu.tccart"
+        applicationId 'edu.gatech.seclass.tccart'
         minSdkVersion 15
         targetSdkVersion 23
         versionCode 1
@@ -17,6 +16,8 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    productFlavors {
+    }
 }
 
 dependencies {
@@ -25,4 +26,5 @@ dependencies {
     compile 'com.android.support:appcompat-v7:23.1.1'
     compile 'com.android.support:design:23.1.1'
     compile files('C:/Users/surface-fujiawu/Dropbox/6300Spring16Team54/Project2/TCCart/libs/tccart-services.jar')
+    compile 'com.google.android.gms:play-services-appindexing:8.1.0'
 }
