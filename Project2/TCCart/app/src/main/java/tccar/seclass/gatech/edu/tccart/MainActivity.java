@@ -26,7 +26,8 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void handleScanCard(View view){
-        
+        //String id = PrintingService.scanQRCode();
+
     }
 
     public void handleAddNewCustomer(View view){
