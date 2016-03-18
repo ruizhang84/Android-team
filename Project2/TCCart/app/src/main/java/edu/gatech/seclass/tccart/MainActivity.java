@@ -13,6 +13,7 @@ import com.google.android.gms.appindexing.Action;
 import com.google.android.gms.appindexing.AppIndex;
 import com.google.android.gms.common.api.GoogleApiClient;
 
+import edu.gatech.seclass.services.*;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -37,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void handleScanCard(View view) {
-        String id = PrintingService.scanQRCode();
+        String id = QRCodeService.scanQRCode();
         textID.setText(id);
     }
 
