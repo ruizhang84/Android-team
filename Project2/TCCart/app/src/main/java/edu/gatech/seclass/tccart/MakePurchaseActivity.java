@@ -1,5 +1,6 @@
 package edu.gatech.seclass.tccart;
 
+import edu.gatech.seclass.services.*;
 import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -30,6 +31,8 @@ public class MakePurchaseActivity extends AppCompatActivity {
         textName = (EditText)findViewById(R.id.textPrice);
 
     }
+
+    CreditCardService.readCreditCard();
 
     public void handleCancel(View view){
         Intent intent = new Intent(this, MainActivity.class);
