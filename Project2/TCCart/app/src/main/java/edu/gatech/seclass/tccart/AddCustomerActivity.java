@@ -9,6 +9,8 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.Random;
+
 public class AddCustomerActivity extends AppCompatActivity {
 
     private EditText editTextName;
@@ -31,6 +33,20 @@ public class AddCustomerActivity extends AppCompatActivity {
     }
 
     public void handleGenerateID(View view){
+        Random rd = new Random();
+        String id = null;
+        while(true){
+            StringBuilder sb = new StringBuilder();
+            int numChar = Customer.idCharList.length();
+            for(int i = 0; i < Customer.idLength; i++){
+                int index = rd.nextInt(numChar);
+                sb.append(Customer.idCharList.charAt(index));
+            }
+            id = sb.toString();
+            if (!Customer.customerMap.containsKey(id))
+                break;
+        }
+        textID.setText(id);
     }
 
     public void handleAdd(View view){
@@ -68,10 +84,14 @@ public class AddCustomerActivity extends AppCompatActivity {
         int duration = Toast.LENGTH_SHORT;
         Toast toast = Toast.makeText(context, text, duration);
         toast.show();
-        return;
+        Intent intent = new Intent(this, MainActivity.class);
+        startActivity(intent);
     }
 
     public void handleClear(View view){
+        editTextName.setText("");
+        editTextEmail.setText("");
+        textID.setText("");
     }
 
 }

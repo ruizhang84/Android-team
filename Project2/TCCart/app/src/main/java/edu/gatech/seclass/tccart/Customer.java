@@ -9,6 +9,9 @@ public class Customer {
 
     public static HashMap<String, Customer>
             customerMap = new HashMap<String, Customer>();
+    public static final String idCharList = "0123456789abcdef";
+    public static final int idLength = 8;
+
     private String name;
     private String email;
     private String id;
