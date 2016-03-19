@@ -81,6 +81,14 @@ public class EditCustomerInfoActivity extends AppCompatActivity {
 
     public void handleConfirm(View view){
         Customer customer = Customer.currentCustomer;
+        if (customer == null){
+            Context context = getApplicationContext();
+            CharSequence text = "Must select a customer first!";
+            int duration = Toast.LENGTH_SHORT;
+            Toast toast = Toast.makeText(context, text, duration);
+            toast.show();
+            return;
+        }
         String firstName = editTextNewFirstName.getText().toString();
         String lastName = editTextNewLastName.getText().toString();
         String email = editTextNewEmail.getText().toString();
@@ -108,7 +116,17 @@ public class EditCustomerInfoActivity extends AppCompatActivity {
 
     }
 
-    public void handleClear(View view){
+    public void handleClearSelected(View view){
+        textEmail.setText("");
+        textID.setText("");
+        textName.setText("");
+        Customer.currentCustomer = null;
+    }
+
+    public void handleClearField(View view){
+        editTextNewEmail.setText("");
+        editTextNewLastName.setText("");
+        editTextNewFirstName.setText("");
     }
 
 

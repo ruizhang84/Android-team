@@ -40,6 +40,14 @@ public class MainActivity extends AppCompatActivity {
 
         //Preload some customers
         Customer.preloadCustomers();
+
+        Customer customer = Customer.currentCustomer;
+        if (customer != null &&
+                Customer.customerMap.containsKey(customer.getID())){
+            textID.setText(customer.getID());
+            textName.setText(customer.getFullName());
+            textEmail.setText(customer.getEmail());
+        }
     }
 
     public void handleScanCard(View view) {
@@ -136,6 +144,7 @@ public class MainActivity extends AppCompatActivity {
         textName.setText("");
         textEmail.setText("");
         textID.setText("");
+        Customer.currentCustomer = null;
     }
 
 }

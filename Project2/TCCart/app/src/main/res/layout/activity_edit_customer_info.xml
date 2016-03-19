@@ -56,6 +56,13 @@
                 android:id="@+id/btScanCard"
                 android:layout_weight="0.03"
                 android:onClick="handleScanCard" />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Clear Selected"
+                android:id="@+id/btClearSelected"
+                android:onClick="handleClearSelected" />
         </LinearLayout>
 
         <LinearLayout
@@ -219,10 +226,10 @@
             <Button
                 android:layout_width="120dp"
                 android:layout_height="wrap_content"
-                android:text="Clear"
-                android:id="@+id/btClear"
+                android:text="Clear Field"
+                android:id="@+id/btClearField"
                 android:layout_weight="0.03"
-                android:onClick="handleClear" />
+                android:onClick="handleClearField" />
 
             <Button
                 android:layout_width="120dp"
