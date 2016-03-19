@@ -3,6 +3,7 @@ package edu.gatech.seclass.tccart;
 import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
+import android.printservice.PrintService;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -84,7 +85,40 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void handlePrintCard(View view) {
-
+        String id = textID.getText().toString();
+        if (id == null || id.length() == 0){
+            Context context = getApplicationContext();
+            CharSequence text = "Please select a customer!";
+            int duration = Toast.LENGTH_SHORT;
+            Toast toast = Toast.makeText(context, text, duration);
+            toast.show();
+            return;
+        }
+        if (!Customer.customerMap.containsKey(id)){
+            Context context = getApplicationContext();
+            CharSequence text = "This customer is not registered!";
+            int duration = Toast.LENGTH_SHORT;
+            Toast toast = Toast.makeText(context, text, duration);
+            toast.show();
+            return;
+        }
+        Customer customer = Customer.customerMap.get(id);
+        String firstName = customer.getFirstName();
+        String lastName = customer.getLastName();
+        if (PrintingService.printCard(firstName, lastName, id)){
+            Context context = getApplicationContext();
+            CharSequence text = "Print Card Success!";
+            int duration = Toast.LENGTH_SHORT;
+            Toast toast = Toast.makeText(context, text, duration);
+            toast.show();
+        }
+        else{
+            Context context = getApplicationContext();
+            CharSequence text = "Print Card Failed!";
+            int duration = Toast.LENGTH_SHORT;
+            Toast toast = Toast.makeText(context, text, duration);
+            toast.show();
+        }
     }
 
     public void handleViewTransaction(View view) {
