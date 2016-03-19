@@ -25,6 +25,6 @@ dependencies {
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:23.1.1'
     compile 'com.android.support:design:23.1.1'
-    compile files('C:/Users/surface-fujiawu/Dropbox/6300Spring16Team54/Project2/TCCart/libs/tccart-services.jar')
     compile 'com.google.android.gms:play-services-appindexing:8.1.0'
+    compile files('libs/tccart-services.jar')
 }
