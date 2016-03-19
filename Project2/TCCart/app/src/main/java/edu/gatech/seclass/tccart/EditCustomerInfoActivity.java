@@ -9,7 +9,8 @@ import android.widget.TextView;
 
 public class EditCustomerInfoActivity extends AppCompatActivity {
 
-    private EditText editTextNewName;
+    private EditText editTextNewFirstName;
+    private EditText editTextNewLastName;
     private EditText editTextNewEmail;
     private TextView textName;
     private TextView textEmail;
@@ -21,7 +22,8 @@ public class EditCustomerInfoActivity extends AppCompatActivity {
 
         textName = (TextView)findViewById(R.id.textName);
         textEmail = (TextView)findViewById(R.id.textEmail);
-        editTextNewName = (EditText)findViewById(R.id.textNewName);
+        editTextNewFirstName = (EditText)findViewById(R.id.textNewFirstName);
+        editTextNewLastName = (EditText)findViewById(R.id.textNewLastName);
         editTextNewEmail = (EditText)findViewById(R.id.textNewEmail);
 
     }

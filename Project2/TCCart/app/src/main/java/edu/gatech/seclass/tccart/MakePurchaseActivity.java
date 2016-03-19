@@ -45,7 +45,7 @@ public class MakePurchaseActivity extends AppCompatActivity {
         client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
     }
 
-    CreditCardService.readCreditCard();
+    //CreditCardService.readCreditCard();
 
     public void handleCancel(View view) {
         Intent intent = new Intent(this, MainActivity.class);

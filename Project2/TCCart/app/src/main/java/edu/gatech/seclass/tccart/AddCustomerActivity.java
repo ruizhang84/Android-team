@@ -13,7 +13,8 @@ import java.util.Random;
 
 public class AddCustomerActivity extends AppCompatActivity {
 
-    private EditText editTextName;
+    private EditText editTextFirstName;
+    private EditText editTextLastName;
     private EditText editTextEmail;
     private TextView textID;
 
@@ -22,7 +23,8 @@ public class AddCustomerActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_customer);
 
-        editTextName = (EditText)findViewById(R.id.textName);
+        editTextFirstName = (EditText)findViewById(R.id.textFirstName);
+        editTextLastName = (EditText)findViewById(R.id.textLastName);
         editTextEmail = (EditText)findViewById(R.id.textEmail);
         textID = (TextView)findViewById(R.id.textID);
     }
@@ -59,9 +61,11 @@ public class AddCustomerActivity extends AppCompatActivity {
             toast.show();
             return;
         }
-        String name = editTextName.getText().toString();
+        String firstName = editTextFirstName.getText().toString();
+        String lastName = editTextLastName.getText().toString();
         String email = editTextEmail.getText().toString();
-        if (name.length() <= 0 || email.length() <= 0) {
+        if (firstName.length() <= 0 || lastName.length() <= 0
+                || email.length() <= 0) {
             Context context = getApplicationContext();
             CharSequence text = "Name or email cannot be empty!";
             int duration = Toast.LENGTH_SHORT;
@@ -69,7 +73,7 @@ public class AddCustomerActivity extends AppCompatActivity {
             toast.show();
             return;
         }
-        Customer customer = new Customer(name, email, id);
+        Customer customer = new Customer(firstName, lastName, email, id);
         if (Customer.customerMap.containsKey(id)){
             Context context = getApplicationContext();
             CharSequence text = "This id already exists! Please generate a new id!";
@@ -89,7 +93,8 @@ public class AddCustomerActivity extends AppCompatActivity {
     }
 
     public void handleClear(View view){
-        editTextName.setText("");
+        editTextFirstName.setText("");
+        editTextLastName.setText("");
         editTextEmail.setText("");
         textID.setText("");
     }

@@ -68,7 +68,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="Customer Selected:"
+                android:text="Customer Selected"
                 android:id="@+id/textView9" />
         </LinearLayout>
 
@@ -121,20 +121,41 @@
             android:layout_weight="0.03">
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="176dp"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="New Name:"
-                android:id="@+id/textView14"
-                android:layout_weight="0.03" />
+                android:text="New First Name:"
+                android:id="@+id/textView14" />
 
             <EditText
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:inputType="textPersonName"
                 android:ems="10"
-                android:id="@+id/textNewName"
+                android:id="@+id/textNewFirstName"
                 android:layout_weight="0.03" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:orientation="horizontal"
+            android:layout_width="match_parent"
+            android:layout_height="54dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textAppearance="?android:attr/textAppearanceLarge"
+                android:text="New Last Name:"
+                android:id="@+id/textView13" />
+
+            <EditText
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:inputType="textPersonName"
+                android:ems="10"
+                android:id="@+id/textNewLastName"
+                android:layout_weight="1" />
         </LinearLayout>
 
         <LinearLayout

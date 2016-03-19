@@ -69,7 +69,7 @@ public class MainActivity extends AppCompatActivity {
 
         textID.setText(id);
         Customer customer = Customer.customerMap.get(id);
-        textName.setText(customer.getName());
+        textName.setText(customer.getFullName());
         textEmail.setText(customer.getEmail());
     }
 
