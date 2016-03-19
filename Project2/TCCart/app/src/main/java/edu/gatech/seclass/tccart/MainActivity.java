@@ -1,5 +1,6 @@
 package edu.gatech.seclass.tccart;
 
+import android.content.Context;
 import android.content.Intent;
 import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
@@ -8,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.android.gms.appindexing.Action;
 import com.google.android.gms.appindexing.AppIndex;
@@ -39,7 +41,27 @@ public class MainActivity extends AppCompatActivity {
 
     public void handleScanCard(View view) {
         String id = QRCodeService.scanQRCode();
+
+        if (id == null || id.length() == 0){
+            Context context = getApplicationContext();
+            CharSequence text = "Card scan failed!";
+            int duration = Toast.LENGTH_SHORT;
+            Toast toast = Toast.makeText(context, text, duration);
+            toast.show();
+            return;
+        }
+        if (!Customer.customerMap.containsKey(id)){
+            Context context = getApplicationContext();
+            CharSequence text = "Not a valid ID!";
+            int duration = Toast.LENGTH_SHORT;
+            Toast toast = Toast.makeText(context, text, duration);
+            toast.show();
+            return;
+        }
         textID.setText(id);
+        Customer customer = Customer.customerMap.get(id);
+        textName.setText(customer.getName());
+        textEmail.setText(customer.getEmail());
     }
 
     public void handleAddNewCustomer(View view) {
