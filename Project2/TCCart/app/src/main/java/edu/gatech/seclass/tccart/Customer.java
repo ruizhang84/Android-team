@@ -11,6 +11,7 @@ public class Customer {
             customerMap = new HashMap<String, Customer>();
     public static final String idCharList = "0123456789abcdef";
     public static final int idLength = 8;
+    public static Customer currentCustomer = null;
 
     private String firstName;
     private String lastName;
@@ -25,10 +26,9 @@ public class Customer {
     }
 
     public String getFullName(){
-        String fullName = this.firstName +
+        return this.firstName +
                 " " +
                 this.lastName;
-        return fullName;
     }
 
     public String getFirstName(){ return this.firstName; }

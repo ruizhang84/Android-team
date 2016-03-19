@@ -72,6 +72,7 @@ public class MainActivity extends AppCompatActivity {
         Customer customer = Customer.customerMap.get(id);
         textName.setText(customer.getFullName());
         textEmail.setText(customer.getEmail());
+        Customer.currentCustomer = customer;
     }
 
     public void handleAddNewCustomer(View view) {
