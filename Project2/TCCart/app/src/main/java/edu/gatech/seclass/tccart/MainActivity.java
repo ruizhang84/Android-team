@@ -37,6 +37,8 @@ public class MainActivity extends AppCompatActivity {
         textEmail = (TextView) findViewById(R.id.textEmail);
         textID = (TextView) findViewById(R.id.textID);
 
+        //Preload some customers
+        Customer.preloadCustomers();
     }
 
     public void handleScanCard(View view) {
@@ -52,12 +54,19 @@ public class MainActivity extends AppCompatActivity {
         }
         if (!Customer.customerMap.containsKey(id)){
             Context context = getApplicationContext();
-            CharSequence text = "Not a valid ID!";
+            CharSequence text = "Not a registered ID!";
             int duration = Toast.LENGTH_SHORT;
             Toast toast = Toast.makeText(context, text, duration);
             toast.show();
             return;
         }
+
+        Context context = getApplicationContext();
+        CharSequence text = "Scan card successful!";
+        int duration = Toast.LENGTH_SHORT;
+        Toast toast = Toast.makeText(context, text, duration);
+        toast.show();
+
         textID.setText(id);
         Customer customer = Customer.customerMap.get(id);
         textName.setText(customer.getName());
