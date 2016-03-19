@@ -131,4 +131,10 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
+    public void handleClear(View view){
+        textName.setText("");
+        textEmail.setText("");
+        textID.setText("");
+    }
+
 }

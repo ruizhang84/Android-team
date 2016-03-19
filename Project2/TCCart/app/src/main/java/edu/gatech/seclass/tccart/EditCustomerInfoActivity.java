@@ -36,10 +36,15 @@ public class EditCustomerInfoActivity extends AppCompatActivity {
     public void handleScanCard(View view){
     }
 
-    public void handleOK(View view){
+    public void handleConfirm(View view){
+    }
+
+    public void handleDelete(View view){
+
     }
 
     public void handleClear(View view){
     }
+
 
 }
