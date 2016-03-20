@@ -122,7 +122,9 @@ public class MainActivity extends AppCompatActivity {
                 view.getContext());
 
         alert.setTitle("Confirm Print Customer Card");
-        alert.setMessage("Are you sure you want to print a customer card?");
+        alert.setMessage("Are you sure you want to print a customer card for "
+                + Customer.currentCustomer.getFullName() + "?");
+
 
         alert.setPositiveButton("YES",
                 new DialogInterface.OnClickListener() {

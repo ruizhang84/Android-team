@@ -1,7 +1,9 @@
 package edu.gatech.seclass.tccart;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -113,6 +115,62 @@ public class EditCustomerInfoActivity extends AppCompatActivity {
     }
 
     public void handleDelete(View view){
+        Customer customer = Customer.currentCustomer;
+        if (customer == null){
+            Context context = getApplicationContext();
+            CharSequence text = "Please select a customer to delete.";
+            int duration = Toast.LENGTH_SHORT;
+            Toast toast = Toast.makeText(context, text, duration);
+            toast.show();
+            return;
+        }
+
+        if (!Customer.customerMap.containsKey(customer.getID())){
+            Context context = getApplicationContext();
+            CharSequence text = "This customer is not registered, no need to delete.";
+            int duration = Toast.LENGTH_SHORT;
+            Toast toast = Toast.makeText(context, text, duration);
+            toast.show();
+            return;
+        }
+
+        // open an alert dialog
+        AlertDialog.Builder alert = new AlertDialog.Builder(
+                view.getContext());
+
+        alert.setTitle("Confirm Delete");
+        alert.setMessage("Are you sure you want to delete "
+                + Customer.currentCustomer.getFullName() + "?");
+
+        alert.setPositiveButton("Yes",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        Customer.customerMap.remove(Customer.currentCustomer.getID());
+                        Customer.currentCustomer = null;
+                        textEmail.setText("");
+                        textID.setText("");
+                        textName.setText("");
+                        editTextNewEmail.setText("");
+                        editTextNewLastName.setText("");
+                        editTextNewFirstName.setText("");
+                        Context context = getApplicationContext();
+                        CharSequence text = "Customer Deleted!";
+                        int duration = Toast.LENGTH_SHORT;
+                        Toast toast = Toast.makeText(context, text, duration);
+                        toast.show();
+                        dialog.cancel();
+                    }
+                });
+
+        alert.setNegativeButton("No",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+
+                        dialog.cancel();
+                    }
+                });
+        alert.show();
+
 
     }
 
