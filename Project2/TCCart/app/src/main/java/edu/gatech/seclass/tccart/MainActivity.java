@@ -1,9 +1,11 @@
 package edu.gatech.seclass.tccart;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.net.Uri;
 import android.printservice.PrintService;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -94,8 +96,11 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void handlePrintCard(View view) {
+
         String id = textID.getText().toString();
-        if (id == null || id.length() == 0){
+
+        // check whether id is valid
+        if (id.length() == 0){
             Context context = getApplicationContext();
             CharSequence text = "Please select a customer!";
             int duration = Toast.LENGTH_SHORT;
@@ -111,23 +116,46 @@ public class MainActivity extends AppCompatActivity {
             toast.show();
             return;
         }
-        Customer customer = Customer.customerMap.get(id);
-        String firstName = customer.getFirstName();
-        String lastName = customer.getLastName();
-        if (PrintingService.printCard(firstName, lastName, id)){
-            Context context = getApplicationContext();
-            CharSequence text = "Print Card Success!";
-            int duration = Toast.LENGTH_SHORT;
-            Toast toast = Toast.makeText(context, text, duration);
-            toast.show();
-        }
-        else{
-            Context context = getApplicationContext();
-            CharSequence text = "Print Card Failed!";
-            int duration = Toast.LENGTH_SHORT;
-            Toast toast = Toast.makeText(context, text, duration);
-            toast.show();
-        }
+
+        // open an alert dialog
+        AlertDialog.Builder alert = new AlertDialog.Builder(
+                view.getContext());
+
+        alert.setTitle("Confirm Print Customer Card");
+        alert.setMessage("Are you sure you want to print a customer card?");
+
+        alert.setPositiveButton("YES",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        // print customer card
+                        String id = textID.getText().toString();
+                        Customer customer = Customer.customerMap.get(id);
+                        String firstName = customer.getFirstName();
+                        String lastName = customer.getLastName();
+                        if (PrintingService.printCard(firstName, lastName, id)){
+                            Context context = getApplicationContext();
+                            CharSequence text = "Print Card Success!";
+                            int duration = Toast.LENGTH_SHORT;
+                            Toast toast = Toast.makeText(context, text, duration);
+                            toast.show();
+                        }
+                        else{
+                            Context context = getApplicationContext();
+                            CharSequence text = "Print Card Failed!";
+                            int duration = Toast.LENGTH_SHORT;
+                            Toast toast = Toast.makeText(context, text, duration);
+                            toast.show();
+                        }
+                        dialog.cancel();
+                    }
+                });
+        alert.setNegativeButton("NO",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                    }
+                });
+        alert.show();
     }
 
     public void handleViewTransaction(View view) {
