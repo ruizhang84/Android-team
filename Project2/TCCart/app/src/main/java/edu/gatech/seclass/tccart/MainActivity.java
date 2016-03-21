@@ -50,6 +50,8 @@ public class MainActivity extends AppCompatActivity {
             textName.setText(customer.getFullName());
             textEmail.setText(customer.getEmail());
         }
+
+        CustomerDBHandler db = new CustomerDBHandler(this);
     }
 
     public void handleScanCard(View view) {
