@@ -13,6 +13,8 @@ import java.util.Random;
 
 public class AddCustomerActivity extends AppCompatActivity {
 
+    private CustomerDBHandler db;
+
     private EditText editTextFirstName;
     private EditText editTextLastName;
     private EditText editTextEmail;
@@ -22,6 +24,8 @@ public class AddCustomerActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_customer);
+
+        db = new CustomerDBHandler(this);
 
         editTextFirstName = (EditText)findViewById(R.id.textFirstName);
         editTextLastName = (EditText)findViewById(R.id.textLastName);
@@ -45,7 +49,7 @@ public class AddCustomerActivity extends AppCompatActivity {
                 sb.append(Customer.idCharList.charAt(index));
             }
             id = sb.toString();
-            if (!Customer.customerMap.containsKey(id))
+            if (db.getCustomer(id) == null)
                 break;
         }
         textID.setText(id);
@@ -74,7 +78,7 @@ public class AddCustomerActivity extends AppCompatActivity {
             return;
         }
         Customer customer = new Customer(firstName, lastName, email, id);
-        if (Customer.customerMap.containsKey(id)){
+        if (db.getCustomer(id) != null){
             Context context = getApplicationContext();
             CharSequence text = "This id already exists! Please generate a new id!";
             int duration = Toast.LENGTH_SHORT;
@@ -82,7 +86,7 @@ public class AddCustomerActivity extends AppCompatActivity {
             toast.show();
             return;
         }
-        Customer.customerMap.put(id, customer);
+        db.addCustomer(customer);
         Context context = getApplicationContext();
         CharSequence text = "Customer is added successfully!";
         int duration = Toast.LENGTH_SHORT;

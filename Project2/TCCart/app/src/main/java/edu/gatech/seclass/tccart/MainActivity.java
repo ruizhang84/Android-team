@@ -22,7 +22,7 @@ import edu.gatech.seclass.services.*;
 
 public class MainActivity extends AppCompatActivity {
 
-    private static CustomerDBHandler db;
+    private CustomerDBHandler db;
 
     private TextView textName;
     private TextView textEmail;

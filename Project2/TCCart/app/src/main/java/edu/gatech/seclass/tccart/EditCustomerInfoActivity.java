@@ -15,6 +15,8 @@ import edu.gatech.seclass.services.QRCodeService;
 
 public class EditCustomerInfoActivity extends AppCompatActivity {
 
+    private CustomerDBHandler db;
+
     private EditText editTextNewFirstName;
     private EditText editTextNewLastName;
     private EditText editTextNewEmail;
@@ -27,6 +29,8 @@ public class EditCustomerInfoActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_customer_info);
 
+        db = new CustomerDBHandler(this);
+
         textName = (TextView)findViewById(R.id.textName);
         textEmail = (TextView)findViewById(R.id.textEmail);
         textID = (TextView)findViewById(R.id.textID);
@@ -36,7 +40,7 @@ public class EditCustomerInfoActivity extends AppCompatActivity {
 
         Customer customer = Customer.currentCustomer;
         if (customer != null &&
-                Customer.customerMap.containsKey(customer.getID())){
+                db.getCustomer(customer.getID()) != null){
             textID.setText(customer.getID());
             textName.setText(customer.getFullName());
             textEmail.setText(customer.getEmail());
@@ -60,7 +64,7 @@ public class EditCustomerInfoActivity extends AppCompatActivity {
             toast.show();
             return;
         }
-        if (!Customer.customerMap.containsKey(id)){
+        if (db.getCustomer(id) == null){
             Context context = getApplicationContext();
             CharSequence text = "Not a registered ID!";
             int duration = Toast.LENGTH_SHORT;
@@ -75,7 +79,7 @@ public class EditCustomerInfoActivity extends AppCompatActivity {
         toast.show();
 
         textID.setText(id);
-        Customer customer = Customer.customerMap.get(id);
+        Customer customer = db.getCustomer(id);
         textName.setText(customer.getFullName());
         textEmail.setText(customer.getEmail());
         Customer.currentCustomer = customer;
@@ -125,7 +129,7 @@ public class EditCustomerInfoActivity extends AppCompatActivity {
             return;
         }
 
-        if (!Customer.customerMap.containsKey(customer.getID())){
+        if (db.getCustomer(customer.getID()) == null){
             Context context = getApplicationContext();
             CharSequence text = "This customer is not registered, no need to delete.";
             int duration = Toast.LENGTH_SHORT;
@@ -145,7 +149,7 @@ public class EditCustomerInfoActivity extends AppCompatActivity {
         alert.setPositiveButton("Yes",
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
-                        Customer.customerMap.remove(Customer.currentCustomer.getID());
+                        db.deleteCustomer(Customer.currentCustomer);
                         Customer.currentCustomer = null;
                         textEmail.setText("");
                         textID.setText("");
