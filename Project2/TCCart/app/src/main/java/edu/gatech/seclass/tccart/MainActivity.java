@@ -22,6 +22,8 @@ import edu.gatech.seclass.services.*;
 
 public class MainActivity extends AppCompatActivity {
 
+    private static CustomerDBHandler db;
+
     private TextView textName;
     private TextView textEmail;
     private TextView textID;
@@ -40,18 +42,32 @@ public class MainActivity extends AppCompatActivity {
         textEmail = (TextView) findViewById(R.id.textEmail);
         textID = (TextView) findViewById(R.id.textID);
 
-        //Preload some customers
-        Customer.preloadCustomers();
+        db = new CustomerDBHandler(this);
+        preloadCustomers();
 
         Customer customer = Customer.currentCustomer;
-        if (customer != null &&
-                Customer.customerMap.containsKey(customer.getID())){
-            textID.setText(customer.getID());
-            textName.setText(customer.getFullName());
-            textEmail.setText(customer.getEmail());
+        if (customer != null) {
+            if (db.getCustomer(customer.getID()) != null) {
+                textID.setText(customer.getID());
+                textName.setText(customer.getFullName());
+                textEmail.setText(customer.getEmail());
+            }
+            else{
+                textID.setText("");
+                textName.setText("");
+                textEmail.setText("");
+                Customer.currentCustomer = null;
+            }
         }
 
-        CustomerDBHandler db = new CustomerDBHandler(this);
+
+
+    }
+
+    public void preloadCustomers(){
+        db.addCustomer(new Customer("Ralph", "Hapschatt", "ralph@gmail.com", "7c86ffee"));
+        db.addCustomer(new Customer("Betty", "Monro", "betty@gmail.com", "b59441af"));
+        db.addCustomer(new Customer("Everett", "Scott", "everett@gmail.com", "cd0f0e05"));
     }
 
     public void handleScanCard(View view) {
@@ -65,7 +81,8 @@ public class MainActivity extends AppCompatActivity {
             toast.show();
             return;
         }
-        if (!Customer.customerMap.containsKey(id)){
+        Customer customer = db.getCustomer(id);
+        if (customer == null){
             Context context = getApplicationContext();
             CharSequence text = "Not a registered ID!";
             int duration = Toast.LENGTH_SHORT;
@@ -81,7 +98,6 @@ public class MainActivity extends AppCompatActivity {
         toast.show();
 
         textID.setText(id);
-        Customer customer = Customer.customerMap.get(id);
         textName.setText(customer.getFullName());
         textEmail.setText(customer.getEmail());
         Customer.currentCustomer = customer;
@@ -102,7 +118,7 @@ public class MainActivity extends AppCompatActivity {
         String id = textID.getText().toString();
 
         // check whether id is valid
-        if (id.length() == 0){
+        if (id.length() == 0 || Customer.currentCustomer == null){
             Context context = getApplicationContext();
             CharSequence text = "Please select a customer!";
             int duration = Toast.LENGTH_SHORT;
@@ -110,7 +126,8 @@ public class MainActivity extends AppCompatActivity {
             toast.show();
             return;
         }
-        if (!Customer.customerMap.containsKey(id)){
+        Customer customer = db.getCustomer(id);
+        if (customer == null){
             Context context = getApplicationContext();
             CharSequence text = "This customer is not registered!";
             int duration = Toast.LENGTH_SHORT;
@@ -125,17 +142,16 @@ public class MainActivity extends AppCompatActivity {
 
         alert.setTitle("Confirm Print Customer Card");
         alert.setMessage("Are you sure you want to print a customer card for "
-                + Customer.currentCustomer.getFullName() + "?");
-
+                + customer.getFullName() + "?");
 
         alert.setPositiveButton("YES",
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
                         // print customer card
-                        String id = textID.getText().toString();
-                        Customer customer = Customer.customerMap.get(id);
+                        Customer customer = Customer.currentCustomer;
                         String firstName = customer.getFirstName();
                         String lastName = customer.getLastName();
+                        String id = customer.getID();
                         if (PrintingService.printCard(firstName, lastName, id)){
                             Context context = getApplicationContext();
                             CharSequence text = "Print Card Success!";
