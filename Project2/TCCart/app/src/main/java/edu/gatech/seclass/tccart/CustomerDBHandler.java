@@ -44,7 +44,7 @@ public class CustomerDBHandler extends SQLiteOpenHelper {
         values.put(ID, customer.getID());
         values.put(FIRST_NAME, customer.getFirstName());
         values.put(LAST_NAME, customer.getLastName());
-        values.put(LAST_NAME, customer.getEmail());
+        values.put(EMAIL, customer.getEmail());
 
         db.insert(TABLE_CUSTOMER, null, values);
         db.close();
