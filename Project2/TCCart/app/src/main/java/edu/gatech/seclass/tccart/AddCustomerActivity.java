@@ -35,6 +35,8 @@ public class AddCustomerActivity extends AppCompatActivity {
 
     public void handleCancel(View view){
         Intent intent = new Intent(this, MainActivity.class);
+        if (Customer.currentCustomer != null)
+            intent.putExtra("current_id", Customer.currentCustomer.getID());
         startActivity(intent);
     }
 
@@ -102,6 +104,8 @@ public class AddCustomerActivity extends AppCompatActivity {
         toast.show();
         Customer.currentCustomer = customer;
         Intent intent = new Intent(this, MainActivity.class);
+        if (Customer.currentCustomer != null)
+            intent.putExtra("current_id", Customer.currentCustomer.getID());
         startActivity(intent);
     }
 

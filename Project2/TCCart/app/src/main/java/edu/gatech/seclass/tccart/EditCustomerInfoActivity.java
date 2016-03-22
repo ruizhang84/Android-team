@@ -50,6 +50,8 @@ public class EditCustomerInfoActivity extends AppCompatActivity {
 
     public void handleCancel(View view){
         Intent intent = new Intent(this, MainActivity.class);
+        if (Customer.currentCustomer != null)
+            intent.putExtra("current_id", Customer.currentCustomer.getID());
         startActivity(intent);
     }
 
@@ -109,13 +111,16 @@ public class EditCustomerInfoActivity extends AppCompatActivity {
         }
         customer.setName(firstName, lastName);
         customer.setEmail(email);
+        db.updateCustomer(customer);
+        Customer.currentCustomer = customer;
         Context context = getApplicationContext();
         CharSequence text = "Customer information updated!";
         int duration = Toast.LENGTH_SHORT;
         Toast toast = Toast.makeText(context, text, duration);
         toast.show();
-        Customer.currentCustomer = customer;
         Intent intent = new Intent(this, MainActivity.class);
+        if (Customer.currentCustomer != null)
+            intent.putExtra("current_id", Customer.currentCustomer.getID());
         startActivity(intent);
     }
 

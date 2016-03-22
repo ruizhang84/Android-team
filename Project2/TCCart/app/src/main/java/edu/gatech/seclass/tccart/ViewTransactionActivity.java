@@ -9,6 +9,8 @@ import android.widget.TextView;
 
 public class ViewTransactionActivity extends AppCompatActivity {
 
+    private CustomerDBHandler db;
+
     private TextView textName;
     private TextView textRewards;
     private TextView textTransactionRewardHistory;
@@ -22,6 +24,12 @@ public class ViewTransactionActivity extends AppCompatActivity {
         textRewards = (TextView)findViewById(R.id.textRewards);
         textTransactionRewardHistory =
                 (TextView)findViewById(R.id.textTransactionRewardHistory);
+
+        Customer customer = Customer.currentCustomer;
+        if (customer != null &&
+                db.getCustomer(customer.getID()) != null){
+            textName.setText(customer.getFullName());
+        }
 
     }
 
