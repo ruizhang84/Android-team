@@ -57,6 +57,14 @@ public class AddCustomerActivity extends AppCompatActivity {
 
     public void handleAdd(View view){
         String id = textID.getText().toString();
+        if (id.length() == 0){
+            Context context = getApplicationContext();
+            CharSequence text = "Need to generate an ID!";
+            int duration = Toast.LENGTH_SHORT;
+            Toast toast = Toast.makeText(context, text, duration);
+            toast.show();
+            return;
+        }
         if (id.length() != 8){
             Context context = getApplicationContext();
             CharSequence text = "Not a valid ID!";
@@ -77,7 +85,7 @@ public class AddCustomerActivity extends AppCompatActivity {
             toast.show();
             return;
         }
-        Customer customer = new Customer(firstName, lastName, email, id);
+        Customer customer = new Customer(id, firstName, lastName, email);
         if (db.getCustomer(id) != null){
             Context context = getApplicationContext();
             CharSequence text = "This id already exists! Please generate a new id!";
@@ -92,6 +100,7 @@ public class AddCustomerActivity extends AppCompatActivity {
         int duration = Toast.LENGTH_SHORT;
         Toast toast = Toast.makeText(context, text, duration);
         toast.show();
+        Customer.currentCustomer = customer;
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }

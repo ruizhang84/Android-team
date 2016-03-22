@@ -64,7 +64,8 @@ public class EditCustomerInfoActivity extends AppCompatActivity {
             toast.show();
             return;
         }
-        if (db.getCustomer(id) == null){
+        Customer customer = db.getCustomer(id);
+        if (customer == null){
             Context context = getApplicationContext();
             CharSequence text = "Not a registered ID!";
             int duration = Toast.LENGTH_SHORT;
@@ -79,7 +80,6 @@ public class EditCustomerInfoActivity extends AppCompatActivity {
         toast.show();
 
         textID.setText(id);
-        Customer customer = db.getCustomer(id);
         textName.setText(customer.getFullName());
         textEmail.setText(customer.getEmail());
         Customer.currentCustomer = customer;
@@ -114,6 +114,7 @@ public class EditCustomerInfoActivity extends AppCompatActivity {
         int duration = Toast.LENGTH_SHORT;
         Toast toast = Toast.makeText(context, text, duration);
         toast.show();
+        Customer.currentCustomer = customer;
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }

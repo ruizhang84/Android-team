@@ -45,29 +45,17 @@ public class MainActivity extends AppCompatActivity {
         db = new CustomerDBHandler(this);
         preloadCustomers();
 
-        Customer customer = Customer.currentCustomer;
-        if (customer != null) {
-            if (db.getCustomer(customer.getID()) != null) {
-                textID.setText(customer.getID());
-                textName.setText(customer.getFullName());
-                textEmail.setText(customer.getEmail());
-            }
-            else{
-                textID.setText("");
-                textName.setText("");
-                textEmail.setText("");
-                Customer.currentCustomer = null;
-            }
-        }
-
-
+        textID.setText("");
+        textName.setText("");
+        textEmail.setText("");
+        Customer.currentCustomer = null;
 
     }
 
     public void preloadCustomers(){
-        db.addCustomer(new Customer("Ralph", "Hapschatt", "ralph@gmail.com", "7c86ffee"));
-        db.addCustomer(new Customer("Betty", "Monro", "betty@gmail.com", "b59441af"));
-        db.addCustomer(new Customer("Everett", "Scott", "everett@gmail.com", "cd0f0e05"));
+        db.addCustomer(new Customer("7c86ffee", "Ralph", "Hapschatt", "ralph@gmail.com" ));
+        db.addCustomer(new Customer("b59441af", "Betty", "Monro", "betty@gmail.com" ));
+        db.addCustomer(new Customer("cd0f0e05", "Everett", "Scott", "everett@gmail.com" ));
     }
 
     public void handleScanCard(View view) {

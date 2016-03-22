@@ -68,7 +68,7 @@ public class CustomerDBHandler extends SQLiteOpenHelper {
         }
 
         Customer customer = new Customer(cursor.getString(0),
-                cursor.getString(1), cursor.getString(2), cursor.getString(2));
+                cursor.getString(1), cursor.getString(2), cursor.getString(3));
 
         cursor.close();
         return customer;
