@@ -67,7 +67,8 @@ public class MakePurchaseActivity extends AppCompatActivity {
     }
 
     public void handleConfirm(View view) {
-        PaymentService.processPayment((String firstName
+        /*
+        PaymentService.processPayment(String firstName
                 String lastName,
                 String ccNumber,
                 Date expirationDate,
@@ -76,6 +77,7 @@ public class MakePurchaseActivity extends AppCompatActivity {
         EmailService.sendEMail(String recipient,
                 String subject,
                 String body);
+        */
 
     }
 
