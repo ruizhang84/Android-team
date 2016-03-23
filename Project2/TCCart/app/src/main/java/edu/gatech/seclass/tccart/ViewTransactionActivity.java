@@ -25,6 +25,8 @@ public class ViewTransactionActivity extends AppCompatActivity {
         textTransactionRewardHistory =
                 (TextView)findViewById(R.id.textTransactionRewardHistory);
 
+        db = new CustomerDBHandler(this);
+
         Customer customer = Customer.currentCustomer;
         if (customer != null &&
                 db.getCustomer(customer.getID()) != null){
@@ -37,12 +39,6 @@ public class ViewTransactionActivity extends AppCompatActivity {
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
-
-    public void handleScanCard(View view){
-    }
-
-
-
 
 
 }

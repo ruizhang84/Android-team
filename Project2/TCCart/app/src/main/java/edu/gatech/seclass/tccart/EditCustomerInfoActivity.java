@@ -111,17 +111,42 @@ public class EditCustomerInfoActivity extends AppCompatActivity {
         }
         customer.setName(firstName, lastName);
         customer.setEmail(email);
-        db.updateCustomer(customer);
-        Customer.currentCustomer = customer;
-        Context context = getApplicationContext();
-        CharSequence text = "Customer information updated!";
-        int duration = Toast.LENGTH_SHORT;
-        Toast toast = Toast.makeText(context, text, duration);
-        toast.show();
-        Intent intent = new Intent(this, MainActivity.class);
-        if (Customer.currentCustomer != null)
-            intent.putExtra("current_id", Customer.currentCustomer.getID());
-        startActivity(intent);
+
+        AlertDialog.Builder alert = new AlertDialog.Builder(
+                view.getContext());
+
+        alert.setTitle("Confirm Edit");
+        alert.setMessage("Are you sure you want to make this changer?\n "
+                + "Name: " + customer.getFullName() + "\n"
+                + "Email: " + customer.getEmail() + "\n"
+                + "ID: " + customer.getID());
+
+        alert.setPositiveButton("Yes",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                        db.updateCustomer(Customer.currentCustomer);
+                        textName.setText(Customer.currentCustomer.getFullName());
+                        textEmail.setText(Customer.currentCustomer.getEmail());
+                        editTextNewEmail.setText("");
+                        editTextNewLastName.setText("");
+                        editTextNewFirstName.setText("");
+                        Context context = getApplicationContext();
+                        CharSequence text = "Customer information updated!";
+                        int duration = Toast.LENGTH_SHORT;
+                        Toast toast = Toast.makeText(context, text, duration);
+                        toast.show();
+                    }
+                });
+
+        alert.setNegativeButton("No",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+
+                        dialog.cancel();
+                    }
+                });
+
+        alert.show();
     }
 
     public void handleDelete(View view){

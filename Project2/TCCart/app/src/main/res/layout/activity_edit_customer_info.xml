@@ -214,7 +214,8 @@
                 android:text="Delete"
                 android:id="@+id/rbDelete"
                 android:layout_weight="0.03"
-                android:onClick="handleDelete" />
+                android:onClick="handleDelete"
+                android:textColorLink="#f42408" />
 
         </LinearLayout>
 
