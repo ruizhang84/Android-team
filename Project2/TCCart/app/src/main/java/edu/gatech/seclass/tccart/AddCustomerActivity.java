@@ -13,6 +13,8 @@ import android.widget.Toast;
 
 import java.util.Random;
 
+import edu.gatech.seclass.services.PrintingService;
+
 public class AddCustomerActivity extends AppCompatActivity {
 
     private CustomerDBHandler db;
@@ -78,7 +80,7 @@ public class AddCustomerActivity extends AppCompatActivity {
                 view.getContext());
 
         alert.setTitle("Confirm Add");
-        alert.setMessage("Are you sure you want to add this customer?\n "
+        alert.setMessage("Are you sure you want to add this customer and print a card?\n "
                 + "Name: " + customer_to_add.getFullName() + "\n"
                 + "Email: " + customer_to_add.getEmail() + "\n"
                 + "ID: " + customer_to_add.getID());
@@ -97,6 +99,25 @@ public class AddCustomerActivity extends AppCompatActivity {
                         int duration = Toast.LENGTH_SHORT;
                         Toast toast = Toast.makeText(context, text, duration);
                         toast.show();
+
+                        Customer customer = Customer.currentCustomer;
+                        String firstName = customer.getFirstName();
+                        String lastName = customer.getLastName();
+                        String id = customer.getID();
+                        if (PrintingService.printCard(firstName, lastName, id)){
+                            context = getApplicationContext();
+                            text = "Print Card Success!";
+                            duration = Toast.LENGTH_SHORT;
+                            toast = Toast.makeText(context, text, duration);
+                            toast.show();
+                        }
+                        else{
+                            context = getApplicationContext();
+                            text = "Print Card Failed!";
+                            duration = Toast.LENGTH_SHORT;
+                            toast = Toast.makeText(context, text, duration);
+                            toast.show();
+                        }
                     }
                 });
 
