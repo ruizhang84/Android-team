@@ -149,6 +149,18 @@ public class MakePurchaseActivity extends AppCompatActivity {
         //        String subject,
         //        String body);
 
+        /*
+        PaymentService.processPayment(String firstName
+                String lastName,
+                String ccNumber,
+                Date expirationDate,
+                String securityCode,
+        double amount);
+        EmailService.sendEMail(String recipient,
+                String subject,
+                String body);
+        */
+
     }
 
     public void handleClear(View view) {

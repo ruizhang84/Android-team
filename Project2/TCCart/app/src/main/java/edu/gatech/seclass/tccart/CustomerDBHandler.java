@@ -6,6 +6,9 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import java.util.Date;
+import java.text.DateFormat;
+
 /**
  * The SQLite database handler for Customer information
  */
@@ -19,6 +22,9 @@ public class CustomerDBHandler extends SQLiteOpenHelper {
     private static final String FIRST_NAME = "first_name";
     private static final String LAST_NAME = "last_name";
     private static final String EMAIL = "email";
+    private static final String REWARDS = "rewards";
+    private static final String REWARD_DATE = "rewards_date";
+    private static final String VIP_DATE = "vip_date";
 
     public CustomerDBHandler(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
@@ -26,8 +32,14 @@ public class CustomerDBHandler extends SQLiteOpenHelper {
 
     public void onCreate(SQLiteDatabase db) {
         String CREATE_TABLE = "CREATE TABLE " + TABLE_CUSTOMER + "("
-                + ID + " VARCHAR(8) PRIMARY KEY," + FIRST_NAME + " TEXT,"
-                + LAST_NAME + " TEXT," + EMAIL + " TEXT" + ")";
+                + ID + " VARCHAR(8) PRIMARY KEY,"
+                + FIRST_NAME + " TEXT,"
+                + LAST_NAME + " TEXT,"
+                + EMAIL + " TEXT,"
+                + REWARDS + " DOUBLE,"
+                + REWARD_DATE + " DOUBLE,"
+                + VIP_DATE + " DOUBLE"
+                + ")";
         db.execSQL(CREATE_TABLE);
     }
 
@@ -45,6 +57,23 @@ public class CustomerDBHandler extends SQLiteOpenHelper {
         values.put(FIRST_NAME, customer.getFirstName());
         values.put(LAST_NAME, customer.getLastName());
         values.put(EMAIL, customer.getEmail());
+        values.put(REWARDS, customer.getRewards());
+
+        Date rewardsDate = customer.getRewardDate();
+        if (rewardsDate == null) {
+            values.put(REWARD_DATE, (new Date(0)).getTime());
+        }
+        else{
+            values.put(REWARD_DATE, rewardsDate.getTime());
+        }
+
+        Date vipDate = customer.getVipDate();
+        if (vipDate == null) {
+            values.put(REWARD_DATE, (new Date(0)).getTime());
+        }
+        else{
+            values.put(REWARD_DATE, vipDate.getTime());
+        }
 
         db.insert(TABLE_CUSTOMER, null, values);
         db.close();
@@ -54,7 +83,7 @@ public class CustomerDBHandler extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
 
         String[] projection = new String[]{ID,
-                FIRST_NAME, LAST_NAME, EMAIL};
+                FIRST_NAME, LAST_NAME, EMAIL, REWARDS, REWARD_DATE, VIP_DATE};
         String selection = ID + "=?";
         String[] selectionArgument = new String[]{id};
         Cursor cursor = db.query(TABLE_CUSTOMER, projection, selection,
@@ -66,11 +95,17 @@ public class CustomerDBHandler extends SQLiteOpenHelper {
         else {
             cursor.moveToFirst();
         }
-        String newid = cursor.getString(0);
+        String new_id = cursor.getString(0);
         String firstName = cursor.getString(1);
         String lastName = cursor.getString(2);
         String email = cursor.getString(3);
-        Customer customer = new Customer(newid, firstName, lastName, email);
+        double rewards = cursor.getDouble(4);
+        Date rewardsDate = new Date(cursor.getLong(5));
+        Date vipDate = new Date(cursor.getLong(6));
+        Customer customer = new Customer(new_id, firstName, lastName, email);
+        customer.setRewards(rewards);
+        customer.setRewardDate(rewardsDate);
+        customer.setVipDate(vipDate);
 
         cursor.close();
         return customer;
@@ -84,6 +119,22 @@ public class CustomerDBHandler extends SQLiteOpenHelper {
         values.put(FIRST_NAME, customer.getFirstName());
         values.put(LAST_NAME, customer.getLastName());
         values.put(EMAIL, customer.getEmail());
+
+        Date rewardsDate = customer.getRewardDate();
+        if (rewardsDate == null) {
+            values.put(REWARD_DATE, (new Date(0)).getTime());
+        }
+        else{
+            values.put(REWARD_DATE, rewardsDate.getTime());
+        }
+
+        Date vipDate = customer.getVipDate();
+        if (vipDate == null) {
+            values.put(REWARD_DATE, (new Date(0)).getTime());
+        }
+        else{
+            values.put(REWARD_DATE, vipDate.getTime());
+        }
 
         return db.update(TABLE_CUSTOMER, values, ID + " = ?",
                 new String[]{customer.getID()});

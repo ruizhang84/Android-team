@@ -1,5 +1,6 @@
 package edu.gatech.seclass.tccart;
 
+import java.util.Date;
 import java.util.HashMap;
 
 /**
@@ -15,12 +16,42 @@ public class Customer {
     private String lastName;
     private String email;
     private String id;
+    private double rewards;
+    private Date rewardDate;
+    private Date vipDate;
 
     public Customer(String id, String firstName, String lastName, String email) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.email = email;
         this.id = id;
+        this.rewards = 0;
+        this.rewardDate = null;
+        this.vipDate = null;
+    }
+
+    public Date getRewardDate(){
+        return this.rewardDate;
+    }
+
+    public double getRewards(){
+        return this.rewards;
+    }
+
+    public Date getVipDate(){
+        return this.vipDate;
+    }
+
+    public void setRewardDate(Date d){
+        this.rewardDate = d;
+    }
+
+    public void setRewards(double r){
+        this.rewards = r;
+    }
+
+    public void  setVipDate(Date d){
+        this.vipDate = d;
     }
 
     public String getFullName(){
