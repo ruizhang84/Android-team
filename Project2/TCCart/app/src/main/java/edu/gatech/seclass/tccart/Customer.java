@@ -58,6 +58,7 @@ public class Customer {
     }
 
     public double getRewards(){
+        // to be finished
         return this.rewards;
     }
 
