@@ -18,7 +18,8 @@ public class Customer {
     private String id;
     private double rewards;
     private Date rewardDate;
-    private Date vipDate;
+    private double spendingYTD;
+    private int vipYear;
 
     public Customer(String id, String firstName, String lastName, String email) {
         this.firstName = firstName;
@@ -27,7 +28,29 @@ public class Customer {
         this.id = id;
         this.rewards = 0;
         this.rewardDate = null;
-        this.vipDate = null;
+        this.vipYear = -1;
+        this.spendingYTD = 0;
+    }
+
+    public boolean isVIP(){
+        // to be revised
+        return false;
+    }
+
+    public int getVipYear(){
+        return this.vipYear;
+    }
+
+    public void setVipYear(int y){
+        this.vipYear = y;
+    }
+
+    public double getSpendingYTD(){
+        return this.spendingYTD;
+    }
+
+    public void setSpendingYTD(double s){
+        this.spendingYTD = s;
     }
 
     public Date getRewardDate(){
@@ -35,11 +58,8 @@ public class Customer {
     }
 
     public double getRewards(){
+        // to be finished
         return this.rewards;
-    }
-
-    public Date getVipDate(){
-        return this.vipDate;
     }
 
     public void setRewardDate(Date d){
@@ -48,10 +68,6 @@ public class Customer {
 
     public void setRewards(double r){
         this.rewards = r;
-    }
-
-    public void  setVipDate(Date d){
-        this.vipDate = d;
     }
 
     public String getFullName(){

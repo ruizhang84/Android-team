@@ -8,12 +8,11 @@ import android.widget.EditText;
 import android.widget.TextView;
 
 import java.util.Date;
+import java.util.Locale;
 
 public class ViewTransactionActivity extends AppCompatActivity {
 
     private CustomerDBHandler db;
-
-    private static final long ms_in_year = 31536000000L;
 
     private TextView textName;
     private TextView textRewards;
@@ -34,18 +33,15 @@ public class ViewTransactionActivity extends AppCompatActivity {
         Customer customer = Customer.currentCustomer;
         if (customer != null &&
                 db.getCustomer(customer.getID()) != null){
-            Date today = new Date();
-            //customer.setVipDate(today); // for testing
-            Date vipDate = customer.getVipDate();
-            long dt_ms = today.getTime() - vipDate.getTime();
-            if (dt_ms <= ms_in_year) {
+            if (customer.isVIP()) {
                 String vipName = customer.getFullName() + " (VIP)";
                 textName.setText(vipName);
             }
             else {
                 textName.setText(customer.getFullName());
             }
-            textRewards.setText(Double.toString(customer.getRewards()));
+            String rewards_text = String.format(Locale.US, "%5.2f", customer.getRewards());
+            textRewards.setText(rewards_text);
         }
 
     }
