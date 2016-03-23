@@ -52,10 +52,34 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    public void onResume() {
+        super.onResume();
+
+        Intent intent = getIntent();
+        String current_id = intent.getStringExtra("current_id");
+
+        Customer customer = null;
+        if (current_id != null)
+            customer = db.getCustomer(current_id);
+
+        if (customer != null){
+            Customer.currentCustomer = customer;
+            textID.setText(customer.getID());
+            textName.setText(customer.getFullName());
+            textEmail.setText(customer.getEmail());
+        }
+
+    }
+
     public void preloadCustomers(){
-        db.addCustomer(new Customer("7c86ffee", "Ralph", "Hapschatt", "ralph@gmail.com" ));
-        db.addCustomer(new Customer("b59441af", "Betty", "Monro", "betty@gmail.com" ));
-        db.addCustomer(new Customer("cd0f0e05", "Everett", "Scott", "everett@gmail.com" ));
+        Customer c = new Customer("7c86ffee", "Ralph", "Hapschatt", "ralph@gmail.com" );
+        db.addCustomer(c);
+
+        c = new Customer("b59441af", "Betty", "Monro", "betty@gmail.com" );
+        db.addCustomer(c);
+
+        c = new Customer("cd0f0e05", "Everett", "Scott", "everett@gmail.com" );
+        db.addCustomer(c);
     }
 
     public void handleScanCard(View view) {

@@ -9,6 +9,8 @@ import android.widget.TextView;
 
 public class ViewTransactionActivity extends AppCompatActivity {
 
+    private CustomerDBHandler db;
+
     private TextView textName;
     private TextView textRewards;
     private TextView textTransactionRewardHistory;
@@ -23,18 +25,20 @@ public class ViewTransactionActivity extends AppCompatActivity {
         textTransactionRewardHistory =
                 (TextView)findViewById(R.id.textTransactionRewardHistory);
 
+        db = new CustomerDBHandler(this);
+
+        Customer customer = Customer.currentCustomer;
+        if (customer != null &&
+                db.getCustomer(customer.getID()) != null){
+            textName.setText(customer.getFullName());
+        }
+
     }
 
     public void handleBack(View view){
         Intent intent = new Intent(this, MainActivity.class);
         startActivity(intent);
     }
-
-    public void handleScanCard(View view){
-    }
-
-
-
 
 
 }

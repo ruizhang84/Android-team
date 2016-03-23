@@ -60,15 +60,17 @@ public class CustomerDBHandler extends SQLiteOpenHelper {
         Cursor cursor = db.query(TABLE_CUSTOMER, projection, selection,
                 selectionArgument, null, null, null);
 
-        if (cursor == null){
+        if (cursor.getCount() == 0){
             return null;
         }
         else {
             cursor.moveToFirst();
         }
-
-        Customer customer = new Customer(cursor.getString(0),
-                cursor.getString(1), cursor.getString(2), cursor.getString(3));
+        String newid = cursor.getString(0);
+        String firstName = cursor.getString(1);
+        String lastName = cursor.getString(2);
+        String email = cursor.getString(3);
+        Customer customer = new Customer(newid, firstName, lastName, email);
 
         cursor.close();
         return customer;

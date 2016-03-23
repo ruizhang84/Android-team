@@ -53,15 +53,30 @@ public class MakePurchaseActivity extends AppCompatActivity {
     }
 
     public void handleScanCustomerCard(View view) {
+        String CustomerID = QRCodeService.scanQRCode();
+
     }
 
     public void handleScanCreditCard(View view) {
+        String CreditCard = CreditCardService.readCreditCard();
+
+
     }
 
     public void handleApplyRewardDiscount(View view) {
     }
 
     public void handleConfirm(View view) {
+        PaymentService.processPayment((String firstName
+                String lastName,
+                String ccNumber,
+                Date expirationDate,
+                String securityCode,
+        double amount);
+        EmailService.sendEMail(String recipient,
+                String subject,
+                String body);
+
     }
 
     public void handleClear(View view) {

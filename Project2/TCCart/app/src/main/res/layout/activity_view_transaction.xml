@@ -39,30 +39,8 @@
                 android:textAppearance="?android:attr/textAppearanceMedium"
                 android:text="View Transaction"
                 android:id="@+id/textView6"
-                android:layout_marginTop="20dp" />
+                android:layout_marginTop="0dp" />
 
-        </LinearLayout>
-
-        <LinearLayout
-            android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="0.03"
-            android:weightSum="1">
-
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Scan Customer Card"
-                android:id="@+id/btScanCard"
-                android:onClick="handleScanCard" />
-
-            <Button
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="Back"
-                android:id="@+id/btBack"
-                android:onClick="handleBack" />
         </LinearLayout>
 
         <LinearLayout
@@ -75,7 +53,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="Name:"
+                android:text="Name: "
                 android:id="@+id/textView10" />
 
             <TextView
@@ -96,7 +74,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="Rewards Available:"
+                android:text="Rewards($): "
                 android:id="@+id/textView23" />
 
             <TextView
@@ -117,7 +95,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:textAppearance="?android:attr/textAppearanceLarge"
-                android:text="Transaction Reward History:"
+                android:text="Transaction/Reward History:"
                 android:id="@+id/textView4" />
         </LinearLayout>
 
@@ -128,7 +106,7 @@
             android:layout_weight="0.03">
 
             <TextView
-                android:layout_width="299dp"
+                android:layout_width="350dp"
                 android:layout_height="wrap_content"
                 android:text="Customer Transaction and Rewards History:"
                 android:id="@+id/textTransactionRewardHistory"
