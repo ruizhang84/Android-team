@@ -11,9 +11,6 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
-
 import edu.gatech.seclass.services.QRCodeService;
 
 public class EditCustomerInfoActivity extends AppCompatActivity {
@@ -49,13 +46,6 @@ public class EditCustomerInfoActivity extends AppCompatActivity {
             textEmail.setText(customer.getEmail());
         }
 
-    }
-
-    public void onBackPressed() {
-        Intent intent = new Intent(this, MainActivity.class);
-        if (Customer.currentCustomer != null)
-            intent.putExtra("current_id", Customer.currentCustomer.getID());
-        startActivity(intent);
     }
 
     public void handleCancel(View view){
@@ -119,21 +109,6 @@ public class EditCustomerInfoActivity extends AppCompatActivity {
             toast.show();
             return;
         }
-
-        String email_pattern = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
-                + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
-        Pattern pattern = Pattern.compile(email_pattern);
-        Matcher matcher = pattern.matcher(email);
-
-        if (!matcher.matches()){
-            Context context = getApplicationContext();
-            CharSequence text = "Please enter a valid email address in the format aaa@bbb.ccc!";
-            int duration = Toast.LENGTH_SHORT;
-            Toast toast = Toast.makeText(context, text, duration);
-            toast.show();
-            return;
-        }
-
         customer.setName(firstName, lastName);
         customer.setEmail(email);
 

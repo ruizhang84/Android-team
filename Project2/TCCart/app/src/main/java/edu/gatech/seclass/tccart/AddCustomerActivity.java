@@ -38,13 +38,6 @@ public class AddCustomerActivity extends AppCompatActivity {
         editTextEmail = (EditText)findViewById(R.id.textEmail);
     }
 
-    public void onBackPressed() {
-        Intent intent = new Intent(this, MainActivity.class);
-        if (Customer.currentCustomer != null)
-            intent.putExtra("current_id", Customer.currentCustomer.getID());
-        startActivity(intent);
-    }
-
     public void handleCancel(View view){
         Intent intent = new Intent(this, MainActivity.class);
         if (Customer.currentCustomer != null)

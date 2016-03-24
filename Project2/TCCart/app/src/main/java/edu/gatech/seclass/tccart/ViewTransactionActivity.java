@@ -46,17 +46,8 @@ public class ViewTransactionActivity extends AppCompatActivity {
 
     }
 
-    public void onBackPressed() {
-        Intent intent = new Intent(this, MainActivity.class);
-        if (Customer.currentCustomer != null)
-            intent.putExtra("current_id", Customer.currentCustomer.getID());
-        startActivity(intent);
-    }
-
     public void handleBack(View view){
         Intent intent = new Intent(this, MainActivity.class);
-        if (Customer.currentCustomer != null)
-            intent.putExtra("current_id", Customer.currentCustomer.getID());
         startActivity(intent);
     }
 

@@ -16,17 +16,17 @@ import android.widget.Toast;
 
 import com.google.android.gms.appindexing.Action;
 import com.google.android.gms.appindexing.AppIndex;
-import com.google.android.gms.auth.api.credentials.Credential;
 import com.google.android.gms.common.api.GoogleApiClient;
 
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.util.Calendar;
 /*<<<<<<< HEAD
 =======
 import java.util.Date;
+<<<<<<< HEAD
 import java.util.Locale;
 >>>>>>> d54322f5715d9847fbff3185e5ebfa5dbc3fb5ff*/
+=======
+>>>>>>> parent of d54322f... Revised MakePurchase activity, added CreditCard class
 
 public class MakePurchaseActivity extends AppCompatActivity {
 
@@ -39,9 +39,6 @@ public class MakePurchaseActivity extends AppCompatActivity {
 
     private TransactionDBHandler transaction_db;
     private CustomerDBHandler customer_db;
-    private CreditCard currentCC = null;
-
-    private static final double vipDiscountRate = 0.1;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,31 +50,16 @@ public class MakePurchaseActivity extends AppCompatActivity {
         textDiscountApplied = (TextView) findViewById(R.id.textDiscountApplied);
         textAmountToBePaid = (TextView) findViewById(R.id.textAmountToBePaid);
 
-        textItemDescription = (EditText) findViewById(R.id.textItemDescription);
-        textPrice = (EditText) findViewById(R.id.textPrice);
+        textName = (EditText) findViewById(R.id.textItemDescription);
+        textName = (EditText) findViewById(R.id.textPrice);
 
         transaction_db = new TransactionDBHandler(this);
         customer_db = new CustomerDBHandler(this);
-
-        Customer customer = Customer.currentCustomer;
-        if (customer != null &&
-                customer_db.getCustomer(customer.getID()) != null) {
-            textName.setText(customer.getFullName());
-        }
-
     }
+
 
     public void handleCancel(View view) {
         Intent intent = new Intent(this, MainActivity.class);
-        if (Customer.currentCustomer != null)
-            intent.putExtra("current_id", Customer.currentCustomer.getID());
-        startActivity(intent);
-    }
-
-    public void onBackPressed() {
-        Intent intent = new Intent(this, MainActivity.class);
-        if (Customer.currentCustomer != null)
-            intent.putExtra("current_id", Customer.currentCustomer.getID());
         startActivity(intent);
     }
 
@@ -85,7 +67,7 @@ public class MakePurchaseActivity extends AppCompatActivity {
 
         String id = QRCodeService.scanQRCode();
 
-        if (id == null || id.length() == 0) {
+        if (id == null || id.length() == 0){
             Context context = getApplicationContext();
             CharSequence text = "Card scan failed!";
             int duration = Toast.LENGTH_SHORT;
@@ -94,7 +76,7 @@ public class MakePurchaseActivity extends AppCompatActivity {
             return;
         }
         Customer customer = customer_db.getCustomer(id);
-        if (customer == null) {
+        if (customer == null){
             Context context = getApplicationContext();
             CharSequence text = "Not a registered ID!";
             int duration = Toast.LENGTH_SHORT;
@@ -110,30 +92,30 @@ public class MakePurchaseActivity extends AppCompatActivity {
 
         textName.setText(customer.getFullName());
         Customer.currentCustomer = customer;
-        textName.setText(customer.getFullName());
     }
 
-    public void handleScanCreditCard(View view) throws ParseException {
+    public void handleScanCreditCard(View view) {
 
-        String ccStr = CreditCardService.readCreditCard();
+        /*
+        CreditCard = CreditCardService.readCreditCard();
+        //CreditCardService.readCreditCard();
 
-        if (ccStr.equals("ERR")) {
-            Context context = getApplicationContext();
-            CharSequence text = "Failed to read credit card!";
-            int duration = Toast.LENGTH_SHORT;
-            Toast toast = Toast.makeText(context, text, duration);
-            toast.show();
-        }
-
+<<<<<<< HEAD
        /* String[] strArray = ccStr.split("#");
         if (strArray.length != 5) {
+=======
+        if (CreditCard.equals("ERR") ){
+            //report error
+>>>>>>> parent of d54322f... Revised MakePurchase activity, added CreditCard class
             Context context = getApplicationContext();
-            CharSequence text = "Credit card information is not valid!";
+            CharSequence text = "Cannot read Card!";
             int duration = Toast.LENGTH_SHORT;
             Toast toast = Toast.makeText(context, text, duration);
             toast.show();
         }
+        */
 
+<<<<<<< HEAD
         SimpleDateFormat sdf = new SimpleDateFormat("MMddyyyy");
         Date ccDate = sdf.parse(strArray[3]);
         currentCC = new CreditCard(strArray[0], strArray[1], strArray[2],
@@ -144,13 +126,27 @@ public class MakePurchaseActivity extends AppCompatActivity {
         int duration = Toast.LENGTH_SHORT;
         Toast toast = Toast.makeText(context, text, duration);
         toast.show();*/
+=======
+>>>>>>> parent of d54322f... Revised MakePurchase activity, added CreditCard class
     }
 
     public void handleApplyRewardDiscount(View view) {
 
-        String description = textItemDescription.getText().toString();
-        String priceStr = textPrice.getText().toString();
+        /*
+        //sql to get vip and credit order by time
+        Cursor c = db.rawQuery( "select Vip, Credit, CreditApplied, Year" +
+                                "from RewardsAndDiscount " +
+                                "Where CustomerID = " + TS.getCustomerID() +
+                                "Order Year DESC by", null);
+        //last transaction
+        c.moveToFirst();
 
+        //get field values
+        int vips = c.getInt(c.getColumnIndex("Vip"));
+        double credits = c.getDouble(c.getColumnIndex("Credit")) - c.getDouble(c.getColumnIndex("CreditApplied"));
+        Date year = new Date( c.getLong( c.getColumnIndex("Year") ));
+
+<<<<<<< HEAD
         //get field values
         int vips = c.getInt(c.getColumnIndex("Vip"));
         double credits = c.getDouble(c.getColumnIndex("Credit")) - c.getDouble(c.getColumnIndex("CreditApplied"));
@@ -180,78 +176,25 @@ public class MakePurchaseActivity extends AppCompatActivity {
 >>>>>>> d54322f5715d9847fbff3185e5ebfa5dbc3fb5ff
 
        (Customer customer = Customer.currentCustomer;
+=======
+        */
 
-        if (customer == null) {
-            Context context = getApplicationContext();
-            CharSequence text = "Please select a customer!";
-            int duration = Toast.LENGTH_SHORT;
-            Toast toast = Toast.makeText(context, text, duration);
-            toast.show();
-            return;
-        }
+        //get current time and decide if vip valid
+        Calendar y = Calendar.getInstance();
+        int seconds = y.get(Calendar.SECOND);
 
-        double rewardAvailable = customer.getEffectiveRewards();
-        double discountApplied = 0;
-        if (customer.isVIP()) {
-            discountApplied = price_original * vipDiscountRate;
-            price_current -= discountApplied;
-        }
-        double rewardApplied = 0;
-        if (rewardAvailable < price_current) {
-            rewardApplied = rewardAvailable;
-        } else {
-            rewardApplied = price_current;
-        }
-        price_current -= rewardApplied;
-
+        //display credits and vip discounts
         textRewardsApplied.setText(String.format(Locale.US, "%5.2f", rewardApplied));
         textDiscountApplied.setText(String.format(Locale.US, "%5.2f", discountApplied));
         textAmountToBePaid.setText(String.format(Locale.US, "%5.2f", price_current));*/
 
+
+
+        //recycle cursor
+        //c.close();
     }
 
     public void handleConfirm(View view) {
-
-        Customer customer = Customer.currentCustomer;
-        if (customer == null) {
-            Context context = getApplicationContext();
-            CharSequence text = "Please select a customer!";
-            int duration = Toast.LENGTH_SHORT;
-            Toast toast = Toast.makeText(context, text, duration);
-            toast.show();
-            return;
-        }
-
-        String description = textItemDescription.getText().toString();
-        String priceStr = textPrice.getText().toString();
-        String amountStr = textAmountToBePaid.getText().toString();
-
-        if (description.length() <= 0 || priceStr.length() <= 0) {
-            Context context = getApplicationContext();
-            CharSequence text = "Please add an item and price to purchase!";
-            int duration = Toast.LENGTH_SHORT;
-            Toast toast = Toast.makeText(context, text, duration);
-            toast.show();
-            return;
-        }
-
-        if (amountStr.length() <= 0) {
-            Context context = getApplicationContext();
-            CharSequence text = "Please click Apply Reward/Discount first!";
-            int duration = Toast.LENGTH_SHORT;
-            Toast toast = Toast.makeText(context, text, duration);
-            toast.show();
-            return;
-        }
-
-        if ( currentCC == null){
-            Context context = getApplicationContext();
-            CharSequence text = "Please scan a credit card!";
-            int duration = Toast.LENGTH_SHORT;
-            Toast toast = Toast.makeText(context, text, duration);
-            toast.show();
-            return;
-        }
         // PaymentService.processPayment((String firstName
         //         String lastName,
         //         String ccNumber,
@@ -277,13 +220,6 @@ public class MakePurchaseActivity extends AppCompatActivity {
     }
 
     public void handleClear(View view) {
-        textName.setText("");
-        textItemDescription.setText("");
-        textPrice.setText("");
-        textRewardsApplied.setText("");
-        textDiscountApplied.setText("");
-        textAmountToBePaid.setText("");
-        currentCC = null;
     }
 
 }

@@ -65,8 +65,6 @@ public class Customer {
 
     public double getEffectiveRewards(){
         Date today = new Date();
-        if (this.rewardDate == null)
-            return 0;
         long dt = today.getTime() - this.rewardDate.getTime();
         if (dt >= reward_expiration_time){
             return 0;
