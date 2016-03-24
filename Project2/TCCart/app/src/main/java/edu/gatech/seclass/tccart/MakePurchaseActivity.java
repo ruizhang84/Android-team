@@ -29,17 +29,9 @@ public class MakePurchaseActivity extends AppCompatActivity {
     private TextView textRewardsApplied;
     private TextView textDiscountApplied;
     private TextView textAmountToBePaid;
-    /**
-     * ATTENTION: This was auto-generated to implement the App Indexing API.
-     * See https://g.co/AppIndexing/AndroidStudio for more information.
-     */
-    private GoogleApiClient client;
 
-    //private object and CreditCard info
-    private Transaction TS;
-    private String CreditCard;
-    // database transaction and customer
-    private RewardsAndDiscountDBHelper database;
+    private TransactionDBHandler transaction_db;
+    private CustomerDBHandler customer_db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,15 +46,8 @@ public class MakePurchaseActivity extends AppCompatActivity {
         textName = (EditText) findViewById(R.id.textItemDescription);
         textName = (EditText) findViewById(R.id.textPrice);
 
-        // ATTENTION: This was auto-generated to implement the App Indexing API.
-        // See https://g.co/AppIndexing/AndroidStudio for more information.
-        client = new GoogleApiClient.Builder(this).addApi(AppIndex.API).build();
-
-        //create transaction
-        TS = new Transaction();
-
-        //access database
-        database = new RewardsAndDiscountDBHelper( getApplicationContext() );
+        transaction_db = new TransactionDBHandler(this);
+        customer_db = new CustomerDBHandler(this);
     }
 
     //CreditCardService.readCreditCard();
