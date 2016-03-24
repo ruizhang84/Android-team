@@ -1,5 +1,6 @@
 package edu.gatech.seclass.tccart;
 
+import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 
@@ -8,9 +9,10 @@ import java.util.HashMap;
  */
 public class Customer {
 
-    public static final String idCharList = "0123456789abcdef";
-    public static final int idLength = 8;
+    public static final String idCharList = "0123456789abcdef"; // customer id character space
+    public static final int idLength = 8; // customer id length
     public static Customer currentCustomer = null;
+    public static long reward_expiration_time = 2678000000L; // 30 days in millisecond
 
     private String firstName;
     private String lastName;
@@ -33,8 +35,8 @@ public class Customer {
     }
 
     public boolean isVIP(){
-        // to be revised
-        return false;
+        Calendar today = Calendar.getInstance();
+        return today.get(Calendar.YEAR) == this.vipYear;
     }
 
     public int getVipYear(){
@@ -58,8 +60,19 @@ public class Customer {
     }
 
     public double getRewards(){
-        // to be finished
         return this.rewards;
+    }
+
+    public double getEffectiveRewards(){
+        Date today = new Date();
+        long dt = today.getTime() - this.rewardDate.getTime();
+        if (dt >= reward_expiration_time){
+            return 0;
+        }
+        else {
+            return this.rewards;
+        }
+
     }
 
     public void setRewardDate(Date d){
