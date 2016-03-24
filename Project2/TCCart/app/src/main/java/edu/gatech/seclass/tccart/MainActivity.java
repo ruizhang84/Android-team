@@ -71,6 +71,8 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    public void handleBack(View view){ }
+
     public void preloadCustomers(){
         Customer c = new Customer("7c86ffee", "Ralph", "Hapschatt", "ralph@gmail.com" );
         db.addCustomer(c);

@@ -3,46 +3,45 @@ package edu.gatech.seclass.tccart;
 import java.util.Date;
 
 /**
- * Created by zhang on 3/22/2016.
+ * A Transaction class for TCCart System
  */
 public class Transaction {
-    private long transactionID;
-    private long customerID;
-    private Date year;
-    private Double totalAmount;
-    private Double vipDiscount;
-    private Double creditApplied;
 
-    //getter and setter
-    public void setTransactionID(long transactionID){
-        this.transactionID = transactionID;
+    private Customer customer;
+    private Date date;
+    private double totalAmount;
+    private double vipDiscount;
+    private double rewardsApplied;
+    private String description;
+
+    public Transaction(Customer c, Date d, double t, double v, double r, String description){
+        this.customer = c;
+        this.date = d;
+        this.totalAmount = t;
+        this.vipDiscount = v;
+        this.rewardsApplied = r;
+        this.description = description;
     }
 
-    public void setCustomerID(long customerID){
-        this.customerID = customerID;
+    public Transaction(Customer c, double t, double v, double r, String description){
+        this.customer = c;
+        this.date = new Date();
+        this.totalAmount = t;
+        this.vipDiscount = v;
+        this.rewardsApplied = r;
+        this.description = description;
     }
 
-    public void setYear(Date year){
-        this.year = year;
-    }
+    public Customer getCustomer(){ return this.customer; }
 
-    public void setTotalAmount(Double totalAmount){
-        this.totalAmount = totalAmount;
-    }
+    public Date getDate(){ return this.date; }
 
-    public void setVipDiscount(Double vipDiscount){
-        this.vipDiscount = vipDiscount;
-    }
-
-    public void setCreditApplied(Double creditApplied){
-        this.creditApplied = creditApplied;
-    }
-
-    public long getTransactionID(){ return this.transactionID; }
-    public long getCustomerID(){ return this.customerID; }
-    public Date getYear(){ return this.year; }
     public Double getTotalAmount() { return this.totalAmount; }
+
     public Double getVipDiscount() { return this.vipDiscount; }
-    public Double getCreditApplied() { return this.creditApplied; }
+
+    public Double getRewardsApplied() { return this.rewardsApplied; }
+
+    public String getDescription() { return this.description; }
 
 }
