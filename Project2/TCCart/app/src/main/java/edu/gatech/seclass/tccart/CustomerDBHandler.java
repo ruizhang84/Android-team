@@ -27,6 +27,17 @@ public class CustomerDBHandler extends SQLiteOpenHelper {
     private static final String SPENDING_YTD = "spending_ytd";
     private static final String VIP_YEAR = "vip_year";
 
+    public static String getID(){ return ID; }
+    public static String getFIRST_NAME(){ return FIRST_NAME; }
+    public static String getLAST_NAME(){ return LAST_NAME; }
+    public static String getEMAIL(){ return EMAIL; }
+    public static String getREWARDS(){ return REWARDS; }
+    public static String getREWARD_DATE(){ return REWARD_DATE; }
+    public static String getSPENDING_YTD(){ return SPENDING_YTD; }
+    public static String getVIP_YEAR(){ return VIP_YEAR; }
+    public static String getTABLE_CUSTOMER(){ return TABLE_CUSTOMER; }
+
+
     public CustomerDBHandler(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }

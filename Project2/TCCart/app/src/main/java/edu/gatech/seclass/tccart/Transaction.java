@@ -12,21 +12,24 @@ public class Transaction {
     private double totalAmount;
     private double vipDiscount;
     private double rewardsApplied;
+    private String description;
 
-    public Transaction(Customer c, Date d, double t, double v, double r){
+    public Transaction(Customer c, Date d, double t, double v, double r, String description){
         this.customer = c;
         this.date = d;
         this.totalAmount = t;
         this.vipDiscount = v;
         this.rewardsApplied = r;
+        this.description = description;
     }
 
-    public Transaction(Customer c,double t, double v, double r){
+    public Transaction(Customer c, double t, double v, double r, String description){
         this.customer = c;
         this.date = new Date();
         this.totalAmount = t;
         this.vipDiscount = v;
         this.rewardsApplied = r;
+        this.description = description;
     }
 
     public Customer getCustomer(){ return this.customer; }
@@ -38,5 +41,7 @@ public class Transaction {
     public Double getVipDiscount() { return this.vipDiscount; }
 
     public Double getRewardsApplied() { return this.rewardsApplied; }
+
+    public String getDescription() { return this.description; }
 
 }
