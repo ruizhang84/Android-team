@@ -12,6 +12,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.Random;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import edu.gatech.seclass.services.PrintingService;
 
@@ -69,6 +71,20 @@ public class AddCustomerActivity extends AppCompatActivity {
                 || email.length() <= 0) {
             Context context = getApplicationContext();
             CharSequence text = "Name or email cannot be empty!";
+            int duration = Toast.LENGTH_SHORT;
+            Toast toast = Toast.makeText(context, text, duration);
+            toast.show();
+            return;
+        }
+
+        String email_pattern = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
+                + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
+        Pattern pattern = Pattern.compile(email_pattern);
+        Matcher matcher = pattern.matcher(email);
+
+        if (!matcher.matches()){
+            Context context = getApplicationContext();
+            CharSequence text = "Please enter a valid email address in the format aaa@bbb.ccc!";
             int duration = Toast.LENGTH_SHORT;
             Toast toast = Toast.makeText(context, text, duration);
             toast.show();
