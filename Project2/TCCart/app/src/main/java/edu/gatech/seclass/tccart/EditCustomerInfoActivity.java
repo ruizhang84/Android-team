@@ -116,7 +116,7 @@ public class EditCustomerInfoActivity extends AppCompatActivity {
                 view.getContext());
 
         alert.setTitle("Confirm Edit");
-        alert.setMessage("Are you sure you want to make this changer?\n "
+        alert.setMessage("Are you sure you want to make these changers\n "
                 + "Name: " + customer.getFullName() + "\n"
                 + "Email: " + customer.getEmail() + "\n"
                 + "ID: " + customer.getID());
