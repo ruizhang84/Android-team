@@ -19,7 +19,6 @@ import com.google.android.gms.appindexing.AppIndex;
 import com.google.android.gms.common.api.GoogleApiClient;
 
 import java.util.Calendar;
-import java.util.Date;
 
 public class MakePurchaseActivity extends AppCompatActivity {
 
@@ -122,11 +121,17 @@ public class MakePurchaseActivity extends AppCompatActivity {
         //get field values
         int vips = c.getInt(c.getColumnIndex("Vip"));
         double credits = c.getDouble(c.getColumnIndex("Credit")) - c.getDouble(c.getColumnIndex("CreditApplied"));
-        Date year = new Date( c.getLong( c.getColumnIndex("Year") ));
 
-        //get current time and decide if vip valid
-        Calendar y = Calendar.getInstance();
-        int seconds = y.get(Calendar.SECOND);
+        //see if vip expired
+        Calendar lastTime = Calendar.getInstance();
+        Calendar rightNow = Calendar.getInstance();
+        lastTime.setTimeInMillis( c.getLong(c.getColumnIndex("Date")) );
+        int lastTime_year = lastTime.get(Calendar.YEAR);
+        int year = rightNow.get(Calendar.YEAR);
+
+        if (lastTime_year != year && vips == 1)
+            vips = 0;               //false 0, not this year
+
 
         //display credits and vip discounts
 

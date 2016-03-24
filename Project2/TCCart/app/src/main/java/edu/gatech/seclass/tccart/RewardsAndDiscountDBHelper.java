@@ -16,11 +16,13 @@ public class RewardsAndDiscountDBHelper extends SQLiteOpenHelper {
     public static final String REWARDS_TABLE_NAME = "RewardsAndDiscount";
     public static final String REWARDS_COLUMN_TRANSACTION_ID = "TransactionID";
     public static final String REWARDS_COLUMN_CUSTOMER_ID = "CustomerID";
-    public static final String REWARDS_COLUMN_YEAR = "Year";                //transaction time
+    public static final String REWARDS_COLUMN_Date = "Date";                //transaction time, convert to millisecond from Calendar
 
     public static final String REWARDS_COLUMN_PURCHASE = "Price";           //purchase price
-    public static final String REWARDS_COLUMN_VIP = "VipStatus";            //vip starting Jan 1 and last 1 year, so 0 false, otherwise 1
+    public static final String REWARDS_COLUMN_VIP = "VipStatus";            //vip starting Jan 1 and last 1 year, so 0 false, 1 this year only, 2 next year also.
     public static final String REWARDS_COLUMN_REWARD = "Credit";            //credit owned
+
+    public static final String REWARDS_COLUMN_Spend = "Spend";              //derivative: purchase so far, if >=300 VIP
 
     public static final String REWARDS_COLUMN_DISCOUNT = "VipDiscount";     //derivative: how much discount ~ 10% purchase
     public static final String REWARDS_COLUMN_CREDIT = "CreditApplied";     //derivative: credit applied to purcahse amount, if any
@@ -35,7 +37,7 @@ public class RewardsAndDiscountDBHelper extends SQLiteOpenHelper {
         db.execSQL(
                 "CREATE TABLE RewardsAndDiscount" +
                         "TransactionID MEDIUMINT PRIMARY KEY NOT NULL, CustomerID MEDIUMINT NOT NULL" +
-                        "Year DATE, Price DECIMAL(10,2), VipStatus INTEGER, Credit DECIMAL(10,5), VipDiscount DECIMAL(10,2),  CreditApplied DECIMAL(10,5)" //+
+                        "Date INTEGER, Price DECIMAL(10,2), VipStatus INTEGER, Credit DECIMAL(10,2), Spend DECIMAL(10,2), VipDiscount DECIMAL(10,2),  CreditApplied DECIMAL(10,2)" //+
                         //"FOREIGN KEY(CustomerID) REFERENCES CustomerInfo(ID)"
         );
     }
