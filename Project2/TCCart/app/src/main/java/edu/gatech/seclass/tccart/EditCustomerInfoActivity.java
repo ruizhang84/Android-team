@@ -141,7 +141,6 @@ public class EditCustomerInfoActivity extends AppCompatActivity {
         alert.setNegativeButton("No",
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
-
                         dialog.cancel();
                     }
                 });

@@ -1,8 +1,11 @@
 package edu.gatech.seclass.tccart;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+
+import java.util.Date;
 
 /**
  *  The SQLite database handler for Transaction information
@@ -41,8 +44,27 @@ public class TransactionDBHandler extends SQLiteOpenHelper {
         onCreate(db);
     }
 
+    public void addTransaction(Transaction transaction) {
+        SQLiteDatabase db = this.getWritableDatabase();
 
+        ContentValues values = new ContentValues();
+        values.put(CUSTOMER_ID, transaction.getCustomer().getID());
 
+        Date date = transaction.getDate();
+        if (date == null){
+            values.put(TRANSACTION_TIME, (new Date(0)).getTime());
+        }
+        else{
+            values.put(TRANSACTION_TIME, date.getTime());
+        }
+
+        values.put(PRICE_BEFORE, transaction.getTotalAmount());
+        values.put(DISCOUNTS, transaction.getVipDiscount());
+        values.put(REWARDS_USED, transaction.getRewardsApplied());
+
+        db.insert(TABLE_TRANSACTION, null, values);
+        db.close();
+    }
 
 
 
