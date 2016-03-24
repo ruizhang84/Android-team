@@ -75,9 +75,6 @@ public class AddCustomerActivity extends AppCompatActivity {
             return;
         }
 
-
-
-
         customer_to_add = new Customer(id, firstName, lastName, email);
 
         AlertDialog.Builder alert = new AlertDialog.Builder(

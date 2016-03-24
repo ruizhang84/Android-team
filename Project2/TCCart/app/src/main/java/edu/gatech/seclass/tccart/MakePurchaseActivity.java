@@ -50,7 +50,6 @@ public class MakePurchaseActivity extends AppCompatActivity {
         customer_db = new CustomerDBHandler(this);
     }
 
-    //CreditCardService.readCreditCard();
 
     public void handleCancel(View view) {
         Intent intent = new Intent(this, MainActivity.class);
@@ -58,27 +57,41 @@ public class MakePurchaseActivity extends AppCompatActivity {
     }
 
     public void handleScanCustomerCard(View view) {
-         String CustomerID = QRCodeService.scanQRCode();
-         if (CustomerID.equals("ERR") ){
-             //report error
-             Context context = getApplicationContext();
-             CharSequence text = "Customer ID Not Exist!";
-             int duration = Toast.LENGTH_SHORT;
-             Toast toast = Toast.makeText(context, text, duration);
-             toast.show();
-         }else{
-             //readin ID
-             TS.setCustomerID(Long.parseLong(CustomerID));
-             //display Customer Name
 
-         }
+        String id = QRCodeService.scanQRCode();
 
+        if (id == null || id.length() == 0){
+            Context context = getApplicationContext();
+            CharSequence text = "Card scan failed!";
+            int duration = Toast.LENGTH_SHORT;
+            Toast toast = Toast.makeText(context, text, duration);
+            toast.show();
+            return;
+        }
+        Customer customer = customer_db.getCustomer(id);
+        if (customer == null){
+            Context context = getApplicationContext();
+            CharSequence text = "Not a registered ID!";
+            int duration = Toast.LENGTH_SHORT;
+            Toast toast = Toast.makeText(context, text, duration);
+            toast.show();
+            return;
+        }
+        Context context = getApplicationContext();
+        CharSequence text = "Scan card successful!";
+        int duration = Toast.LENGTH_SHORT;
+        Toast toast = Toast.makeText(context, text, duration);
+        toast.show();
 
-
+        textName.setText(customer.getFullName());
+        Customer.currentCustomer = customer;
     }
 
     public void handleScanCreditCard(View view) {
+
+        /*
         CreditCard = CreditCardService.readCreditCard();
+        //CreditCardService.readCreditCard();
 
         if (CreditCard.equals("ERR") ){
             //report error
@@ -88,14 +101,13 @@ public class MakePurchaseActivity extends AppCompatActivity {
             Toast toast = Toast.makeText(context, text, duration);
             toast.show();
         }
-
+        */
 
     }
 
     public void handleApplyRewardDiscount(View view) {
-        //get vip and rewards from query
-        SQLiteDatabase db = database.getReadableDatabase();
 
+        /*
         //sql to get vip and credit order by time
         Cursor c = db.rawQuery( "select Vip, Credit, CreditApplied, Year" +
                                 "from RewardsAndDiscount " +
@@ -109,6 +121,8 @@ public class MakePurchaseActivity extends AppCompatActivity {
         double credits = c.getDouble(c.getColumnIndex("Credit")) - c.getDouble(c.getColumnIndex("CreditApplied"));
         Date year = new Date( c.getLong( c.getColumnIndex("Year") ));
 
+        */
+
         //get current time and decide if vip valid
         Calendar y = Calendar.getInstance();
         int seconds = y.get(Calendar.SECOND);
@@ -120,7 +134,7 @@ public class MakePurchaseActivity extends AppCompatActivity {
         //TS.setVipDiscount();
 
         //recycle cursor
-        c.close();
+        //c.close();
     }
 
     public void handleConfirm(View view) {
@@ -151,43 +165,4 @@ public class MakePurchaseActivity extends AppCompatActivity {
     public void handleClear(View view) {
     }
 
-    @Override
-    public void onStart() {
-        super.onStart();
-
-        // ATTENTION: This was auto-generated to implement the App Indexing API.
-        // See https://g.co/AppIndexing/AndroidStudio for more information.
-        client.connect();
-        Action viewAction = Action.newAction(
-                Action.TYPE_VIEW, // TODO: choose an action type.
-                "MakePurchase Page", // TODO: Define a title for the content shown.
-                // TODO: If you have web page content that matches this app activity's content,
-                // make sure this auto-generated web page URL is correct.
-                // Otherwise, set the URL to null.
-                Uri.parse("http://host/path"),
-                // TODO: Make sure this auto-generated app deep link URI is correct.
-                Uri.parse("android-app://edu.gatech.seclass.tccart/http/host/path")
-        );
-        AppIndex.AppIndexApi.start(client, viewAction);
-    }
-
-    @Override
-    public void onStop() {
-        super.onStop();
-
-        // ATTENTION: This was auto-generated to implement the App Indexing API.
-        // See https://g.co/AppIndexing/AndroidStudio for more information.
-        Action viewAction = Action.newAction(
-                Action.TYPE_VIEW, // TODO: choose an action type.
-                "MakePurchase Page", // TODO: Define a title for the content shown.
-                // TODO: If you have web page content that matches this app activity's content,
-                // make sure this auto-generated web page URL is correct.
-                // Otherwise, set the URL to null.
-                Uri.parse("http://host/path"),
-                // TODO: Make sure this auto-generated app deep link URI is correct.
-                Uri.parse("android-app://edu.gatech.seclass.tccart/http/host/path")
-        );
-        AppIndex.AppIndexApi.end(client, viewAction);
-        client.disconnect();
-    }
 }
