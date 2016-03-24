@@ -12,6 +12,8 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.Random;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 import edu.gatech.seclass.services.PrintingService;
 
@@ -34,6 +36,13 @@ public class AddCustomerActivity extends AppCompatActivity {
         editTextFirstName = (EditText)findViewById(R.id.textFirstName);
         editTextLastName = (EditText)findViewById(R.id.textLastName);
         editTextEmail = (EditText)findViewById(R.id.textEmail);
+    }
+
+    public void onBackPressed() {
+        Intent intent = new Intent(this, MainActivity.class);
+        if (Customer.currentCustomer != null)
+            intent.putExtra("current_id", Customer.currentCustomer.getID());
+        startActivity(intent);
     }
 
     public void handleCancel(View view){
@@ -74,6 +83,21 @@ public class AddCustomerActivity extends AppCompatActivity {
             toast.show();
             return;
         }
+
+        String email_pattern = "^[_A-Za-z0-9-\\+]+(\\.[_A-Za-z0-9-]+)*@"
+                + "[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$";
+        Pattern pattern = Pattern.compile(email_pattern);
+        Matcher matcher = pattern.matcher(email);
+
+        if (!matcher.matches()){
+            Context context = getApplicationContext();
+            CharSequence text = "Please enter a valid email address in the format aaa@bbb.ccc!";
+            int duration = Toast.LENGTH_SHORT;
+            Toast toast = Toast.makeText(context, text, duration);
+            toast.show();
+            return;
+        }
+
         customer_to_add = new Customer(id, firstName, lastName, email);
 
         AlertDialog.Builder alert = new AlertDialog.Builder(

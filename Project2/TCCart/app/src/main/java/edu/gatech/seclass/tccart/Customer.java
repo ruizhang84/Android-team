@@ -1,5 +1,6 @@
 package edu.gatech.seclass.tccart;
 
+import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
 
@@ -8,9 +9,10 @@ import java.util.HashMap;
  */
 public class Customer {
 
-    public static final String idCharList = "0123456789abcdef";
-    public static final int idLength = 8;
+    public static final String idCharList = "0123456789abcdef"; // customer id character space
+    public static final int idLength = 8; // customer id length
     public static Customer currentCustomer = null;
+    public static long reward_expiration_time = 2678000000L; // 30 days in millisecond
 
     private String firstName;
     private String lastName;
@@ -18,7 +20,8 @@ public class Customer {
     private String id;
     private double rewards;
     private Date rewardDate;
-    private Date vipDate;
+    private double spendingYTD;
+    private int vipYear;
 
     public Customer(String id, String firstName, String lastName, String email) {
         this.firstName = firstName;
@@ -27,7 +30,29 @@ public class Customer {
         this.id = id;
         this.rewards = 0;
         this.rewardDate = null;
-        this.vipDate = null;
+        this.vipYear = -1;
+        this.spendingYTD = 0;
+    }
+
+    public boolean isVIP(){
+        Calendar today = Calendar.getInstance();
+        return today.get(Calendar.YEAR) == this.vipYear;
+    }
+
+    public int getVipYear(){
+        return this.vipYear;
+    }
+
+    public void setVipYear(int y){
+        this.vipYear = y;
+    }
+
+    public double getSpendingYTD(){
+        return this.spendingYTD;
+    }
+
+    public void setSpendingYTD(double s){
+        this.spendingYTD = s;
     }
 
     public Date getRewardDate(){
@@ -38,8 +63,18 @@ public class Customer {
         return this.rewards;
     }
 
-    public Date getVipDate(){
-        return this.vipDate;
+    public double getEffectiveRewards(){
+        Date today = new Date();
+        if (this.rewardDate == null)
+            return 0;
+        long dt = today.getTime() - this.rewardDate.getTime();
+        if (dt >= reward_expiration_time){
+            return 0;
+        }
+        else {
+            return this.rewards;
+        }
+
     }
 
     public void setRewardDate(Date d){
@@ -48,10 +83,6 @@ public class Customer {
 
     public void setRewards(double r){
         this.rewards = r;
-    }
-
-    public void  setVipDate(Date d){
-        this.vipDate = d;
     }
 
     public String getFullName(){
