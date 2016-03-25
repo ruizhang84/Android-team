@@ -133,7 +133,7 @@ public class MakePurchaseActivity extends AppCompatActivity {
             toast.show();
         }
 
-        SimpleDateFormat sdf = new SimpleDateFormat("MMddyyyy");
+        SimpleDateFormat sdf = new SimpleDateFormat("MMddyyyy", Locale.US);
         Date ccDate = sdf.parse(strArray[3]);
         currentCC = new CreditCard(strArray[0], strArray[1], strArray[2],
                 ccDate, strArray[4]);

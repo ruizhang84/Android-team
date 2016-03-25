@@ -25,7 +25,8 @@ public class CustomerDBHandler extends SQLiteOpenHelper {
     private static final String REWARDS = "rewards";
     private static final String REWARD_DATE = "rewards_date";
     private static final String SPENDING_YTD = "spending_ytd";
-    private static final String VIP_YEAR = "vip_year";
+    private static final String SPENDING_YEAR = "spending_year";
+    private static final String VIP_YEARS = "vip_years";
 
     public static String getID(){ return ID; }
     public static String getFIRST_NAME(){ return FIRST_NAME; }
@@ -34,7 +35,8 @@ public class CustomerDBHandler extends SQLiteOpenHelper {
     public static String getREWARDS(){ return REWARDS; }
     public static String getREWARD_DATE(){ return REWARD_DATE; }
     public static String getSPENDING_YTD(){ return SPENDING_YTD; }
-    public static String getVIP_YEAR(){ return VIP_YEAR; }
+    public static String getSPENDING_YEAR(){ return SPENDING_YEAR; }
+    public static String getVIP_YEARS(){ return VIP_YEARS; }
     public static String getTABLE_CUSTOMER(){ return TABLE_CUSTOMER; }
 
 
@@ -51,7 +53,8 @@ public class CustomerDBHandler extends SQLiteOpenHelper {
                 + REWARDS + " DOUBLE,"
                 + REWARD_DATE + " BIGINT,"
                 + SPENDING_YTD + " DOUBLE,"
-                + VIP_YEAR + " INT"
+                + SPENDING_YEAR + " INT,"
+                + VIP_YEARS + " TEXT"
                 + ")";
         db.execSQL(CREATE_TABLE);
     }
@@ -81,7 +84,8 @@ public class CustomerDBHandler extends SQLiteOpenHelper {
         }
 
         values.put(SPENDING_YTD, customer.getSpendingYTD());
-        values.put(VIP_YEAR, customer.getVipYear());
+        values.put(SPENDING_YEAR, customer.getSpendingYear());
+        values.put(VIP_YEARS, customer.getVipYearsString());
 
         db.insert(TABLE_CUSTOMER, null, values);
         db.close();
@@ -91,7 +95,8 @@ public class CustomerDBHandler extends SQLiteOpenHelper {
         SQLiteDatabase db = this.getReadableDatabase();
 
         String[] projection = new String[]{ID,
-                FIRST_NAME, LAST_NAME, EMAIL, REWARDS, REWARD_DATE, SPENDING_YTD, VIP_YEAR};
+                FIRST_NAME, LAST_NAME, EMAIL, REWARDS, REWARD_DATE,
+                SPENDING_YTD, SPENDING_YEAR, VIP_YEARS};
         String selection = ID + "=?";
         String[] selectionArgument = new String[]{id};
         Cursor cursor = db.query(TABLE_CUSTOMER, projection, selection,
@@ -110,12 +115,14 @@ public class CustomerDBHandler extends SQLiteOpenHelper {
         double rewards = cursor.getDouble(4);
         Date rewardsDate = new Date(cursor.getLong(5));
         double spendingYTD = cursor.getDouble(6);
-        int vipYear = cursor.getInt(7);
+        int spendingYear = cursor.getInt(7);
+        String vipYears = cursor.getString(8);
         Customer customer = new Customer(new_id, firstName, lastName, email);
         customer.setRewards(rewards);
         customer.setRewardDate(rewardsDate);
         customer.setSpendingYTD(spendingYTD);
-        customer.setVipYear(vipYear);
+        customer.setSpendingYear(spendingYear);
+        customer.setVipYears(vipYears);
 
         cursor.close();
         return customer;
@@ -140,7 +147,8 @@ public class CustomerDBHandler extends SQLiteOpenHelper {
         }
 
         values.put(SPENDING_YTD, customer.getSpendingYTD());
-        values.put(VIP_YEAR, customer.getVipYear());
+        values.put(SPENDING_YEAR, customer.getSpendingYear());
+        values.put(VIP_YEARS, customer.getVipYearsString());
 
         return db.update(TABLE_CUSTOMER, values, ID + " = ?",
                 new String[]{customer.getID()});

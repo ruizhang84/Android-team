@@ -1,8 +1,11 @@
 package edu.gatech.seclass.tccart;
 
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.HashMap;
+import java.util.List;
+import java.util.Locale;
 
 /**
  * A Customer class for TCCart System
@@ -21,7 +24,8 @@ public class Customer {
     private double rewards;
     private Date rewardDate;
     private double spendingYTD;
-    private int vipYear;
+    private int spendingYear;
+    private List<Integer> vipYears;
 
     public Customer(String id, String firstName, String lastName, String email) {
         this.firstName = firstName;
@@ -30,30 +34,56 @@ public class Customer {
         this.id = id;
         this.rewards = 0;
         this.rewardDate = null;
-        this.vipYear = -1;
+        this.vipYears = null;
         this.spendingYTD = 0;
+        Calendar today = Calendar.getInstance();
+        this.spendingYear = today.get(Calendar.YEAR);
     }
 
     public boolean isVIP(){
         Calendar today = Calendar.getInstance();
-        return today.get(Calendar.YEAR) == this.vipYear;
+        Integer currentYear = today.get(Calendar.YEAR);
+        return this.vipYears.contains(currentYear);
     }
 
-    public int getVipYear(){
-        return this.vipYear;
+    public List<Integer> getVipYearsList(){
+        return this.vipYears;
     }
 
-    public void setVipYear(int y){
-        this.vipYear = y;
+    public String getVipYearsString() {
+        String output = "";
+        for (int i : this.vipYears) {
+            String s = String.format(Locale.US, "%1$04d", i);
+            output += s + "#";
+        }
+        return output;
+    }
+
+    public void setVipYears(String input) {
+        this.vipYears = null;
+        String[] strArray = input.split("#");
+        for (String s : strArray){
+            this.vipYears.add(Integer.parseInt(s));
+        }
+    }
+
+    public void addVipYear(int y){
+        if (this.vipYears == null)
+            this.vipYears = new ArrayList<Integer>();
+        this.vipYears.add(y);
     }
 
     public double getSpendingYTD(){
         return this.spendingYTD;
     }
 
+    public int getSpendingYear() { return this.spendingYear; }
+
     public void setSpendingYTD(double s){
         this.spendingYTD = s;
     }
+
+    public void setSpendingYear(int y) { this.spendingYear = y; }
 
     public Date getRewardDate(){
         return this.rewardDate;
@@ -77,7 +107,6 @@ public class Customer {
         else {
             return this.rewards;
         }
-
     }
 
     public void setRewardDate(Date d){
@@ -116,28 +145,3 @@ public class Customer {
     }
 
 }
-
-
-/*
-
-import java.util.Date;
-import java.util.Calendar;
-
-public class HelloWorld{
-
-     public static void main(String []args){
-       
-       Date date = new Date(2121212333121L);
-       System.out.println(date.toString());
-       
-       Calendar cal = Calendar.getInstance();
-       cal.setTime(date);
-       System.out.println(cal.get(Calendar.YEAR));
-       System.out.println(cal.get(Calendar.MONTH));
-       System.out.println(cal.get(Calendar.DAY_OF_MONTH));
-       
-     }
-}
-
-
-*/

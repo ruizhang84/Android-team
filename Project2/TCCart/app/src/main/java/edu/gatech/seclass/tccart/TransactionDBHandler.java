@@ -82,10 +82,12 @@ public class TransactionDBHandler extends SQLiteOpenHelper {
                 CustomerDBHandler.getREWARDS(),
                 CustomerDBHandler.getREWARD_DATE(),
                 CustomerDBHandler.getSPENDING_YTD(),
-                CustomerDBHandler.getVIP_YEAR()};
+                CustomerDBHandler.getSPENDING_YEAR(),
+                CustomerDBHandler.getVIP_YEARS()};
         String selection = CustomerDBHandler.getID() + "=?";
         String[] selectionArgument = new String[]{id};
-        Cursor cursor = db.query(CustomerDBHandler.getTABLE_CUSTOMER(), projection, selection,
+        Cursor cursor = db.query(CustomerDBHandler.getTABLE_CUSTOMER(),
+                projection, selection,
                 selectionArgument, null, null, null);
 
         if (cursor.getCount() == 0){
@@ -101,12 +103,14 @@ public class TransactionDBHandler extends SQLiteOpenHelper {
         double rewards = cursor.getDouble(4);
         Date rewardsDate = new Date(cursor.getLong(5));
         double spendingYTD = cursor.getDouble(6);
-        int vipYear = cursor.getInt(7);
+        int spendingYear = cursor.getInt(7);
+        String vipYears = cursor.getString(8);
         Customer customer = new Customer(new_id, firstName, lastName, email);
         customer.setRewards(rewards);
         customer.setRewardDate(rewardsDate);
         customer.setSpendingYTD(spendingYTD);
-        customer.setVipYear(vipYear);
+        customer.setSpendingYear(spendingYear);
+        customer.setVipYears(vipYears);
 
         cursor.close();
         return customer;
@@ -117,7 +121,7 @@ public class TransactionDBHandler extends SQLiteOpenHelper {
         if (customer == null)
             return null;
 
-        List<Transaction> list = new ArrayList<Transaction>();
+        List<Transaction> list = new ArrayList<>();
 
         String id = customer.getID();
         if (getCustomer(id) == null)
