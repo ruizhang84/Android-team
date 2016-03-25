@@ -3,10 +3,12 @@ package edu.gatech.seclass.tccart;
 import edu.gatech.seclass.services.*;
 
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.Cursor;
 import android.net.Uri;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -206,6 +208,8 @@ public class MakePurchaseActivity extends AppCompatActivity {
         String description = textItemDescription.getText().toString();
         String priceStr = textPrice.getText().toString();
         String amountStr = textAmountToBePaid.getText().toString();
+        String discountStr = textDiscountApplied.getText().toString();
+        String rewardStr = textRewardsApplied.getText().toString();
 
         if (description.length() <= 0 || priceStr.length() <= 0) {
             Context context = getApplicationContext();
@@ -216,7 +220,8 @@ public class MakePurchaseActivity extends AppCompatActivity {
             return;
         }
 
-        if (amountStr.length() <= 0) {
+        if (amountStr.length() <= 0 || discountStr.length() <= 0
+                || rewardStr.length() <= 0) {
             Context context = getApplicationContext();
             CharSequence text = "Please click Apply Reward/Discount first!";
             int duration = Toast.LENGTH_SHORT;
@@ -233,6 +238,53 @@ public class MakePurchaseActivity extends AppCompatActivity {
             toast.show();
             return;
         }
+
+        AlertDialog.Builder alert = new AlertDialog.Builder(
+                view.getContext());
+
+        int ccLength = currentCC.ccNumber.length();
+        String ccEnding = currentCC.ccNumber.substring(ccLength-4, ccLength-1);
+        alert.setTitle("Confirm Purchase");
+        String message = "Are you sure to make this purchase?\n "
+                + "Item: " + description + "\n"
+                + "Price: " + priceStr + "\n"
+                + "Discount:" + discountStr + "\n"
+                + "Rewards Applied:" + rewardStr + "\n"
+                + "Credit Card:  *****" + ccEnding + "\n";
+        alert.setMessage(message);
+
+        final Transaction transaction = new Transaction(
+                Customer.currentCustomer,
+                new Date(), Double.parseDouble(priceStr),
+                Double.parseDouble(discountStr),
+                Double.parseDouble(rewardStr),
+                description);
+
+        alert.setPositiveButton("Yes",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+                          Customer customer = transaction.getCustomer();
+                          customer.setRewards(customer.getRewards()
+                                  - transaction.getRewardsApplied());
+                          double paid = transaction.getTotalAmount()
+                                  - transaction.getRewardsApplied()
+                                  - transaction.getVipDiscount();
+                          if (paid >= 30)
+                              customer.setRewards(customer.getRewards() + 3);
+                          // to be finished
+                    }
+                });
+
+        alert.setNegativeButton("No",
+                new DialogInterface.OnClickListener() {
+                    public void onClick(DialogInterface dialog, int which) {
+
+                        dialog.cancel();
+                    }
+                });
+
+
+
         // PaymentService.processPayment((String firstName
         //         String lastName,
         //         String ccNumber,
