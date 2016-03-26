@@ -49,6 +49,15 @@ public class Customer {
         return this.vipYears.contains(currentYear);
     }
 
+    public boolean isVIPNextYear(){
+        updateSpending();
+        Calendar today = Calendar.getInstance();
+        Integer nextYear = today.get(Calendar.YEAR)+1;
+        if (this.vipYears == null)
+            return false;
+        return this.vipYears.contains(nextYear);
+    }
+
     public List<Integer> getVipYearsList(){
         updateSpending();
         return this.vipYears;
@@ -68,16 +77,12 @@ public class Customer {
 
     public void setVipYears(String input) {
         updateSpending();
-        this.vipYears = null;
-        if (input == null || input.length() <= 0){
-            this.vipYears = null;
+        this.vipYears = new ArrayList<>();
+        if (input == null || input.length() <= 0)
             return;
-        }
         String[] strArray = input.split("#");
-        if (strArray == null || strArray.length <= 0){
-            this.vipYears = null;
+        if (strArray.length <= 0)
             return;
-        }
         for (String s : strArray){
             this.vipYears.add(Integer.parseInt(s));
         }
