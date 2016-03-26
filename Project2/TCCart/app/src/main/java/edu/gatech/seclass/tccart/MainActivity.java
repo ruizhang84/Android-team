@@ -18,6 +18,9 @@ import com.google.android.gms.appindexing.Action;
 import com.google.android.gms.appindexing.AppIndex;
 import com.google.android.gms.common.api.GoogleApiClient;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import edu.gatech.seclass.services.*;
 
 public class MainActivity extends AppCompatActivity {
@@ -74,14 +77,20 @@ public class MainActivity extends AppCompatActivity {
     public void handleBack(View view){ }
 
     public void preloadCustomers(){
-        Customer c = new Customer("7c86ffee", "Ralph", "Hapschatt", "ralph@gmail.com" );
-        db.addCustomer(c);
 
-        c = new Customer("b59441af", "Betty", "Monro", "betty@gmail.com" );
-        db.addCustomer(c);
+        //Create list of initial customers to add to SQLite database
+        //Using a list of objects to make it easier to work with
+        List<Customer> cList = new ArrayList<>();
+        cList.add(new Customer("7c86ffee", "Ralph", "Hapschatt", "ralph@gmail.com" ));
+        cList.add(new Customer("b59441af", "Betty", "Monro", "betty@gmail.com" ));
+        cList.add(new Customer("cd0f0e05", "Everett", "Scott", "everett@gmail.com" ));
 
-        c = new Customer("cd0f0e05", "Everett", "Scott", "everett@gmail.com" );
-        db.addCustomer(c);
+        //test each customer ID to see if it exists, if it does not, add
+        for (Customer tempc : cList) {
+            if (db.getCustomer(tempc.getID()) == null) {
+                db.addCustomer(tempc);
+            }
+        }
     }
 
     public void handleScanCard(View view) {

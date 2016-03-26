@@ -7,12 +7,15 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Locale;
 
 public class ViewTransactionActivity extends AppCompatActivity {
 
     private CustomerDBHandler db;
+    private TransactionDBHandler tdb;
 
     private TextView textName;
     private TextView textRewards;
@@ -29,6 +32,8 @@ public class ViewTransactionActivity extends AppCompatActivity {
                 (TextView)findViewById(R.id.textTransactionRewardHistory);
 
         db = new CustomerDBHandler(this);
+        tdb = new TransactionDBHandler(this);
+        List<Transaction> tlist = new ArrayList<>();
 
         Customer customer = Customer.currentCustomer;
         if (customer != null &&
@@ -42,6 +47,14 @@ public class ViewTransactionActivity extends AppCompatActivity {
             }
             String rewards_text = String.format(Locale.US, "%5.2f", customer.getRewards());
             textRewards.setText(rewards_text);
+
+            String t = "";
+            tlist = tdb.getTransaction(customer);
+            for (Transaction temp : tlist) {
+                t += temp.getTransactionLog();
+            }
+            textTransactionRewardHistory.setText(t);
+
         }
 
     }

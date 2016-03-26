@@ -44,4 +44,15 @@ public class Transaction {
 
     public String getDescription() { return this.description; }
 
+    public String getTransactionLog() {
+        String s = "";
+        s += "Date of Transaction:  " + this.getDate() + "\n";
+        s += "Description:  " + this.getDescription() + "\n";
+        s += "Total Amount:  " + this.getTotalAmount() + "\n";
+        s += "VIP Discount:  " + this.getVipDiscount() + "\n";
+        s += "Rewards Applied:  " + this.getRewardsApplied() + "\n";
+        s += "\n";
+        return s;
+    }
+
 }
