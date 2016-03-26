@@ -122,12 +122,13 @@ public class MakePurchaseActivity extends AppCompatActivity {
 
         String ccStr = CreditCardService.readCreditCard();
 
-        if (ccStr.equals("ERR")) {
+        if (ccStr == null || ccStr.equals("ERR")) {
             Context context = getApplicationContext();
             CharSequence text = "Failed to read credit card!";
             int duration = Toast.LENGTH_SHORT;
             Toast toast = Toast.makeText(context, text, duration);
             toast.show();
+            return;
         }
 
         String[] strArray = ccStr.split("#");
@@ -259,6 +260,7 @@ public class MakePurchaseActivity extends AppCompatActivity {
                 + "Price: $" + priceStr + "\n"
                 + "Discount: $" + discountStr + "\n"
                 + "Rewards Applied: $" + rewardStr + "\n"
+                + "Amount to Pay: $" + amountStr + "\n"
                 + "Credit Card:  *****" + ccEnding + "\n";
         alert.setMessage(message);
 
@@ -270,6 +272,12 @@ public class MakePurchaseActivity extends AppCompatActivity {
                 description);
 
         final Intent intent = new Intent(this, MainActivity.class);
+        final String descriptionFinal = description;
+        final String priceStrFinal = priceStr;
+        final String discountStrFinal = discountStr;
+        final String rewardStrFinal = rewardStr;
+        final String ccEndingFinal = ccEnding;
+        final String amountStrFinal = amountStr;
 
         alert.setPositiveButton("Yes",
                 new DialogInterface.OnClickListener() {
@@ -281,31 +289,66 @@ public class MakePurchaseActivity extends AppCompatActivity {
                                 - transaction.getRewardsApplied()
                                 - transaction.getVipDiscount();
 
-                        boolean result = PaymentService.processPayment(
-                                currentCC.firstName,
-                                currentCC.lastName,
-                                currentCC.ccNumber,
-                                currentCC.expirationDate,
-                                currentCC.securityCode,
-                                paidAmount);
-                        if (!result){
+                        if (paidAmount > 0) {
+                            boolean result = PaymentService.processPayment(
+                                    currentCC.firstName,
+                                    currentCC.lastName,
+                                    currentCC.ccNumber,
+                                    currentCC.expirationDate,
+                                    currentCC.securityCode,
+                                    paidAmount);
+                            if (!result) {
+                                Context context = getApplicationContext();
+                                CharSequence text = "Credit card payment failed!";
+                                int duration = Toast.LENGTH_SHORT;
+                                Toast toast = Toast.makeText(context, text, duration);
+                                toast.show();
+                                dialog.cancel();
+                                return;
+                            }
+                        }
+
+                        boolean email_res = EmailService.sendEMail(customer.getEmail(),
+                                "Your just made a purchase at TCCart",
+                                "Order details:\n"
+                                + "Item: " + descriptionFinal + "\n"
+                                + "Price: $" + priceStrFinal + "\n"
+                                + "Discount: $" + discountStrFinal + "\n"
+                                + "Rewards Applied: $" + rewardStrFinal + "\n"
+                                + "Amount Paid: $" + amountStrFinal + "\n"
+                                + "Credit Card:  *****" + ccEndingFinal + "\n" );
+                        if (!email_res){
                             Context context = getApplicationContext();
-                            CharSequence text = "Credit card payment failed!";
+                            CharSequence text = "Failed to send purchase notification email!";
                             int duration = Toast.LENGTH_SHORT;
                             Toast toast = Toast.makeText(context, text, duration);
                             toast.show();
-                            dialog.cancel();
-                            return;
                         }
 
                           customer.setRewards(customer.getRewards()
                                   - transaction.getRewardsApplied());
+
                           if (paidAmount >= rewardThreshold) {
                               customer.setRewards(customer.getRewards() + rewardAmount);
                               customer.setRewardDate(new Date());
+                              String rewardAmountStr = String.format(Locale.US, "%5.2f", rewardAmount);
+                              email_res = EmailService.sendEMail(customer.getEmail(),
+                                      "Your just earned a $" + rewardAmountStr + " reward at TCCart",
+                                      "Order details:\n"
+                                              + "Item: " + descriptionFinal + "\n"
+                                              + "Amount Paid: $" + amountStrFinal + "\n"
+                                              + "Reward Earned: " + rewardAmountStr + "\n" );
+                              if (!email_res){
+                                  Context context = getApplicationContext();
+                                  CharSequence text = "Failed to send reward notification email!";
+                                  int duration = Toast.LENGTH_SHORT;
+                                  Toast toast = Toast.makeText(context, text, duration);
+                                  toast.show();
+                              }
                           }
+
                           customer.setSpendingYTD(customer.getSpendingYTD() + paidAmount);
-                          if (customer.getSpendingYTD() >= vipThreshold){
+                          if (customer.getSpendingYTD() >= vipThreshold && !customer.isVIPNextYear()){
                               Calendar today = Calendar.getInstance();
                               int thisYear = today.get(Calendar.YEAR);
                               int nextYear = thisYear+1;
@@ -317,7 +360,7 @@ public class MakePurchaseActivity extends AppCompatActivity {
                               Toast toast = Toast.makeText(context, text, duration);
                               toast.show();
 
-                              boolean email_res = EmailService.sendEMail(customer.getEmail(),
+                              email_res = EmailService.sendEMail(customer.getEmail(),
                                       "You've Earned TCCart VIP Customer Status for "
                                               + String.format(Locale.US, "%1$04d", nextYear),
                                       "Congratulations, " + customer.getFullName() + ",\n"
