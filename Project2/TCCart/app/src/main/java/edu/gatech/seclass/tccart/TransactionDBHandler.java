@@ -14,6 +14,7 @@ import java.util.List;
  *  The SQLite database handler for Transaction information
  */
 
+//test test, planning to restructure this on a new branch...
 public class TransactionDBHandler extends SQLiteOpenHelper {
 
     public static final int DATABASE_VERSION = 1;
