@@ -109,6 +109,8 @@ public class AddCustomerActivity extends AppCompatActivity {
                 + "Email: " + customer_to_add.getEmail() + "\n"
                 + "ID: " + customer_to_add.getID());
 
+        final Intent intent = new Intent(this, MainActivity.class);
+
         alert.setPositiveButton("Yes",
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
@@ -142,6 +144,10 @@ public class AddCustomerActivity extends AppCompatActivity {
                             toast = Toast.makeText(context, text, duration);
                             toast.show();
                         }
+
+                        if (Customer.currentCustomer != null)
+                            intent.putExtra("current_id", Customer.currentCustomer.getID());
+                        startActivity(intent);
                     }
                 });
 

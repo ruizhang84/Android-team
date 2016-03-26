@@ -35,6 +35,7 @@ public class MakePurchaseActivity extends AppCompatActivity {
     private TextView textRewardsApplied;
     private TextView textDiscountApplied;
     private TextView textAmountToBePaid;
+    private TextView textCardCard;
 
     private TransactionDBHandler transaction_db;
     private CustomerDBHandler customer_db;
@@ -51,6 +52,8 @@ public class MakePurchaseActivity extends AppCompatActivity {
         setContentView(R.layout.activity_make_purchase);
 
         textName = (TextView) findViewById(R.id.textName);
+        textCardCard = (TextView) findViewById(R.id.textCardCard);
+
         textRewardsApplied = (TextView) findViewById(R.id.textRewardsApplied);
         textDiscountApplied = (TextView) findViewById(R.id.textDiscountApplied);
         textAmountToBePaid = (TextView) findViewById(R.id.textAmountToBePaid);
@@ -141,6 +144,9 @@ public class MakePurchaseActivity extends AppCompatActivity {
         currentCC = new CreditCard(strArray[0], strArray[1], strArray[2],
                 ccDate, strArray[4]);
 
+        int ccLength = currentCC.ccNumber.length();
+        String ccEnding = "******" + currentCC.ccNumber.substring(ccLength-5, ccLength-1);
+        textCardCard.setText(ccEnding);
         Context context = getApplicationContext();
         CharSequence text = "Credit card successfully scanned!";
         int duration = Toast.LENGTH_SHORT;
@@ -246,13 +252,13 @@ public class MakePurchaseActivity extends AppCompatActivity {
                 view.getContext());
 
         int ccLength = currentCC.ccNumber.length();
-        String ccEnding = currentCC.ccNumber.substring(ccLength-4, ccLength-1);
+        String ccEnding = currentCC.ccNumber.substring(ccLength-5, ccLength-1);
         alert.setTitle("Confirm Purchase");
-        String message = "Are you sure to make this purchase?\n "
+        String message = "Are you sure to make this purchase?\n"
                 + "Item: " + description + "\n"
-                + "Price: " + priceStr + "\n"
-                + "Discount:" + discountStr + "\n"
-                + "Rewards Applied:" + rewardStr + "\n"
+                + "Price: $" + priceStr + "\n"
+                + "Discount: $" + discountStr + "\n"
+                + "Rewards Applied: $" + rewardStr + "\n"
                 + "Credit Card:  *****" + ccEnding + "\n";
         alert.setMessage(message);
 
@@ -262,6 +268,8 @@ public class MakePurchaseActivity extends AppCompatActivity {
                 Double.parseDouble(discountStr),
                 Double.parseDouble(rewardStr),
                 description);
+
+        final Intent intent = new Intent(this, MainActivity.class);
 
         alert.setPositiveButton("Yes",
                 new DialogInterface.OnClickListener() {
@@ -331,11 +339,24 @@ public class MakePurchaseActivity extends AppCompatActivity {
                         customer_db.updateCustomer(customer);
                         transaction_db.addTransaction(transaction);
 
+                        textName.setText("");
+                        textItemDescription.setText("");
+                        textPrice.setText("");
+                        textRewardsApplied.setText("");
+                        textDiscountApplied.setText("");
+                        textAmountToBePaid.setText("");
+                        textCardCard.setText("");
+                        currentCC = null;
+
                         Context context = getApplicationContext();
                         CharSequence text = "Transaction completed successfully!";
                         int duration = Toast.LENGTH_SHORT;
                         Toast toast = Toast.makeText(context, text, duration);
                         toast.show();
+
+                        if (Customer.currentCustomer != null)
+                            intent.putExtra("current_id", Customer.currentCustomer.getID());
+                        startActivity(intent);
 
                     }
                 });
@@ -347,24 +368,7 @@ public class MakePurchaseActivity extends AppCompatActivity {
                         dialog.cancel();
                     }
                 });
-
-
-
-        // PaymentService.processPayment((String firstName
-        //         String lastName,
-        //         String ccNumber,
-        //        Date expirationDate,
-        //       String securityCode,
-        //double amount);
-        //EmailService.sendEMail(String recipient,
-        //        String subject,
-        //        String body);
-
-        /*
-        EmailService.sendEMail(String recipient,
-                String subject,
-                String body);
-        */
+        alert.show();
 
     }
 
@@ -375,6 +379,7 @@ public class MakePurchaseActivity extends AppCompatActivity {
         textRewardsApplied.setText("");
         textDiscountApplied.setText("");
         textAmountToBePaid.setText("");
+        textCardCard.setText("");
         currentCC = null;
     }
 

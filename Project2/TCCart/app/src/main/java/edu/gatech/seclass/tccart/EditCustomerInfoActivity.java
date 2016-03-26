@@ -146,6 +146,8 @@ public class EditCustomerInfoActivity extends AppCompatActivity {
                 + "Email: " + customer.getEmail() + "\n"
                 + "ID: " + customer.getID());
 
+        final Intent intent = new Intent(this, MainActivity.class);
+
         alert.setPositiveButton("Yes",
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
@@ -160,6 +162,11 @@ public class EditCustomerInfoActivity extends AppCompatActivity {
                         int duration = Toast.LENGTH_SHORT;
                         Toast toast = Toast.makeText(context, text, duration);
                         toast.show();
+
+                        if (Customer.currentCustomer != null)
+                            intent.putExtra("current_id", Customer.currentCustomer.getID());
+                        startActivity(intent);
+
                     }
                 });
 

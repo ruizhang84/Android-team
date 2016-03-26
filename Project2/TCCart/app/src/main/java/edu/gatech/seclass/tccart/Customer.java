@@ -44,6 +44,8 @@ public class Customer {
         updateSpending();
         Calendar today = Calendar.getInstance();
         Integer currentYear = today.get(Calendar.YEAR);
+        if (this.vipYears == null)
+            return false;
         return this.vipYears.contains(currentYear);
     }
 
@@ -55,6 +57,8 @@ public class Customer {
     public String getVipYearsString() {
         updateSpending();
         String output = "";
+        if (this.vipYears == null)
+            return output;
         for (int i : this.vipYears) {
             String s = String.format(Locale.US, "%1$04d", i);
             output += s + "#";
@@ -65,7 +69,15 @@ public class Customer {
     public void setVipYears(String input) {
         updateSpending();
         this.vipYears = null;
+        if (input == null || input.length() <= 0){
+            this.vipYears = null;
+            return;
+        }
         String[] strArray = input.split("#");
+        if (strArray == null || strArray.length <= 0){
+            this.vipYears = null;
+            return;
+        }
         for (String s : strArray){
             this.vipYears.add(Integer.parseInt(s));
         }
