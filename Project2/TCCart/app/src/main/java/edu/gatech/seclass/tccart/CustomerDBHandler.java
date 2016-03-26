@@ -12,94 +12,51 @@ import java.text.DateFormat;
 /**
  * The SQLite database handler for Customer information
  */
-public class CustomerDBHandler extends SQLiteOpenHelper {
+public class CustomerDBHandler {
 
-    private static final int DATABASE_VERSION = 1;
-    private static final String DATABASE_NAME = "TCCart";
-    private static final String TABLE_CUSTOMER = "CustomerInfo";
-
-    private static final String ID = "id";
-    private static final String FIRST_NAME = "first_name";
-    private static final String LAST_NAME = "last_name";
-    private static final String EMAIL = "email";
-    private static final String REWARDS = "rewards";
-    private static final String REWARD_DATE = "rewards_date";
-    private static final String SPENDING_YTD = "spending_ytd";
-    private static final String SPENDING_YEAR = "spending_year";
-    private static final String VIP_YEARS = "vip_years";
-
-    public static String getID(){ return ID; }
-    public static String getFIRST_NAME(){ return FIRST_NAME; }
-    public static String getLAST_NAME(){ return LAST_NAME; }
-    public static String getEMAIL(){ return EMAIL; }
-    public static String getREWARDS(){ return REWARDS; }
-    public static String getREWARD_DATE(){ return REWARD_DATE; }
-    public static String getSPENDING_YTD(){ return SPENDING_YTD; }
-    public static String getSPENDING_YEAR(){ return SPENDING_YEAR; }
-    public static String getVIP_YEARS(){ return VIP_YEARS; }
-    public static String getTABLE_CUSTOMER(){ return TABLE_CUSTOMER; }
-
+    DBHelper dbh;
 
     public CustomerDBHandler(Context context) {
-        super(context, DATABASE_NAME, null, DATABASE_VERSION);
-    }
-
-    public void onCreate(SQLiteDatabase db) {
-        String CREATE_TABLE = "CREATE TABLE " + TABLE_CUSTOMER + "("
-                + ID + " VARCHAR(8) PRIMARY KEY,"
-                + FIRST_NAME + " TEXT,"
-                + LAST_NAME + " TEXT,"
-                + EMAIL + " TEXT,"
-                + REWARDS + " DOUBLE,"
-                + REWARD_DATE + " BIGINT,"
-                + SPENDING_YTD + " DOUBLE,"
-                + SPENDING_YEAR + " INT,"
-                + VIP_YEARS + " TEXT"
-                + ")";
-        db.execSQL(CREATE_TABLE);
-    }
-
-    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-
-        db.execSQL("DROP TABLE IF EXISTS " + TABLE_CUSTOMER);
-        onCreate(db);
+        this.dbh = DBHelper.getInstance(context);
     }
 
     public void addCustomer(Customer customer) {
-        SQLiteDatabase db = this.getWritableDatabase();
+        SQLiteDatabase db = this.dbh.getWritableDatabase();
 
         ContentValues values = new ContentValues();
-        values.put(ID, customer.getID());
-        values.put(FIRST_NAME, customer.getFirstName());
-        values.put(LAST_NAME, customer.getLastName());
-        values.put(EMAIL, customer.getEmail());
-        values.put(REWARDS, customer.getRewards());
+        values.put(this.dbh.CUST_ID, customer.getID());
+        values.put(this.dbh.CUST_FIRST_NAME, customer.getFirstName());
+        values.put(this.dbh.CUST_LAST_NAME, customer.getLastName());
+        values.put(this.dbh.CUST_EMAIL, customer.getEmail());
+        values.put(this.dbh.CUST_REWARDS, customer.getRewards());
 
         Date rewardsDate = customer.getRewardDate();
         if (rewardsDate == null) {
-            values.put(REWARD_DATE, (new Date(0)).getTime());
+            values.put(this.dbh.CUST_REWARD_DATE, (new Date(0)).getTime());
         }
         else{
-            values.put(REWARD_DATE, rewardsDate.getTime());
+            values.put(this.dbh.CUST_REWARD_DATE, rewardsDate.getTime());
         }
 
-        values.put(SPENDING_YTD, customer.getSpendingYTD());
-        values.put(SPENDING_YEAR, customer.getSpendingYear());
-        values.put(VIP_YEARS, customer.getVipYearsString());
+        values.put(this.dbh.CUST_SPENDING_YTD, customer.getSpendingYTD());
+        values.put(this.dbh.CUST_SPENDING_YEAR, customer.getSpendingYear());
+        values.put(this.dbh.CUST_VIP_YEARS, customer.getVipYearsString());
 
-        db.insert(TABLE_CUSTOMER, null, values);
+        db.insert(this.dbh.TABLE_CUSTOMER, null, values);
         db.close();
     }
 
     public Customer getCustomer(String id) {
-        SQLiteDatabase db = this.getReadableDatabase();
+        SQLiteDatabase db = this.dbh.getReadableDatabase();
 
-        String[] projection = new String[]{ID,
-                FIRST_NAME, LAST_NAME, EMAIL, REWARDS, REWARD_DATE,
-                SPENDING_YTD, SPENDING_YEAR, VIP_YEARS};
-        String selection = ID + "=?";
+        String[] projection = new String[]{this.dbh.CUST_ID,
+                this.dbh.CUST_FIRST_NAME, this.dbh.CUST_LAST_NAME,
+                this.dbh.CUST_EMAIL, this.dbh.CUST_REWARDS, this.dbh.CUST_REWARD_DATE,
+                this.dbh.CUST_SPENDING_YTD, this.dbh.CUST_SPENDING_YEAR,
+                this.dbh.CUST_VIP_YEARS};
+        String selection = this.dbh.CUST_ID + "=?";
         String[] selectionArgument = new String[]{id};
-        Cursor cursor = db.query(TABLE_CUSTOMER, projection, selection,
+        Cursor cursor = db.query(this.dbh.TABLE_CUSTOMER, projection, selection,
                 selectionArgument, null, null, null);
 
         if (cursor.getCount() == 0){
@@ -129,34 +86,34 @@ public class CustomerDBHandler extends SQLiteOpenHelper {
     }
 
     public int updateCustomer(Customer customer) {
-        SQLiteDatabase db = this.getWritableDatabase();
+        SQLiteDatabase db = this.dbh.getWritableDatabase();
 
         ContentValues values = new ContentValues();
-        values.put(ID, customer.getID());
-        values.put(FIRST_NAME, customer.getFirstName());
-        values.put(LAST_NAME, customer.getLastName());
-        values.put(EMAIL, customer.getEmail());
-        values.put(REWARDS, customer.getRewards());
+        values.put(this.dbh.CUST_ID, customer.getID());
+        values.put(this.dbh.CUST_FIRST_NAME, customer.getFirstName());
+        values.put(this.dbh.CUST_LAST_NAME, customer.getLastName());
+        values.put(this.dbh.CUST_EMAIL, customer.getEmail());
+        values.put(this.dbh.CUST_REWARDS, customer.getRewards());
 
         Date rewardsDate = customer.getRewardDate();
         if (rewardsDate == null) {
-            values.put(REWARD_DATE, (new Date(0)).getTime());
+            values.put(this.dbh.CUST_REWARD_DATE, (new Date(0)).getTime());
         }
         else{
-            values.put(REWARD_DATE, rewardsDate.getTime());
+            values.put(this.dbh.CUST_REWARD_DATE, rewardsDate.getTime());
         }
 
-        values.put(SPENDING_YTD, customer.getSpendingYTD());
-        values.put(SPENDING_YEAR, customer.getSpendingYear());
-        values.put(VIP_YEARS, customer.getVipYearsString());
+        values.put(this.dbh.CUST_SPENDING_YTD, customer.getSpendingYTD());
+        values.put(this.dbh.CUST_SPENDING_YEAR, customer.getSpendingYear());
+        values.put(this.dbh.CUST_VIP_YEARS, customer.getVipYearsString());
 
-        return db.update(TABLE_CUSTOMER, values, ID + " = ?",
+        return db.update(this.dbh.TABLE_CUSTOMER, values, this.dbh.CUST_ID + " = ?",
                 new String[]{customer.getID()});
     }
 
     public void deleteCustomer(Customer customer) {
-        SQLiteDatabase db = this.getWritableDatabase();
-        db.delete(TABLE_CUSTOMER, ID + " = ?",
+        SQLiteDatabase db = this.dbh.getWritableDatabase();
+        db.delete(this.dbh.TABLE_CUSTOMER, this.dbh.CUST_ID + " = ?",
                 new String[]{customer.getID()});
         db.close();
     }

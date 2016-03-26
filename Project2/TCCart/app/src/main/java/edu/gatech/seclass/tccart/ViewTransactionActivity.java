@@ -50,8 +50,12 @@ public class ViewTransactionActivity extends AppCompatActivity {
 
             String t = "";
             tlist = tdb.getTransaction(customer);
-            for (Transaction temp : tlist) {
-                t += temp.getTransactionLog();
+            if (tlist == null) {
+                t = "No Transactions";
+            } else {
+                for (Transaction temp : tlist) {
+                    t += temp.getTransactionLog();
+                }
             }
             textTransactionRewardHistory.setText(t);
 

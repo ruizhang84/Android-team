@@ -69,7 +69,6 @@ public class MakePurchaseActivity extends AppCompatActivity {
                 customer_db.getCustomer(customer.getID()) != null) {
             textName.setText(customer.getFullName());
         }
-
     }
 
     public void handleCancel(View view) {

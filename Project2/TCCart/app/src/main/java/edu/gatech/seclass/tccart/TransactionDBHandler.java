@@ -15,79 +15,51 @@ import java.util.List;
  */
 
 //test test, planning to restructure this on a new branch...
-public class TransactionDBHandler extends SQLiteOpenHelper {
-
-    public static final int DATABASE_VERSION = 1;
-    public static final String DATABASE_NAME = "TCCart";
-
-    public static final String TABLE_TRANSACTION = "TransactionInfo";
-    public static final String CUSTOMER_ID = "customer_id";
-    public static final String TRANSACTION_TIME = "transaction_time";
-    public static final String PRICE_BEFORE = "price_before";
-    public static final String DISCOUNTS = "discountS";
-    public static final String REWARDS_USED = "rewards_used";
-    public static final String DESCRIPTION = "description";
+public class TransactionDBHandler {
+    DBHelper dbh;
 
     public TransactionDBHandler(Context context) {
-        super(context, DATABASE_NAME, null, DATABASE_VERSION);
-    }
-
-    public void onCreate(SQLiteDatabase db) {
-        String CREATE_TABLE = "CREATE TABLE " + TABLE_TRANSACTION + "("
-                + CUSTOMER_ID + " VARCHAR(8),"
-                + TRANSACTION_TIME + " BIGINT,"
-                + PRICE_BEFORE + " DOUBLE,"
-                + DISCOUNTS + " DOUBLE,"
-                + REWARDS_USED + " DOUBLE,"
-                + DESCRIPTION + "TEXT"
-                + ")";
-        db.execSQL(CREATE_TABLE);
-    }
-
-    public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-
-        db.execSQL("DROP TABLE IF EXISTS " + TABLE_TRANSACTION);
-        onCreate(db);
+        this.dbh = DBHelper.getInstance(context);
     }
 
     public void addTransaction(Transaction transaction) {
-        SQLiteDatabase db = this.getWritableDatabase();
+        SQLiteDatabase db = this.dbh.getWritableDatabase();
 
         ContentValues values = new ContentValues();
-        values.put(CUSTOMER_ID, transaction.getCustomer().getID());
+        values.put(this.dbh.TRANS_CUSTOMER_ID, transaction.getCustomer().getID());
 
         Date date = transaction.getDate();
         if (date == null){
-            values.put(TRANSACTION_TIME, (new Date(0)).getTime());
+            values.put(this.dbh.TRANS_TRANSACTION_TIME, (new Date(0)).getTime());
         }
         else{
-            values.put(TRANSACTION_TIME, date.getTime());
+            values.put(this.dbh.TRANS_TRANSACTION_TIME, date.getTime());
         }
 
-        values.put(PRICE_BEFORE, transaction.getTotalAmount());
-        values.put(DISCOUNTS, transaction.getVipDiscount());
-        values.put(REWARDS_USED, transaction.getRewardsApplied());
-        values.put(DESCRIPTION , transaction.getDescription());
+        values.put(this.dbh.TRANS_PRICE_BEFORE, transaction.getTotalAmount());
+        values.put(this.dbh.TRANS_DISCOUNTS, transaction.getVipDiscount());
+        values.put(this.dbh.TRANS_REWARDS_USED, transaction.getRewardsApplied());
+        values.put(this.dbh.TRANS_DESCRIPTION , transaction.getDescription());
 
-        db.insert(TABLE_TRANSACTION, null, values);
+        db.insert(this.dbh.TABLE_TRANSACTION, null, values);
         db.close();
     }
 
     public Customer getCustomer(String id) {
-        SQLiteDatabase db = this.getReadableDatabase();
+        SQLiteDatabase db = this.dbh.getReadableDatabase();
 
-        String[] projection = new String[]{CustomerDBHandler.getID(),
-                CustomerDBHandler.getFIRST_NAME(),
-                CustomerDBHandler.getLAST_NAME(),
-                CustomerDBHandler.getEMAIL(),
-                CustomerDBHandler.getREWARDS(),
-                CustomerDBHandler.getREWARD_DATE(),
-                CustomerDBHandler.getSPENDING_YTD(),
-                CustomerDBHandler.getSPENDING_YEAR(),
-                CustomerDBHandler.getVIP_YEARS()};
-        String selection = CustomerDBHandler.getID() + "=?";
+        String[] projection = new String[]{this.dbh.CUST_ID,
+                this.dbh.CUST_FIRST_NAME,
+                this.dbh.CUST_LAST_NAME,
+                this.dbh.CUST_EMAIL,
+                this.dbh.CUST_REWARDS,
+                this.dbh.CUST_REWARD_DATE,
+                this.dbh.CUST_SPENDING_YTD,
+                this.dbh.CUST_SPENDING_YEAR,
+                this.dbh.CUST_VIP_YEARS};
+        String selection = this.dbh.CUST_ID + "=?";
         String[] selectionArgument = new String[]{id};
-        Cursor cursor = db.query(CustomerDBHandler.getTABLE_CUSTOMER(),
+        Cursor cursor = db.query(this.dbh.TABLE_CUSTOMER,
                 projection, selection,
                 selectionArgument, null, null, null);
 
@@ -117,7 +89,7 @@ public class TransactionDBHandler extends SQLiteOpenHelper {
         return customer;
     }
 
-    public List<Transaction> getTransaction(Customer customer){
+    public List<Transaction> getTransaction(Customer customer) {
 
         if (customer == null)
             return null;
@@ -128,13 +100,15 @@ public class TransactionDBHandler extends SQLiteOpenHelper {
         if (getCustomer(id) == null)
             return null;
 
-        SQLiteDatabase db = this.getReadableDatabase();
+        SQLiteDatabase db = this.dbh.getReadableDatabase();
 
         String[] projection = new String[]{
-                TRANSACTION_TIME, PRICE_BEFORE, DISCOUNTS, REWARDS_USED, DESCRIPTION};
-        String selection = CUSTOMER_ID + "=?";
+                this.dbh.TRANS_TRANSACTION_TIME, this.dbh.TRANS_PRICE_BEFORE,
+                this.dbh.TRANS_DISCOUNTS, this.dbh.TRANS_REWARDS_USED,
+                this.dbh.TRANS_DESCRIPTION};
+        String selection = this.dbh.TRANS_CUSTOMER_ID + "=?";
         String[] selectionArgument = new String[]{id};
-        Cursor cursor = db.query(TABLE_TRANSACTION, projection, selection,
+        Cursor cursor = db.query(this.dbh.TABLE_TRANSACTION, projection, selection,
                 selectionArgument, null, null, null);
 
         if (cursor.getCount() == 0){
