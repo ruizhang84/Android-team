@@ -41,16 +41,19 @@ public class Customer {
     }
 
     public boolean isVIP(){
+        updateSpending();
         Calendar today = Calendar.getInstance();
         Integer currentYear = today.get(Calendar.YEAR);
         return this.vipYears.contains(currentYear);
     }
 
     public List<Integer> getVipYearsList(){
+        updateSpending();
         return this.vipYears;
     }
 
     public String getVipYearsString() {
+        updateSpending();
         String output = "";
         for (int i : this.vipYears) {
             String s = String.format(Locale.US, "%1$04d", i);
@@ -60,6 +63,7 @@ public class Customer {
     }
 
     public void setVipYears(String input) {
+        updateSpending();
         this.vipYears = null;
         String[] strArray = input.split("#");
         for (String s : strArray){
@@ -68,32 +72,53 @@ public class Customer {
     }
 
     public void addVipYear(int y){
+        updateSpending();
         if (this.vipYears == null)
             this.vipYears = new ArrayList<Integer>();
         this.vipYears.add(y);
     }
 
+    private void updateSpending(){
+        Calendar today = Calendar.getInstance();
+        int thisYear = today.get(Calendar.YEAR);
+        if (thisYear != this.spendingYear){
+            this.spendingYear = thisYear;
+            this.spendingYTD = 0;
+        }
+    }
+
     public double getSpendingYTD(){
+        updateSpending();
         return this.spendingYTD;
     }
 
-    public int getSpendingYear() { return this.spendingYear; }
+    public int getSpendingYear(){
+        updateSpending();
+        return this.spendingYear;
+    }
 
     public void setSpendingYTD(double s){
         this.spendingYTD = s;
+        updateSpending();
     }
 
-    public void setSpendingYear(int y) { this.spendingYear = y; }
+    public void setSpendingYear(int y) {
+        this.spendingYear = y;
+        updateSpending();
+    }
 
     public Date getRewardDate(){
+        updateSpending();
         return this.rewardDate;
     }
 
     public double getRewards(){
+        updateSpending();
         return this.rewards;
     }
 
     public double getEffectiveRewards(){
+        updateSpending();
         Date today = new Date();
         if (this.rewardDate == null) {
             this.rewards = 0;
@@ -110,37 +135,50 @@ public class Customer {
     }
 
     public void setRewardDate(Date d){
+        updateSpending();
         this.rewardDate = d;
     }
 
     public void setRewards(double r){
+        updateSpending();
         this.rewards = r;
     }
 
     public String getFullName(){
+        updateSpending();
         return this.firstName +
                 " " +
                 this.lastName;
     }
 
-    public String getFirstName(){ return this.firstName; }
+    public String getFirstName(){
+        updateSpending();
+        return this.firstName;
+    }
 
-    public String getLastName() { return this.lastName; }
+    public String getLastName() {
+        updateSpending();
+        return this.lastName;
+    }
 
     public String getID(){
+        updateSpending();
         return this.id;
     }
 
     public String getEmail(){
+        updateSpending();
         return this.email;
     }
 
     public void setName(String firstName, String lastName){
+        updateSpending();
         this.firstName = firstName;
         this.lastName = lastName;
     }
 
     public void setEmail(String email){
+        updateSpending();
         this.email = email;
     }
 

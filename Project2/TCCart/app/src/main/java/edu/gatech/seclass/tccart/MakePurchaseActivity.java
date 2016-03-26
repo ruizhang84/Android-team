@@ -41,6 +41,9 @@ public class MakePurchaseActivity extends AppCompatActivity {
     private CreditCard currentCC = null;
 
     private static final double vipDiscountRate = 0.1;
+    private static final double rewardThreshold = 30.0;
+    private static final double rewardAmount = 3.0;
+    private static final double vipThreshold = 300.0;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -263,15 +266,77 @@ public class MakePurchaseActivity extends AppCompatActivity {
         alert.setPositiveButton("Yes",
                 new DialogInterface.OnClickListener() {
                     public void onClick(DialogInterface dialog, int which) {
-                          Customer customer = transaction.getCustomer();
+
+                        Customer customer = transaction.getCustomer();
+
+                        double paidAmount = transaction.getTotalAmount()
+                                - transaction.getRewardsApplied()
+                                - transaction.getVipDiscount();
+
+                        boolean result = PaymentService.processPayment(
+                                currentCC.firstName,
+                                currentCC.lastName,
+                                currentCC.ccNumber,
+                                currentCC.expirationDate,
+                                currentCC.securityCode,
+                                paidAmount);
+                        if (!result){
+                            Context context = getApplicationContext();
+                            CharSequence text = "Credit card payment failed!";
+                            int duration = Toast.LENGTH_SHORT;
+                            Toast toast = Toast.makeText(context, text, duration);
+                            toast.show();
+                            dialog.cancel();
+                            return;
+                        }
+
                           customer.setRewards(customer.getRewards()
                                   - transaction.getRewardsApplied());
-                          double paid = transaction.getTotalAmount()
-                                  - transaction.getRewardsApplied()
-                                  - transaction.getVipDiscount();
-                          if (paid >= 30)
-                              customer.setRewards(customer.getRewards() + 3);
-                          // to be finished
+                          if (paidAmount >= rewardThreshold) {
+                              customer.setRewards(customer.getRewards() + rewardAmount);
+                              customer.setRewardDate(new Date());
+                          }
+                          customer.setSpendingYTD(customer.getSpendingYTD() + paidAmount);
+                          if (customer.getSpendingYTD() >= vipThreshold){
+                              Calendar today = Calendar.getInstance();
+                              int thisYear = today.get(Calendar.YEAR);
+                              int nextYear = thisYear+1;
+                              customer.addVipYear(nextYear);
+
+                              Context context = getApplicationContext();
+                              CharSequence text = "Customer got VIP status!";
+                              int duration = Toast.LENGTH_SHORT;
+                              Toast toast = Toast.makeText(context, text, duration);
+                              toast.show();
+
+                              boolean email_res = EmailService.sendEMail(customer.getEmail(),
+                                      "You've Earned TCCart VIP Customer Status for "
+                                              + String.format(Locale.US, "%1$04d", nextYear),
+                                      "Congratulations, " + customer.getFullName() + ",\n"
+                                              + "Because you have spent over $" +
+                                              String.format(Locale.US, "%4.2f", vipThreshold)
+                                              + "in TCCart, " + "we award you VIP customer status in "
+                                              + String.format(Locale.US, "%1$04d", nextYear)
+                                              + "Your VIP status will become effective from January 1st, "
+                                              + String.format(Locale.US, "%1$04d", nextYear) );
+                              if (!email_res){
+                                  context = getApplicationContext();
+                                  text = "Failed to send VIP status notification email!";
+                                  duration = Toast.LENGTH_SHORT;
+                                  toast = Toast.makeText(context, text, duration);
+                                  toast.show();
+                              }
+                          }
+
+                        customer_db.updateCustomer(customer);
+                        transaction_db.addTransaction(transaction);
+
+                        Context context = getApplicationContext();
+                        CharSequence text = "Transaction completed successfully!";
+                        int duration = Toast.LENGTH_SHORT;
+                        Toast toast = Toast.makeText(context, text, duration);
+                        toast.show();
+
                     }
                 });
 
@@ -296,12 +361,6 @@ public class MakePurchaseActivity extends AppCompatActivity {
         //        String body);
 
         /*
-        PaymentService.processPayment(String firstName
-                String lastName,
-                String ccNumber,
-                Date expirationDate,
-                String securityCode,
-        double amount);
         EmailService.sendEMail(String recipient,
                 String subject,
                 String body);
