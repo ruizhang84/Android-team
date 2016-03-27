@@ -8,8 +8,8 @@
 | V2      | Updated Sections 1 and 2 based on better understanding of the system |
 
 ## 1 Use Case Diagram
-![](./TCcart_Use_Case_Diagram.png)
-![](./TCcart_Use_Case_Transaction_Diagram.png)
+![](./TCCart_Use_Case_Diagram.png)
+![](./TCCart_Use_Case_Transaction_Diagram.png)
 
 ## 2 Use Case Descriptions
 
