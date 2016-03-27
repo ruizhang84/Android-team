@@ -8,7 +8,7 @@
 | V2      | Updated Sections 1 based on better understanding of the system |
 
 ## 1 Use Case Diagram
-![Image Text](./TCcart_Use_Case_Diagram.png)
+![Image Text](./TCCart_Use_Case_Diagram.png)
 ![enter image description here](https://lh3.googleusercontent.com/QlamoCcggad6xMFo6ov3BvgICVDkFVI429svhMD82LR3-OskDyBRTf1FqgIfWPSQr28=s0 "Transaction - Standard.png")
 
 ## 2 Use Case Descriptions
