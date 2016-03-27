@@ -13,11 +13,11 @@
 
 ## 2 Use Case Descriptions
 
- 'TC Cart Manager' actor uses the app TCCart, to manage a Payment and Rewards System which sells Tea and Coffee. Top level use cases are Hardware devices and Transaction. Transaction use case could be used as a part of 'Make Purchase' use case. It allows the Customer to pay for the purchase he/she has made through Payment Processing system.Hardware devices use case allows the system to connect to various hardware devices such as Card Printer, Video Camera, Credit Card Scanner, enable the system to connect-to Payment Processing System and send email whenever necessary, for example sending mail to the Customer after every Purchase is made. 'Apply Discount& Rewards' use case is extended use case not available by itself as it's part of making purchase.
+ 'TCCart Manager' actor uses the app TCCart, to manage a Payment and Rewards System which sells Tea and Coffee. Top level use cases are Add Customer, Edit Customer, Make Purchase, and View Transaction History. Transaction use case could be used as a part of 'Make Purchase' use case. It allows the Customer to pay for the purchase he/she has made through Payment Processing system. The app allows the system to connect to various hardware devices such as Card Printer, Video Camera, Credit Card Scanner, enable the system to connect-to Payment Processing System and send email whenever necessary, for example sending mail to the Customer after every Purchase is made. 'Apply Discount& Rewards' use case is extended use case not available by itself as it's part of making purchase.
 
-Except for the 'TC Cart Manager' actor there are several other actors which will be described below with detailed use cases. 
+Except for the 'TCCart Manager' actor there are several other actors which will be described below with detailed use cases. 
 
-**Hardware Devices**
+**Hardware Devices( Card Printer, Card Scanner, and Email Service**
 
 *Requirements:*
 
@@ -56,7 +56,7 @@ Once the Customer makes Purchase and swipes his Credit Card, the transaction has
 This usecase let's the TC Cart Manager to edit Customer information whenever needed.
 
 
-**View Purchase & Rewards History**
+**View Transaction History**
 
 *Requiremens*
 
