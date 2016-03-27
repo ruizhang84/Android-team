@@ -65,7 +65,7 @@ be robust and able to handle common situations(/failures) within a mobile enviro
 
 - Transaction
 
-![Image Text](./Android_mockup_Transaction.png)
+![Image Text](./Android_mockup_Transaction.png )
 
 - View Transactions
 
