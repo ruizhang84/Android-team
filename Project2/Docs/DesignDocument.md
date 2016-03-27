@@ -56,14 +56,19 @@ be robust and able to handle common situations(/failures) within a mobile enviro
 
 - Start Interface
 
-![Image Text](./Android_mockup_UserInterface.png)
+![Image Text](./Android_mockup_Main.png)
 
 - Customer Info
 
 ![Image Text](./Android_mockup_Customer.png)
+![Image Text](./Android_mockup_AddCustomer.png)
 
 - Transaction
 
 ![Image Text](./Android_mockup_Transaction.png)
+
+- View Transactions
+
+![Image Text](./Android_mockup_TransactionHistory.png)
 
 
