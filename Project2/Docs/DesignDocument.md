@@ -50,25 +50,25 @@ be robust and able to handle common situations(/failures) within a mobile enviro
 
 ### 3.1 Class Diagram
 
-![Image Text](../Design-Team/design-team.png | width=100)
+![Image Text](../Design-Team/design-team.png)
 
 ## 4 User Interface Design
 
 - Start Interface
 
-![Image Text](./Android_mockup_Main.png | width=100)
+![Image Text](./Android_mockup_Main.png)
 
 - Customer Info
 
-![Image Text](./Android_mockup_Customer.png | width=100)
-![Image Text](./Android_mockup_AddCustomer.png | width=100)
+![Image Text](./Android_mockup_Customer.png)
+![Image Text](./Android_mockup_AddCustomer.png)
 
 - Transaction
 
-![Image Text](./Android_mockup_Transaction.png | width=100)
+![Image Text](./Android_mockup_Transaction.png )
 
 - View Transactions
 
-![Image Text](./Android_mockup_TransactionHistory.png | width=100)
+![Image Text](./Android_mockup_TransactionHistory.png)
 
 
