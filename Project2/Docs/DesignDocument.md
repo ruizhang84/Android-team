@@ -5,6 +5,7 @@
 | Version | Description     |
 | --------|:---------------:|
 | V1      | Initial version |
+| V2      | Revise version, Updated png, Sections 2 basd on better understanding of the system* |
 
 ## 1 Design Considerations
 
@@ -33,7 +34,7 @@ be robust and able to handle common situations(/failures) within a mobile enviro
 
 | Requirements | Description     |
 | --------|:---------------:|
-| Android     | 4.0.3 and up |
+| Android     | 6.0 and up |
 | Permissions     | Photos/Media/Files, Storage, Camera, other |
 
 ## 2 Architectural Design
