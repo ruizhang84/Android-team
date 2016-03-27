@@ -13,7 +13,7 @@
 
 The purpose of developing the Android app *TCCart* is to provide a payment and reward managment system in a timely manner to help our contractor's coffee and tea selling bussiness grow. To develop TCCart, we made the following assumptions:
 
-- The software is Android app that runs on minimum target at API Level 15 (IceCreamSandwich).
+- The software is Android app that runs on minimum target at API Level 23 (Mashmallow).
 
 - The software is dependent on Android utilities for printing, QR code scanning, credit card scanning,  payment processing, and email sending, which are provided by our contractor and used as-is.
 
