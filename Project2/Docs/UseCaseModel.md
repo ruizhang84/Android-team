@@ -5,11 +5,10 @@
 | Version | Description     |
 | --------|:---------------:|
 | V1      | Initial version |
+| V2      | Updated Sections 1 based on better understanding of the system |
 
 ## 1 Use Case Diagram
-![enter image description here](https://lh3.googleusercontent.com/RGePiUB6uQuF_ICIGJcEfUMnJLbeZomxXwVrJ_IKoIaN9HueznFAl5bxd2xG1k2Q664=s0 "TCCart Use Case Diagram - Dark.png")
-
-![enter image description here](https://lh3.googleusercontent.com/2rhlhLCWNVeUMQ9qI_esIZLFEgpEz8hTN-C-X-Q0tGhU0NbtmQ4W6VD4M3PYtVWb_1E=s0 "External Library - Sandstorm.png")
+![Image Text](./TCcart_Use_Case_Diagram.png)
 ![enter image description here](https://lh3.googleusercontent.com/QlamoCcggad6xMFo6ov3BvgICVDkFVI429svhMD82LR3-OskDyBRTf1FqgIfWPSQr28=s0 "Transaction - Standard.png")
 
 ## 2 Use Case Descriptions
