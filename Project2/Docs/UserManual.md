@@ -11,14 +11,18 @@ The project will be developed for the Android platform.
 ##2 Using the Program 
 ###2.1 Getting Started
 
+![Image Text](./Android_mockup_Main.png)
+
 ####2.1.1 Add Customer
+![Image Text](./Android_mockup_AddCustomer.png)
 - In  *Main Manu*, Click *ADD NEW CUSTOMER*.
-- In  *Add New Customer*, type in Fist Name, Last Name, and Email. 
+- In  *Add New Customer*, type in Fist Name, Last Name, and Email.
   - Click *ADD*, add the new customer information, and a **Customer card** associated with current ID will be printed,
   - Click *CLEAR*, clear any current inputs,
-  - Click *CANCEL*, return to the previous *Main Manu* Screen.
+  - Click *CANCEL*, return to the previous *Main Manu* Screen. 
   
 ####2.1.2 Edit Customer Information
+![Image Text](./Android_mockup_Customer.png)
 - In  *Main Manu*, Click *EDIT CUSTOMER INFO*.
 - In  *Edit Customer Info*, Click *SCAN CUSTOMER CARD*. The customer information including ID, Name, and Email will appear.
 - To change the customer information, type in New Fist Name, New Last Name, and/or New Email. 
@@ -33,6 +37,7 @@ The project will be developed for the Android platform.
   - Click *CLEAR*, the customer information will be clear, and the manager can re-scan the customer card.
   
 ####2.1.4 Make Purchase
+![Image Text](./Android_mockup_Transaction.png)
 - In  *Main Manu*, Click *MAKE PURCHASE*.
 - In  *Make Transaction*, Click *SCAN CUSTOMER CARD* to get the customer information, and Click *SCAN CREDIT CARD* to get payment.
   - Manually type in item for sale and its price,
@@ -42,6 +47,7 @@ The project will be developed for the Android platform.
   - Click "CANCEL*, return to the previous *Main Manu* Screen.
   
 ####2.1.5 View Transactions
+![Image Text](./Android_mockup_TransactionHistory.png)
 - In  *Main Manu*, Click *SCAN CUSTOMER CARD* and scan the customer card. Then, Click *VIEW TRANSACTION HISTORY*.
 - In  *View Transaction*, The customer name, rewards and transaction will appear.
 
