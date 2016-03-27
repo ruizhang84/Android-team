@@ -1,5 +1,9 @@
 # **User Manual -- Team 54**
 
+| Version | Description     |
+| --------|:---------------:|
+| V1      | Initial version |
+
 ##1 General Information
 The "TCCart" project aims to develope a payment and rewards system for coffee and tea carts. 
 The project will be developed for the Android platform.
