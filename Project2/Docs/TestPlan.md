@@ -5,6 +5,7 @@
 | Version | Description     |
 | --------|:---------------:|
 | V1      | Initial version, no results |
+| V2      | Added Manual_TestCases_TCCart.xls |
 
 ## 1 Testing Strategy
 
