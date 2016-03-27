@@ -17,7 +17,7 @@
 
 Except for the 'TCCart Manager' actor there are several other actors which will be described below with detailed use cases. 
 
-**Hardware Devices( Card Printer, Card Scanner, and Email Service**
+**Hardware Devices(Card Printer, Card Scanner, and Email Service)**
 
 *Requirements:*
 
