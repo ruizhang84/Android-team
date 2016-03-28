@@ -5,6 +5,8 @@
 | Version | Description     |
 | --------|:---------------:|
 | V1      | Initial version, no results |
+| V2      | Second version, partial results |
+
 
 ## 1 Testing Strategy
 
@@ -32,8 +34,8 @@ We will be using a mix of black-box and white-box testing given that individuals
 *Define how you are going to assess the quality of your test cases. Typically, this involves some form of functional or structural coverage. If you plan to use different techniques at different testing levels (e.g., unit and system), you should clarify that.*
 
 Quality of test cases would be determined by the following factors:
-1)Test case impact,
-2)Test case Re-usability and 
+1)Test case impact and
+2)Test case Re-usability  
 
 
 ### 1.4 Bug Tracking
