@@ -5,21 +5,16 @@
 | Version | Description     |
 | --------|:---------------:|
 | V1      | Initial version |
+| V2      | Updated traceability information table |
 
 
 **Use Case Tracking Table:**
 
-| Outside Entity | User Case | Design Element | Corresponding Code | Test Cases |
-| --------|:---------------:|:---------------:|:---------------:|:---------------:|
-| TC Cart Manager | Add Customer | To_be_finished | To_be_finished | To_be_finished |
-| TC Cart Manager | Edit Customer info | To_be_finished | To_be_finished | To_be_finished |
-| TC Cart Manager | Do Purchase | To_be_finished | To_be_finished | To_be_finished |
-| TC Cart Manager | View Purchase/Rewards History | To_be_finished | To_be_finished | To_be_finished |
-| Customer | Do Purchase | To_be_finished | To_be_finished | To_be_finished |
-| External Library | Do Purchase | To_be_finished | To_be_finished | To_be_finished |
-| External Library | Print Customer Card | To_be_finished | To_be_finished | To_be_finished |
-| External Library | Read QR Code | To_be_finished | To_be_finished | To_be_finished |
-| External Library | Scan Credit Card | To_be_finished | To_be_finished | To_be_finished |
-| External Library | Send Email | To_be_finished | To_be_finished | To_be_finished |
-| External Library | Process Payment | To_be_finished | To_be_finished | To_be_finished |
-| Payment Service | Do Purchase | To_be_finished | To_be_finished | To_be_finished |
+|  User Case | Design Element | Corresponding Code | Test Cases | Test Case Description |
+| :---------------|:---------------:|:---------------:|:---------------:|:---------------:|
+| Add Customer | Customer | <AddCustomerActivity.java, handleAdd()>| TC001_Add_Customer to TC006_Add_Customer | To verify whether the TC Cart Manager is able to add new Customers and 8-digit unique ID gets generated automatically after the Customer is added and a card is printed. |
+| Edit Customer info | Customer | <EditCustomerInfoActivity.java,  handleConfirm()> | TC009_Edit_Customer_Info to TC015_Edit_Customer_Info| To verify whether the TC Cart Manager is able to Edit the Customer's info which already exists and newly modified details get updated to the System. |
+| Make Purchase | Transaction | <MakePurchaseActivity.java, handleScanCreditCard()> | TC_Trasaction | To verify whether once the Customer makes Purchase a transaction has been initiated,Customer's credit card has been scanned for Authentication purpose. |
+| Make Purchase | Transaction | <MakePurchaseActivity.java, handleApplyRewardDiscount> | TC_Trasaction | To verify whether once the Customer makes Purchase a transaction has been initiated, Credit is calculated and Discounts/Rewards have been applied. |
+| View Transaction History | Transaction_info | <ViewTransactionActivity.java,  onCreate()> | To verify whether at any particular point in time, the TC Cart manager should be able to view, a complete list of Customer transactions. |
+

@@ -99,11 +99,15 @@
                 android:id="@+id/textView4" />
         </LinearLayout>
 
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
         <LinearLayout
             android:orientation="vertical"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="0.03">
+
 
             <TextView
                 android:layout_width="350dp"
@@ -112,9 +116,12 @@
                 android:id="@+id/textTransactionRewardHistory"
                 android:layout_gravity="center_horizontal"
                 android:layout_weight="126763.68" />
+
         </LinearLayout>
+    </ScrollView>
 
     </LinearLayout>
+
 </RelativeLayout>
 
 
