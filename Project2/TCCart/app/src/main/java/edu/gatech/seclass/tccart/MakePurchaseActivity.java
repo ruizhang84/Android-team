@@ -307,16 +307,27 @@ public class MakePurchaseActivity extends AppCompatActivity {
                             }
                         }
 
-                        boolean email_res = EmailService.sendEMail(customer.getEmail(),
-                                "Your just made a purchase at TCCart",
-                                "Order details:\n"
-                                + "Item: " + descriptionFinal + "\n"
-                                + "Price: $" + priceStrFinal + "\n"
-                                + "Discount: $" + discountStrFinal + "\n"
-                                + "Rewards Applied: $" + rewardStrFinal + "\n"
-                                + "Amount Paid: $" + amountStrFinal + "\n"
-                                + "Credit Card:  *****" + ccEndingFinal + "\n" );
-                        if (!email_res){
+                        boolean email_res = false;
+                        for(int i = 0; i < 10; i++){
+                            email_res = EmailService.sendEMail(customer.getEmail(),
+                                    "Your just made a purchase at TCCart",
+                                    "Order details:\n"
+                                            + "Item: " + descriptionFinal + "\n"
+                                            + "Price: $" + priceStrFinal + "\n"
+                                            + "Discount: $" + discountStrFinal + "\n"
+                                            + "Rewards Applied: $" + rewardStrFinal + "\n"
+                                            + "Amount Paid: $" + amountStrFinal + "\n"
+                                            + "Credit Card:  *****" + ccEndingFinal + "\n" );
+                            if (email_res) break;
+                        }
+                        if (email_res){
+                            Context context = getApplicationContext();
+                            CharSequence text = "Purchase notification email sent!";
+                            int duration = Toast.LENGTH_SHORT;
+                            Toast toast = Toast.makeText(context, text, duration);
+                            toast.show();
+                        }
+                        else{
                             Context context = getApplicationContext();
                             CharSequence text = "Failed to send purchase notification email!";
                             int duration = Toast.LENGTH_SHORT;
@@ -324,20 +335,30 @@ public class MakePurchaseActivity extends AppCompatActivity {
                             toast.show();
                         }
 
-                          customer.setRewards(customer.getRewards()
+                        customer.setRewards(customer.getRewards()
                                   - transaction.getRewardsApplied());
 
                           if (paidAmount >= rewardThreshold) {
                               customer.setRewards(customer.getRewards() + rewardAmount);
                               customer.setRewardDate(new Date());
                               String rewardAmountStr = String.format(Locale.US, "%5.2f", rewardAmount);
-                              email_res = EmailService.sendEMail(customer.getEmail(),
-                                      "Your just earned a $" + rewardAmountStr + " reward at TCCart",
-                                      "Order details:\n"
-                                              + "Item: " + descriptionFinal + "\n"
-                                              + "Amount Paid: $" + amountStrFinal + "\n"
-                                              + "Reward Earned: " + rewardAmountStr + "\n" );
-                              if (!email_res){
+                              for(int i = 0; i < 10; i++){
+                                  email_res = EmailService.sendEMail(customer.getEmail(),
+                                          "Your just earned a $" + rewardAmountStr + " reward at TCCart",
+                                          "Order details:\n"
+                                                  + "Item: " + descriptionFinal + "\n"
+                                                  + "Amount Paid: $" + amountStrFinal + "\n"
+                                                  + "Reward Earned: " + rewardAmountStr + "\n" );
+                                  if (email_res) break;
+                              }
+                              if (email_res){
+                                  Context context = getApplicationContext();
+                                  CharSequence text = "Reward notification email sent!";
+                                  int duration = Toast.LENGTH_SHORT;
+                                  Toast toast = Toast.makeText(context, text, duration);
+                                  toast.show();
+                              }
+                              else{
                                   Context context = getApplicationContext();
                                   CharSequence text = "Failed to send reward notification email!";
                                   int duration = Toast.LENGTH_SHORT;
@@ -359,17 +380,27 @@ public class MakePurchaseActivity extends AppCompatActivity {
                               Toast toast = Toast.makeText(context, text, duration);
                               toast.show();
 
-                              email_res = EmailService.sendEMail(customer.getEmail(),
-                                      "You've Earned TCCart VIP Customer Status for "
-                                              + String.format(Locale.US, "%1$04d", nextYear),
-                                      "Congratulations, " + customer.getFullName() + ",\n"
-                                              + "Because you have spent over $" +
-                                              String.format(Locale.US, "%4.2f", vipThreshold)
-                                              + "in TCCart, " + "we award you VIP customer status in "
-                                              + String.format(Locale.US, "%1$04d", nextYear)
-                                              + "Your VIP status will become effective from January 1st, "
-                                              + String.format(Locale.US, "%1$04d", nextYear) );
-                              if (!email_res){
+                              for(int i = 0; i < 10; i++){
+                                  email_res = EmailService.sendEMail(customer.getEmail(),
+                                          "You've Earned TCCart VIP Customer Status for "
+                                                  + String.format(Locale.US, "%1$04d", nextYear),
+                                          "Congratulations, " + customer.getFullName() + ",\n"
+                                                  + "Because you have spent over $" +
+                                                  String.format(Locale.US, "%4.2f", vipThreshold)
+                                                  + "in TCCart, " + "we award you VIP customer status in "
+                                                  + String.format(Locale.US, "%1$04d", nextYear)
+                                                  + "Your VIP status will become effective from January 1st, "
+                                                  + String.format(Locale.US, "%1$04d", nextYear) );
+                                  if (email_res) break;
+                              }
+                              if (email_res){
+                                  context = getApplicationContext();
+                                  text = "VIP status notification email sent!";
+                                  duration = Toast.LENGTH_SHORT;
+                                  toast = Toast.makeText(context, text, duration);
+                                  toast.show();
+                              }
+                              else{
                                   context = getApplicationContext();
                                   text = "Failed to send VIP status notification email!";
                                   duration = Toast.LENGTH_SHORT;
