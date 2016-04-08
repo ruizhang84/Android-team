@@ -32,8 +32,6 @@ We will be using a mix of black-box and white-box testing given that individuals
 
 ### 1.3 Adequacy Criterion
 
-*Define how you are going to assess the quality of your test cases. Typically, this involves some form of functional or structural coverage. If you plan to use different techniques at different testing levels (e.g., unit and system), you should clarify that.*
-
 Quality of test cases would be determined by the following factors:
 1)Test case impact and
 2)Test case Re-usability  
@@ -46,16 +44,10 @@ Bugs have been tracked in a Spreadsheet- Defect_Tracking.xls.
 
 ### 1.5 Technology
 
-*Describe any testing technology you intend to use or build (e.g., JUnit, Selenium).*
-
-At a minimum, JUnit.
+Since testing has been done manually no other technology has been used specially.
 
 ## 2 Test Cases
 
-*This section should be the core of this document. You should provide a table of test cases, one per row. For each test case, the table should provide its purpose, the steps necessary to perform the test, the expected result, the actual result (to be filled later), pass/fail information (to be filled later), and any additional information you think is relevant.*
-
-
-	
 |TC Name|    Description     |  Steps    |Expected Output   |Actual Output|
 |:-----------:|:-------------------:|:----------:|:---------------------:|:---------------:|
 |TC001_Add_Customer|To verify whether the Add Customer screen contains the following fields/buttons:First Name,Last Name,Email,Add,Clear and Cancel buttons.Pre-Requisite:TC Cart app should have been launched on device/emulator.|1.Click on TC Cart Manager app2.Click on 'Add New Customer' button on the main page.3.Verify whether the User is displayed with Add Customer Page.4.Verify whether the following fields/buttons are displayed:First Name,Last Name,Email,Add,Clear and Cancel buttons.|Following fields/buttons should be displayed on Add Customer Page:First Name,Last Name,Email,Add,Clear and Cancel buttons|Working as expected. Passed|
