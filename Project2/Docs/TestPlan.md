@@ -14,6 +14,10 @@
 
 Our testing strategy will be comprehensive in nature as in order to assure as few defects as possible across a team project with a shortened timeframe - testing will be critical.  
 
+#### 1.1.1 Introduction
+The purpose of developing the Android app *TCCart* is to provide a payment and reward managment system in a timely manner to help our contractor's coffee and tea selling bussiness grow. The testing strategey here is a high level presentation of the test approach to be undertaken in relation to the *TCCart*, which will be used as a reference by our Team54 to develop a Test Plan with details of test activities. In particular, our testing will validate and verify the app works to the contractor's requirements and meets their bussiness needs.
+
+#### 1.1.2 Test levels and test type
 **Unit Test Cases**  
 Each individual will write their own unit test cases for the methods they author and verify passing unit test cases before a commit is done once a feature has been implemented.  Most of the time, unit test cases will be run more often.
 
@@ -22,6 +26,9 @@ As of now, I am unclear as to whether or not we would dilineate between integrat
 
 **Regression Testing**
 We have run some of the manual test cases for this deliverable and we would re-run the same for the next deliverable if any changes are made to this version of the code.
+
+
+
 
 ### 1.2 Test Selection
 
@@ -33,6 +40,10 @@ We will be using a mix of black-box and white-box testing given that individuals
 
 *Define how you are going to assess the quality of your test cases. Typically, this involves some form of functional or structural coverage. If you plan to use different techniques at different testing levels (e.g., unit and system), you should clarify that.*
 
+To constitute a thorough test whose successful execution implies no errors in our app, we adopt the *specification-based* adequacy criteria. Such criterion specifies the required testing in terms of identified features of the specification/requirements, so that a test set is adequate if all the identified features are fully exercised.
+
+We will ensure the *functional coverage* by covering off all the documented scenaios that appears in software specifications/requirements. 
+
 Quality of test cases would be determined by the following factors:
 1)Test case impact and
 2)Test case Re-usability  
@@ -43,12 +54,6 @@ Quality of test cases would be determined by the following factors:
 *Describe how bugs and enhancement requests will be tracked.*
 Bugs are tracked in a Spreadsheet- Defect_Tracking.xls
 
-
-### 1.5 Technology
-
-*Describe any testing technology you intend to use or build (e.g., JUnit, Selenium).*
-
-At a minimum, JUnit.
 
 ## 2 Test Cases
 
