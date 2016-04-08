@@ -22,7 +22,11 @@
 | Edit Customer info | Customer | EditCustomerInfoActivity.java: handleCancel(), handleClearSelected(), handleClearField() | TC013_Edit_Customer_Info|
 | Edit Customer info | Customer_info | CustomerDBHandler.java | TC014_Edit_Customer_Info |
 | Edit Customer info | Customer | EditCustomerInfoActivity.java: handleDelete() | TC015_Edit_Customer_Info |
-| Make Purchase | Transaction | MakePurchaseActivity.java: handleScanCreditCard() | TC_Trasaction |
-| Make Purchase | Transaction | MakePurchaseActivity.java: handleApplyRewardDiscount | TC039_Make_Purchase | 
+| Make Purchase | Transaction | MakePurchaseActivity.java:onCreate() | TC018_Make_Purchase , TC035_Make_Purchase|
+| Make Purchase | Transaction | MakePurchaseActivity.java: handleScanCreditCard() | TC019_Make_Purchase to TC024_Make_Purchase |
+| Make Purchase | Transaction | MakePurchaseActivity.java: handleApplyRewardDiscount() | TC025_Make_Purchase to TC030_Make_Purchase | 
+| Make Purchase | Transaction | MakePurchaseActivity.java: handleConfirm() | TC031_Make_Purchase to TC033_Make_Purchase |
+| Make Purchase | Transaction | MakePurchaseActivity.java: handleClear(), handleCancel() | TC034_Make_Purchase |
+| Make Purchase | Transaction | CustomerDBHandler.java, MakePurchaseActivity.java: handleConfirm() | TC037_Make_Purchase to TC039_Make_Purchase |
 | View Transaction History | Transaction_info | ViewTransactionActivity.java,  onCreate() | TC040_View_Transaction_History | 
 
