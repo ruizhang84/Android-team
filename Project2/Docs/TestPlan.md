@@ -14,6 +14,10 @@
 
 Our testing strategy will be comprehensive in nature as in order to assure as few defects as possible across a team project with a shortened timeframe - testing will be critical.  
 
+#### 1.1.1 Introduction
+The purpose of developing the Android app *TCCart* is to provide a payment and reward managment system in a timely manner to help our contractor's coffee and tea selling bussiness grow. The testing strategey here is a high level presentation of the test approach to be undertaken in relation to the *TCCart*, which will be used as a reference by our Team54 to develop a Test Plan with details of test activities. In particular, our testing will validate and verify the app works to the contractor's requirements and meets their bussiness needs.
+
+#### 1.1.2 Test levels and test type
 **Unit Test Cases**  
 Each individual will write their own unit test cases for the methods they author and verify passing unit test cases before a commit is done once a feature has been implemented.  Most of the time, unit test cases will be run more often.
 
@@ -24,6 +28,9 @@ As of now, I am unclear as to whether or not we would dilineate between integrat
 
 We have rerun the test cases which passed during the previous deliverables to make sure the new changes didn't affect the code which was tested already.
 
+
+
+
 ### 1.2 Test Selection
 
 Test cases will be selected using a combination of extreme testing (testing the far ends of input, for example) as well as common use cases.  This should allow us to make sure core functionality works while hitting the outliers for corner case issues.
@@ -31,10 +38,11 @@ Test cases will be selected using a combination of extreme testing (testing the 
 We will be using a mix of black-box and white-box testing given that individuals will both write/run test cases for their own code as well as for code that they have not authored.  However, I expect unit test cases to be more white box driven than the others.
 
 ### 1.3 Adequacy Criterion
+*Define how you are going to assess the quality of your test cases. Typically, this involves some form of functional or structural coverage. If you plan to use different techniques at different testing levels (e.g., unit and system), you should clarify that.*
 
-Quality of test cases would be determined by the following factors:
-1)Test case impact and
-2)Test case Re-usability  
+To constitute a thorough test whose successful execution implies no errors in our app, we adopt the *specification-based* adequacy criteria. Such criterion specifies the required testing in terms of identified features of the specification/requirements, so that a test set is adequate if all the identified features are fully exercised.
+
+We will ensure the *functional coverage* by covering off all the documented scenaios that appears in software specifications/requirements. 
 
 
 ### 1.4 Bug Tracking
@@ -45,6 +53,7 @@ Bugs have been tracked in a Spreadsheet- Defect_Tracking.xls.
 ### 1.5 Technology
 
 Since testing has been done manually no other technology has been used specially.
+
 
 ## 2 Test Cases
 
