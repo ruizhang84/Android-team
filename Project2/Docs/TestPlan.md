@@ -87,7 +87,7 @@ At a minimum, JUnit.
 |TC029_Make_Purchase|To verify whether the Customer is not eligible for the 3 dollar Credit, when the Actual Purchase amount(Original Purchase amt-existing Credit) to be paid is less than 30 dollar, after all the existing discounts have been applied.|1.Click on TC Cart Manager app.2.Go to Make Purchase screen and scan Customer Card and Credit card and click on 'ApplyRewardDiscount' button.Input Parameter3:Original Purchase Amount : 32 dollar,Existing Credit : 3 dollar,Actual Purchase Amount : 29 dollar,Eligible for Credit : N,Input Parameter4:Original Purchase Amount : 30 dollar,Existing Credit : 3 dollar,Actual Purchase Amount : 27 dollar,Eligible for Credit : N|Customer should not be eligible for the 3 dollar Credit, when the Actual amount to be paid is less than $30, after all the existing discounts have been applied.|Passed|
 |TC030_Make_Purchase|To verify whether the Credit gets decreased,when the Purchase amount is less than the current Credit.|1.Click on TC Cart Manager app.2.Go to Make Purchase screen and scan Customer Card and Credit card and click on 'ApplyRewardDiscount' button.Input Parameter5:Original Purchase Amount : 2 dollar,Current Credit : 3 dollar,Actual Purchase Amount : 0,Remaining Credit : 1dollar,Input Parameter6:Original Purchase Amount : 2.5dollar,Current Credit : 3dollar,Actual Purchase Amount : 0,Remaining Credit : 0.5dollar,Input Parameter7:Original Purchase Amount : 1dollar,Current Credit : 3,Actual Purchase Amount : 0,Remaining Credit : 2dollar,Input Parameter8:Original Purchase Amount : 1.5dollar,Current Credit : 3dollar,Actual Purchase Amount : 0,Remaining Credit : 1.5dollar|Credit should get decreased,when the Purchase amount is less than the current Credit.|Passed|
 |TC031_Make_Purchase|To verify whether Email is sent to the Customer,when he/she gets a credit.Pre-Requisite:TC Cart app should have been launched on device/emulator.|1.Click on TC Cart Manager app.2.Go to Make Purchase screen and scan Customer Card and Credit card and click on 'ApplyRewardDiscount' button.3.Verify whether Email is sent to the Customer,when he/she gets a credit.|Email should be sent to the Customer,when he/she gets a credit.|Passed.|
-| TC032_Make_Purchase | |Passed.|
+|TC032_Make_Purchase | To verify the whether appropriate error message is shown when no customer is selected and clicks on Confirm or Apply Discount buttons.Pre-Requisite:1)TC Cart app should have been launched on device/emulator.|1.Click on TC Cart Manager app.2.Click on 'Make Purchase' button without scan any customer card and go the the Make Purchase screen.3.Verify if the following error message is displayed when the User clicks on Confirm or Apply Discount button:"Please select a customer!"|Following error message should be displayed when the User clicks on Confirm button leaving some fields blank:"Please select a customer!"|Passed.|
 |TC033_Make_Purchase|To verify whether appropriate error message is shown when the User leaves one or few fields  blank and clicks on Confirm button.Pre-Requisite:1)TC Cart app should have been launched on device/emulator.|1.Click on TC Cart Manager app.2.Click on 'Make Purchase' button and go the the Make Purchase screen.3.Verify if the following error message is displayed when the User clicks on Confirm button leaving one or few fields blank:"Please add an item and price to purchase!"|Following error message should be displayed when the User clicks on Confirm button leaving some fields blank:"Please add an item or price to purchase"|Passed.|
 |TC034_Make_Purchase|To verify whether the Cancel and Clear buttons are working as expected.Pre-Requisite:1)TC Cart app should have been launched on device/emulator.|1.Click on TC Cart Manager app.2.Click on 'Make Purchase' button and go the the Make Purchase screen.3.Click on Cancel button and verify whether the User is navigated to the previous screen.4.Click on Clear button and verify whether all the fields are reset to default values|On clicking Cancel button the User should be navigated to the previous screen and on clicking Clear button all the fields on screen should be reset to default values.|Passed|
 |TC035_Make_Purchase|To verify whether the Make Purchase screen contains the following:Make Transaction Section:Scan Customer Card and Scan Credit Card buttons,Customer and Credit Card for displaying Customer Name and Scanned Credit card info Item and Price text fields and Apply Reward/Discount button Rewards Applied,Discounts applied and Amount to be paid fields to display respective details to the User Confirm,Clear and Cancel buttons Pre-Requisite: TC Cart app should have been launched on device/emulator.|1.Click on TC Cart Manager app 2.Click on 'Make Purchase' button and go the the Make Purchase screen 3.Verify whether the following fields/buttons are displayed: Make Transaction Section: Scan Customer Card and Scan Credit Card buttons, Customer and Credit Card for displaying Customer Name and Scanned Credit card info Item and Price text fields and Apply Reward/Discount button Rewards Applied,Discounts applied and Amount to be paid fields to display respective details to the User Confirm,Clear and Cancel buttons|Following fields/buttons should be displayed on Add Customer Page: Make Transaction Section: Scan Customer Card and Scan Credit Card buttons, Customer and Credit Card for displaying Customer Name and Scanned Credit card info Item and Price text fields and  Apply Reward/Discount button Rewards Applied,Discounts applied and Amount to be paid fields to display respective details to the User Confirm,Clear and Cancel buttons|Passed|
@@ -96,48 +96,4 @@ At a minimum, JUnit.
 |TC038_Make_Purchase|To verify whether,if a Customer achieves VIP status, the 10% discount he/she gets is applied before any other discount or credit is applied.|Verify whether the code logic is implemented as per this requirement.|If a Customer achieves VIP status, the  10% discount he/she gets is applied before any other discount or credit is applied.|Passed|
 |TC039_Make_Purchase|To verify whether Email is sent to the Customer,as soon as the customer is qualified for the VIP status.|Verify whether the code logic is implemented as per this requirement.|Email should be sent to the Customer,as soon as the customer is qualified for the VIP status.|Not working as expected.D006:Email is not sent to the Customer after he/she achieves VIP status.|
 |TC040_View_Transaction_History|To verify whether the TCCart Manager is able to view the following Customer details  for each transaction:(1) date, (2) amount of purchase before discounts, and (3) whether discounts or credits were applied (i.e., which ones, and for which amount).|1.Click on TC Cart Manager app.2.Click on 'View Transaction History' button and go the the View Transaction screen.3.Verify whether the following Customer details  for each transaction: 1) date, (2) amount of purchase before discounts, and (3) whether discounts or credits were applied (i.e., which ones, and for which amount).|TCCart Manager should be able to view the following Customer details  for each transaction:(1) date, (2) amount of purchase before discounts, and (3) whether discounts or credits were applied (i.e., which ones, and for which amount).|Passed|
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
