@@ -1,5 +1,12 @@
 # TCCart Team Design Discussion
 
+**Author**: 6300Spring16Team54
+
+| Version | Description     |
+| --------|:---------------:|
+| V1      | Initial version |
+| V2      | Revised version to show updated UML based on final android implementation|
+
 ## 1. Pros and Cons of Individual Design
 
 ### Design 1 - pcassell3
@@ -76,9 +83,9 @@
 
 
 
-## 2. Team Design
+## 2. Team Design - Initial
 
-<img src="design-team.png" width="700" />
+<img src="design-team-old.png" width="700" />
 
 ### Commonalities
  - The structure of class design are mostly same among our group. This is very expected as the design is all about customer-purchase-item activities.
@@ -100,6 +107,23 @@
 
 ### Decision and Rationale
  - We decide to use Design 1 as template for our group design and UML class diagram. It doesn't necessarily mean that other diagrams are not good. We want to use one major design principle instead of hybrid so that we can be consistent in the future design. 
+
+
+## 2. Team Design - Final
+
+<img src="design-team.png" width="700" />
+
+### Decision and Rationale
+This UML diagram represents the final design.  The structure is similar to what we have above and what was chosen from the beginning
+however, due to the android architecture and how we chose to store data, some changes had to be made.
+
+- We chose to use an SQLite data storage architecture.  This change the way we used data classes and accessed stored informatoin.
+
+- tccart-services.jar when provided, contained different method names
+
+- We chose to represent all android UI classes "Activity" classes as "TCCart Activities" in our UML for clarity
+
+- The architecture is more complex, and this could be avoided in the future by using a different data storage methodology.  But this implementation would scale better.
 
 ## 3. Summary
  - We learned how to discuss project questions in groups.
