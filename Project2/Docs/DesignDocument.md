@@ -21,7 +21,7 @@ The purpose of developing the Android app *TCCart* is to provide a payment and r
 
 - We assume the payment will be processed only for credit card, no cash allowed. 
 
-- We assume the general credit/discount rule will be strictly applied to each transactions as described, no special rule will be employed.
+- We assume the general credit/discount rule will be strictly applied to each transactions as described, no other special rule will be employed.
 
 ### 1.2 Constraints
 
@@ -35,7 +35,7 @@ be robust and able to handle common situations(/failures) within a mobile enviro
 | Requirements | Description     |
 | --------|:---------------:|
 | Android     | 6.0 and up |
-| Permissions     | Photos/Media/Files, Storage, Camera, other |
+| Permissions     | Photos/Media/Files, Storage, other |
 
 ## 2 Architectural Design
 
