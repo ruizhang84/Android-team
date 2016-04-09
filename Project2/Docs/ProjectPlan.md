@@ -19,12 +19,12 @@ We have adopted the Unified Process model for our software development process. 
 
 ***2.2.1 Inception :***
 
-In this phase, we will go from the the idea of the product to the vision of the end product, the Android app TCCart. We will need to delimite the project scope and make the business case for the product presented. 
+In this phase, we will go from the the idea of the product to the vision of the end product, the Android app TCCart. We will need to delimit the project scope and make the business case for the product presented. 
 
 
 *Activities Performed:*
 
-We will develope the initial project plan, which shows the phase, iterations, roles roles of the participants, schedule, and milestones, etc. We will also make vision document that produce a simplified use-case model. In addition, we will aslo develop a tentative architecture.
+We will develop the initial project plan, which shows the phase, iterations, roles roles of the participants, schedule and milestones, etc. We will also make vision document that produce a simplified use-case model. In addition, we will aslo develop a tentative architecture.
 
 - Project plan (initial, this document).
 
@@ -54,7 +54,7 @@ We will analyze the app design problem to get a better understanding of app deve
 
 *Activities Performed:*
 
-We will complete use-case model with all use-cases and actors identified and most case-use descriptions developed. We will also identify supplementary requirements. In design document, we will also define the lower-level design for the system as well as a complete set of test cases. In additin, we may revise the project plan accordingly.
+We will complete use-case model with all use-cases and actors identified and most case-use descriptions developed. We will also identify supplementary requirements. In design document, we will also define the lower-level design for the system as well as a complete set of test cases. In addition, we may revise the project plan accordingly.
 
 - Use-case model (UseCaseModel.md).
 
