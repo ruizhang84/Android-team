@@ -167,4 +167,4 @@ Team Members| Roles taken
 Rui Zhang| Project Manager, Developer
 Fujia Wu| Q/A Manager, Developer
 Paul Cassell| Development Lead, Tester
-Roopa Haribabu |Document Lead, Developer
+Roopa Haribabu |Document Lead, Tester
