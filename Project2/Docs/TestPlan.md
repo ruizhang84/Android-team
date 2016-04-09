@@ -38,11 +38,9 @@ Test cases will be selected using a combination of extreme testing (testing the 
 We will be using a mix of black-box and white-box testing given that individuals will both write/run test cases for their own code as well as for code that they have not authored.  However, I expect unit test cases to be more white box driven than the others.
 
 ### 1.3 Adequacy Criterion
-*Define how you are going to assess the quality of your test cases. Typically, this involves some form of functional or structural coverage. If you plan to use different techniques at different testing levels (e.g., unit and system), you should clarify that.*
-
 To constitute a thorough test whose successful execution implies no errors in our app, we adopt the *specification-based* adequacy criteria. Such criterion specifies the required testing in terms of identified features of the specification/requirements, so that a test set is adequate if all the identified features are fully exercised.
 
-We will ensure the *functional coverage* by covering off all the documented scenaios that appears in software specifications/requirements. 
+We will ensure the *functional coverage* by covering off all the *documented scenaios* that appears in software specifications/requirements. This coverage is to measure the "quality" of our test sets and provide a stopping rule criteria for unit testing. In addtion, we will provide the testing case to suitably covering off the developer code (i.e., *undocumented* things such as boundary conditions)
 
 
 ### 1.4 Bug Tracking
