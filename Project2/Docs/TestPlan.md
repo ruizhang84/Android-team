@@ -18,14 +18,13 @@ Our testing strategy will be comprehensive in nature as in order to assure as fe
 The purpose of developing the Android app *TCCart* is to provide a payment and reward managment system in a timely manner to help our contractor's coffee and tea selling bussiness grow. The testing strategey here is a high level presentation of the test approach to be undertaken in relation to the *TCCart*, which will be used as a reference by our Team54 to develop a Test Plan with details of test activities. In particular, our testing will validate and verify the app works to the contractor's requirements and meets their bussiness needs.
 
 #### 1.1.2 Test levels and test type
-**Unit Test Cases**  
+#####Unit Test Cases
 During early development, *each code developer* will write their own trivial *unit test* cases (corresponding to the methods they author) and verify passing unit test cases before a commit is done once a feature has been implemented.  Most of the time, unit test cases will be run more often.
 
-**Integration & System Test Cases**  
+#####Integration & System Test Cases
 For integration testing, we adopt "bottom-up" approach to test individual software modules as a group.The *tester* will peform such testing before system testing. The *tester* will also run Manual Test cases created from specifications/requirements that have been written by the whole team, driven by the test lead, in the system testing.
 
-**Regression Testing**
-
+#####Regression Testing
 We have rerun the test cases which passed previously to make sure the new changes (for example, a bug fixed) would not affect the code which was tested already.
 
 ### 1.2 Test Selection
