@@ -19,10 +19,10 @@ The purpose of developing the Android app *TCCart* is to provide a payment and r
 
 #### 1.1.2 Test levels and test type
 **Unit Test Cases**  
-During early development, each code developer will write their own trivial *unit test* cases (corresponding to the methods they author) and verify passing unit test cases before a commit is done once a feature has been implemented.  Most of the time, unit test cases will be run more often.
+During early development, *each code developer* will write their own trivial *unit test* cases (corresponding to the methods they author) and verify passing unit test cases before a commit is done once a feature has been implemented.  Most of the time, unit test cases will be run more often.
 
 **Integration & System Test Cases**  
-As of now, I am unclear as to whether or not we would dilineate between integration and system test cases for such a small project.  Testing the interaction of multiple units is still critical and we will automate them using Junit/Espresso tests and Manual Test cases have been written by the whole team, driven by the test lead, and executed by everyone.
+For integration testing, we adopt "bottom-up" approach to test individual software modules as a group.The *tester* will peform such testing before system testing. The *tester* will also run Manual Test cases from specifications/requirements that have been written by the whole team, driven by the test lead.
 
 **Regression Testing**
 
