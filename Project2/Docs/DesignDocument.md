@@ -6,7 +6,7 @@
 | --------|:---------------:|
 | V1      | Initial version |
 | V2      | Revise version, Updated png, Sections 2 and 3 based on better understanding of the system |
-
+| V3      | Revise version, Updated Sections based on better understanding of the system |
 ## 1 Design Considerations
 
 ### 1.1 Assumptions
