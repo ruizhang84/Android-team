@@ -28,14 +28,12 @@ As of now, I am unclear as to whether or not we would dilineate between integrat
 
 We have rerun the test cases which passed during the previous deliverables to make sure the new changes didn't affect the code which was tested already.
 
-
-
-
 ### 1.2 Test Selection
+We will be using a mix of black-box and white-box testing given that individuals will both write/run test cases for their own code as well as for code that they have not authored.  However, we expect system test cases to be more black box driven than the others.
+- Black box - systematic partion testing. This invovles identifying independently testable features and their relevant input, deriving test specifications, and creating test cases.
+- White box - branch and statement coverage.
 
-Test cases will be selected using a combination of extreme testing (testing the far ends of input, for example) as well as common use cases.  This should allow us to make sure core functionality works while hitting the outliers for corner case issues.
-
-We will be using a mix of black-box and white-box testing given that individuals will both write/run test cases for their own code as well as for code that they have not authored.  However, I expect unit test cases to be more white box driven than the others.
+Test cases by itself will be selected using a combination of extreme testing (testing the far ends of input, for example) as well as common use cases.  This should allow us to make sure core functionality works while hitting the outliers for corner case issues.
 
 ### 1.3 Adequacy Criterion
 To constitute a thorough test whose successful execution implies no errors in our app, we adopt the *specification-based* adequacy criteria. Such criterion specifies the required testing in terms of identified features of the specification/requirements, so that a test set is adequate if all the identified features are fully exercised.
