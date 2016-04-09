@@ -121,7 +121,7 @@ however, due to the android architecture and how we chose to store data, some ch
 
 - tccart-services.jar when provided, contained different method names
 
-- We chose to represent all android UI classes "Activity" classes as "TCCart Activities" in our UML for clarity
+- We chose to represent all android UI "Activity" classes as "TCCart Activities" in our UML for clarity.  Note that there are many more methods under each "Activity" that we did not include in the UML diagram just for brevity / clarity sake.  We assumed the high level activity name would be sufficient enough to show the relationships.  If we added the additional methods you would see additional relationships such as "MakePurchaseActivity -> CreditCard".
 
 - The architecture is more complex, and this could be avoided in the future by using a different data storage methodology.  But this implementation would scale better.
 
