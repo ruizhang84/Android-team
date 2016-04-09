@@ -25,6 +25,7 @@ During early development, *each code developer* will write their own trivial *un
 For integration testing, we adopt "bottom-up" approach to test individual software modules as a group.The *tester* will peform such testing before system testing. The *tester* will also run Manual Test cases created from specifications/requirements that have been written by the whole team, driven by the test lead, in the system testing.
 
 **Regression Testing**
+
 We have rerun the test cases which passed previously to make sure the new changes (for example, a bug fixed) would not affect the code which was tested already.
 
 ### 1.2 Test Selection
