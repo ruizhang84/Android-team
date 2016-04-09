@@ -22,7 +22,7 @@ The purpose of developing the Android app *TCCart* is to provide a payment and r
 During early development, *each code developer* will write their own trivial *unit test* cases (corresponding to the methods they author) and verify passing unit test cases before a commit is done once a feature has been implemented.  Most of the time, unit test cases will be run more often.
 
 **Integration & System Test Cases**  
-For integration testing, we adopt "bottom-up" approach to test individual software modules as a group.The *tester* will peform such testing before system testing. The *tester* will also run Manual Test cases from specifications/requirements that have been written by the whole team, driven by the test lead.
+For integration testing, we adopt "bottom-up" approach to test individual software modules as a group.The *tester* will peform such testing before system testing. The *tester* will also run Manual Test cases from specifications/requirements that have been written by the whole team, driven by the test lead, in the system testing.
 
 **Regression Testing**
 
