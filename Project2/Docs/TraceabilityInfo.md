@@ -27,6 +27,5 @@
 | Make Purchase | Transaction | MakePurchaseActivity.java: handleApplyRewardDiscount() | TC025_Make_Purchase to TC030_Make_Purchase | 
 | Make Purchase | Transaction | MakePurchaseActivity.java: handleConfirm() | TC031_Make_Purchase to TC033_Make_Purchase |
 | Make Purchase | Transaction | MakePurchaseActivity.java: handleClear(), handleCancel() | TC034_Make_Purchase |
-| Make Purchase | Transaction | CustomerDBHandler.java, MakePurchaseActivity.java: handleConfirm() | TC037_Make_Purchase to TC039_Make_Purchase |
-| View Transaction History | Transaction_info | ViewTransactionActivity.java,  MakePurchaseActivity.java: onCreate() | TC040_View_Transaction_History | 
+| View Transaction History | Transaction_info | ViewTransactionActivity.java,  MakePurchaseActivity.java: onCreate() | TC038_View_Transaction_History | 
 
