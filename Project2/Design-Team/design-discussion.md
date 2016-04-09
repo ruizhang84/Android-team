@@ -109,7 +109,7 @@
  - We decide to use Design 1 as template for our group design and UML class diagram. It doesn't necessarily mean that other diagrams are not good. We want to use one major design principle instead of hybrid so that we can be consistent in the future design. 
 
 
-## 2. Team Design - Final
+## 3. Team Design - Final
 
 <img src="design-team.png" width="700" />
 
@@ -125,7 +125,7 @@ however, due to the android architecture and how we chose to store data, some ch
 
 - The architecture is more complex, and this could be avoided in the future by using a different data storage methodology.  But this implementation would scale better.
 
-## 3. Summary
+## 4. Summary
  - We learned how to discuss project questions in groups.
  
  - We worked as a team to complete this task. 
