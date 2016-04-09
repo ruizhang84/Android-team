@@ -51,7 +51,7 @@ be robust and able to handle common situations(/failures) within a mobile enviro
 
 ### 3.1 Class Diagram
 
-![Image Text](../Design-team/design-team.png)
+![Image Text](../Design-Team/design-team.png)
 
 ## 4 User Interface Design
 
