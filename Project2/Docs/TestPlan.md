@@ -42,7 +42,7 @@ We will ensure the *functional coverage* by covering off all the *documented sce
 
 ### 1.4 Bug Tracking
 
-Bugs have been tracked in a Spreadsheet- Defect_Tracking.xls.
+The bugs or enhancement request will be reported in slack (https://omscs-study.slack.com/messages/6300spring16team54/) and documented. Bugs have been tracked in a Spreadsheet- Defect_Tracking.xls.
 
 
 ### 1.5 Technology
